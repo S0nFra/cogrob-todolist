@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from database.srv import *
+from rasa_node.srv import *
 import rospy
 
 def update(user, activity, category='general', deadline=0):

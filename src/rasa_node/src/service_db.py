@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import re
-from database.srv import *
+from rasa_node.srv import *
 import rospy
 import sqlite3 as sql
 
