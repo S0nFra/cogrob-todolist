@@ -3,31 +3,132 @@ version: "2.0"
 intents:
   - greet
   - goodbye
-  - affirm
+  - thankyou
   - deny
-  - mood_great
-  - mood_unhappy
+  - affirm
+  - inform
+  - look_activity
+  - insert_new
+  - insert_new_category
+  - insert_new_activity
+  - rephrase
+  - remove
+  - remove_category
   - bot_challenge
+  - ask_username
+  - ask_deadline
+  - empty
+  - update
+  - nlu_fallback
+
+entities:
+  - activity
+  - category
+  - deadline
+  - user
+  
+actions:
+  - action_insert
+  - action_remove
+  - action_update
+  - action_show
+  - utter_greet
+  - utter_goodbye
+  - utter_noworries
+  - utter_ask_username
+  - utter_ask_category
+  - utter_intent
+  - utter_ask_activities
+  - utter_ask_default_category
+  - utter_ask_deadline
+  - utter_add_deadline
+  - utter_delete_activity
+  - utter_delete_category
+  - utter_delete_deadline
+  - utter_please_rephrase
+  - utter_thanks
+  - utter_out_of_scope
+  - utter_help
+
+# slots:
+#   facility_type:
+#     type: text
+#     influence_conversation: false
+#   location:
+#     type: text
+#     influence_conversation: false
+#   facility_address:
+#     type: text
+#     influence_conversation: false
+
+# forms:
+#   facility_form:
+#     required_slots:
+#       facility_type:
+#         - type: from_entity
+#           entity: facility_type
+#       location:
+#         - type: from_entity
+#           entity: location
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
+  utter_insert_new:
+  - text: "Alright, I have add this to the dashboard"
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Hello, my name is Retrieval Bot."
+  - text: "I am called Retrieval Bot!"
+  - text: "I'm a bot, powered by Rasa"
+  utter_ask_username:
+  - text: "Who am I talking to?"
+  - text: "What is your name?"
+  - text: "May I know your name?"
+  utter_greet:
+  - text: "Hey {username}! How can I help you?"
+  - text: "Hello {username}! How can I help you?"
+  - text: "Hi {username}! How can I help you?"
+  utter_goodbye:
+  - text: "Talk to you later!"
+  - text: "Have a good day."
+  - text: "Until next time!"
+  - text: "Bye {username}"
+  - text: "By {username}, Have a good day."
+  utter_noworries:
+  - text: "My pleasure."
+  - text: "You are welcome!"
+  utter_intent:
+  - text: "What action do you want to do?"
+  utter_ask_category:
+  - text: "In which category should I add this activity?"
+  utter_ask_default_category:
+  - text: "Do you want to add this activity to a category?"
+  - text: "Do not add this activity to any category?"
+  utter_ask_activities:
+  - text: "Which activity do you want to add in this category?"
+  - text: "Which activity do you want to add to this category?"
+  utter_ask_deadline:
+  - text: "Do you want to add a deadline to your activity?"
+  utter_add_deadline:
+  - text: "What is the deadline for your activity?"
+  - text: "What is the deadline?"
+  utter_delete_activity:
+  - text: "Which activity do you want to remove?"
+  utter_delete_category:
+  - text: "Which category do you want to remove?"
+  utter_delete_deadline:
+  - text: "Do I have to remove this deadline?"
+  utter_no_date:
+  - text: "Sorry {deadline} is not a valid deadline. Please try again."
+  utter_please_rephrase:
+  - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+  - text: "Sorry, I'm not sure how to respond to that. Can you repeat?"
+  utter_incomplete_sentence: 
+  - text: "Your sentence is incomplete. Please, rephrase the sentence specifying whether it is an activity or a category"
+  utter_help:
+  - text: "I can help you open a service request ticket, or check the status of your open incidents. \nYou can ask me things like: \n- Open an incident \n- Help me reset my password \n- I'm having a issue with my email \n- What's the status of the ticket I opened?"
+  utter_out_of_scope:
+  - text: Sorry, I'm not sure how to respond to that. Type "help" for assistance.
+  utter_thanks:
+  - text: "Ok. Thank you!"
 
 session_config:
   session_expiration_time: 60

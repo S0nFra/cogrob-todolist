@@ -1,92 +1,591 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
     - hey
     - hello
     - hi
-    - hello there
     - good morning
     - good evening
-    - moin
     - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-
+    - hi there
+    - hello there
+    - greetings
+    - Hi
+    - helo
+    - Hi!
+    - Hi'
+    - Hi,
+    - Hi, bot
+    - Hieee
+    - Hieeeeeeeeeeeee
+    - Hola
+    - What is up?
+    - Whats up
+    - Whats up my bot
+    - Whats up?
+    - ayyyy whaddup
+    - bonjour
+    - ey boss
+    - I said, helllllloooooo!!!!
+    - Well hello there ;)
+    - Hey
+    - Hi bot
+    - Hey bot
+    - Hello
+    - good morning
+    - hi again
+    - hi folks
+    - hi Mister
+    - hi pal!
+    - greetings
+    - hello everybody
+    - hello is anybody there
+    - hello robot
 - intent: goodbye
   examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
     - bye
     - goodbye
-    - have a nice day
     - see you around
-    - bye bye
     - see you later
-
-- intent: affirm
+    - see ya
+    - buh bye
+    - Bye
+    - Bye bye
+    - adios
+    - adios?
+    - bye :P
+    - bye bot
+    - bye bye
+    - bye bye bot
+    - bye for now
+    - bye udo
+    - bye was nice talking to you
+    - bye!
+    - byee
+    - catch you later
+    - ciao
+    - cya
+    - farewell
+    - good bye
+    - good bye rasa bot!
+    - good night
+    - goodbye.
+    - goodnight
+    - gotta go
+    - ok Bye
+    - ok bye
+    - ok, bye
+    - ok.bye
+    - see u later
+    - see ya
+    - see you
+    - see you . bye
+    - take care
+    - then bye
+    - tlak to you later
+    - toodle-oo
+    - byr
+    - Bye!
+    - Goodbye
+    - See you later
+    - Bye bot
+    - Goodbye friend
+    - bye for now
+    - catch you later
+    - gotta go
+    - See you
+    - goodnight
+    - have a nice day
+    - i'm off
+    - see you later alligator
+    - we'll speak soon
+- intent: thankyou
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
-- intent: deny
+    - thanks!
+    - thank you
+    - thanks a lot
+    - great thanks
+    - appreciate it
+    - cool thanks
+    - Cool. Thanks
+    - Great, thanks
+    - Thank you so much
+    - Thank's!
+    - Thanks bot
+    - Thanks for that
+    - Thanks!
+    - amazing, thanks
+    - cool thank you
+    - cool, thanks
+    - danke
+    - great thanks
+    - ok thanks
+    - ok thanks
+    - ok thanks!
+    - perfect thank you
+    - thank u
+    - thank you
+    - thank you anyways
+    - thanks
+    - thanks a bunch for everything
+    - thanks a lot
+    - thanks for the help
+    - thanks you
+    - thanks!
+    - thankyou
+    - thnks
+    - thx
+    - yes thanks
+    - thanks for your information
+    - thanks f
+- intent: say_name   
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
+    - I'm [Sara](user)
+    - I'm [Beatrice](user)
+    - I'm [Alessia]](user)
+    - I'm [Roberto](user)
+    - I'm [Francesco](user)
+    - I'm [Margherita](user)
+    - I'm [Mario](user)
+    - I'm [William](user)
+    - I'm [Kate](user)
+    - I'm [Elena]](user)
+    - I'm [Alex]](user)
+    - I'm [Lily](user)
+    - My name is [Anthony](user)
+    - My name is [Silvia](user)
+    - My name is [Gianluca](user)
+    - My name is [Paolo](user)
+    - My name is [Kety](user)
+    - My name is [Katia](user)
+    - My name is [Mark](user)
+    - My name is [James](user)
+    - My name is [Christian](user)
+    - My name is [Lucia](user)
+    - My name is [Lory](user)
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - you are a bot right
+    - aren't you a bot
+    - Are you a bot?
+    - are you a BOT
+    - are you a bot?
+    - are you a chatbot
+    - are you a rasa bot?
+    - are you a real bot?
+    - are you a robot
+    - are you ai
+    - are you artificial
+    - are you artificial intelligence
+    - are you bot
+    - are you bot?
+    - are you rasa bot?
+    - are you real
+    - are you real lol
+    - are you really a bot
+    - are you robot
+    - are you sure that you're a bot?
+    - bot?
+    - cuz you are a bot
+    - i guess you are a chatbot
+    - oh are you chatbot?
+    - tell me, are you a bot?
+    - what are you, a bot?
+    - you are a robot
+    - you are ai
+    - you are chatbot
+    - you're a bot
+    - you robo
+    - real bot then?
+    - are you really a bbot? 
+- intent: affirm
+  examples: |
+    - yes
+    - yes sure
+    - absolutely
+    - for sure
+    - yes yes yes
+    - definitely
+    - yeah
+    - si
+    - ok
+    - okay
+- intent: deny
+  examples: |
+    - no
+    - not today
+    - no thanks
+    - no thank you
+    - uh no
+    - noope
+    - do you have something else
+    - no this does not work for me  
+- intent: insert_new
+  examples: |
+    - add [go to gym](activity) in [sport](category) category
+    - add [play football](activity) in [sport](category) category
+    - add [go running](activity) in [sport](category) 
+    - add [swimming pool](activity) in [sport](category) 
+    - add [take the gym bag](activity) in [sport](category) 
+    - add [book at the restaurant](activity) in [remainder](category) 
+    - add [go to the dentist](activity) in [remainder](category) [monday 15th](deadline)
+    - add [call Angela](activity) activity in [remainder](category) category
+    - add [go shopping](activity) acitivity in [remainder](category) 
+    - add [Mario's birthday](activity) item in [remainder](category) 
+    - add [ice cream](activity) element in [shopping](category) 
+    - add [pizza](activity) in [shoppinh(category) category
+    - can you add [chips and fish](activity) in [shopping](category) 
+    - can you add [spaghetti](activity) in [shopping](category) category
+    - add to [the spore category]{"entity":"category"} [nuoto]{"entity":"activity"}
+    - add to [shopping](category) [vegetables](activity)
+    - Perfect, now i have decided to add [apples](activity) in [shopping list](category)
+    - Perfect, now i have decided to add [metting](activity) in [work](category)
+    - Perfect, now i have decided to add [dancing shoes](activity) in [shopping list](category)
+    - add
+    - insert   
+    - insert [submit cogrob midterm]{"entity":"activity"} in the category [commitment]{"entity":"category"}
+    - insert [read last Marc's article]{"entity":"activity"} in the category [afternoon]{"entity":"category"}
+    - insert [Michi's birthday]{"entity":"activity"} in [holidays to remember]{"entity":"category"} category 
+    - insert [accompany Angela to the dentist]{"entity":"activity"} in [to do]{"entity":"category"}
+    - insert in [wishlist]{"entity":"category"} [Ipad]{"entity":"activity"} 
+    - insert [fly Napoli-Milano]{"entity":"activity"} in [departures]{"entity":"category"} 
+    - insert [fix bugs]{"entity":"activity"} in [cogrob midterm]{"entity":"category"} 
+    - insert in [homework]{"entity":"category"} [modal verbs]{"entity":"activity"} 
+    - insert [Theater course]{"entity":"activity"}
+    - insert [book hotels for Rome]{"entity":"activity"}
+    - insert [dentist]{"entity":"activity"} in [appointments]{"entity":"category"}
+    - insert [dog]{"entity":"activity"} in [classification animals]{"entity":"category"}
+    - in [top five singers]{"entity":"category"} insert [Mengoni]{"entity":"activity"}
+    - in [songs to listen to]{"entity":"category"} insert [Sky]{"entity":"activity"}
+    - in [allert]{"entity":"category"} insert [midterm]{"entity":"activity"}
+    - in [remainder]{"entity":"category"} insert [buy Christrmas presents]{"entity":"activity"} 
+    - in [english course]{"entity":"category"} insert [Present and past perfect]{"entity":"activity"}
+    - I wanna add
+    - i want to add
+    - i want to add [play piano]{"entity":"activity"} in [remainder]{"entity":"category"}
+    - i want add a [banana]{"entity":"activity"} in [shopping list]{"entity":"category"} ? 
+    - can you insert [The gone girl]{"entity":"activity"} in the [movies to see]{"entity":"category"} category ?
+    - can you insert [call Giulia](activity) in [what i have to do]{"entity":"category"}?
+    - ehi bot! add [buy present for parents] in [christmas]{"entity":"category"}
+    - add [go to NY](activity) activity  in [trips](category) category
+    - add [visit the theater](activity) activity  in [trips](category) category
+    - add [visit the castle](activity) in [trips](category) category  
+    - add [go to greet Luca in Naples](activity) activity in [trips](category) category
+    - add [go to Amsterdam](activity) activity in [trips](category)
+    - add [leave for Milan](activity) activity in [trips](category) category
+    - insert [take the train](activity) in [trips](category) category
+    - remind me of [book the plane](activity) in [trips](category) category
+    - remind me of [book the hotel](activity) and add it in [trips](category) category
+    - add [bring umbrella](activity) in [trips](category)
+    - add [book your seat in the library](activity) in [study](category) category
+    - add [book the classroom](activity) in [study](category)
+    - insert [charge your computer](activity) activity in [to do](category) category
+    - insert [buy the DAA book](activity) in [study](category) category
+    - ok, add [study CR](activity) activity in [study](category) category
+    - add [meeting](activity) activity in [study](category) category
+    - add [reception from the professor](activity) activity in [study](category) category
+    - add [buy the pen](activity) activity in [study](category) category
+    - add [go to the secretariat](activity) activity in [study](category) category
+    - well, add [take the book](activity) activity in [study](category) category
+    - add [call Lucrezia](activity) activity  in [free time](category) category
+    - add [get off the dog](activity) activity  in [free time](category) category
+    - add [reply to emails](activity) activity  in [free time](category) category
+    - add [finish reading the book](activity) activity  in [free time](category) category
+    - add [meets Francesca](activity) activity  in [free time](category) category
+    - add [go out with your friends](activity) activity  in [free time](category) category
+    - add [cook a cake](activity) activity  in [free time](category) category
+    - add [go to the beautician](activity) activity  in [free time](category) category
+    - add [book at the hairdresser](activity) activity  in [free time](category) category
+    - add [see a movie](activity) activity  in [free time](category) category
+- intent: insert_new_activity
+  examples: |
+   - add [buy pasta](activity) activity
+   - add [work on FC article](activity) activity
+   - add [make dinner reservation](activity) activity
+   - add [take the kids to the park](activity) activity
+   - add [check email](activity) activity
+   - add [phone mum](activity) activity
+   - add [freez meet](activity) activity
+   - add [History study group](activity) activity
+   - add [need new parking sticker ](activity) activity
+   - add [math 9-10- then do problems](activity) activity
+   - add [go to the gymo workout](activity) activity
+   - add [buy pasta](activity) activity
+   - add [write intents for mideterm cogrob](activity) activity
+   - add [answer Dad's e-mail](activity) activity
+   - add [to pay taxes](activity) element 
+   - add [buy Jhon's present](activity) element 
+   - add [banana bread](activity) item 
+   - add [Atm cash](activity) as activity
+   - add [meeting with Mario](activity) as activity
+   - add [conference on deep neaural network](activity) as activity
+   - add [reunion on job orientation](activity) as activity
+   - add [study the ereditariety on chapter 3](activity) as activity
+   - Please, add [call Pat](activity) activity
+   - Please, add [read chapter 4 of math book](activity) activity
+   - I want to add [piano lesson](activity) activity
+   - Please, insert [book in the library](activity) as activity 
+   - Please, insert [](activity) as activity 
+   - Please, insert [book flight to Sydney](activity) as activity 
+   - Please, insert [book Birthday's restaurant](activity) as activity 
+   - Please, insert [pick up prescription](activity) as activity 
+   - Please, insert [design ad campaign graphics](activity) as activity 
+   - Please, insert [clean living room](activity) as activity 
+   - Please, insert [correcting homework](activity) as activity 
+   - Insert [do the mending](activity) as activity 
+   - Insert [do a load of washing](activity) as activity 
+   - Insert [read 1 chapther of book](activity) as activity 
+   - Insert [declutter Top Drawer of bedroom](activity) as activity 
+   - Insert [make muffin](activity) as activity 
+   - Insert [library study time](activity) as activity 
+   - Insert new activity [take off lights](activity)
+   - Insert new activity [go shopping](activity) 
+   - Insert new activity [listen new James Arthur song](activity) 
+   - Insert new activity [shere photo](activity) 
+   - Insert new activity [buy wedding dress](activity) 
+   - Insert new activity [call Antonio](activity) 
+   - Insert new activity [ask information on New York](activity) 
+   - Insert new activity [buy tickets for Padova travel](activity) 
+   - Insert new activity [go to the dentist]](activity) 
+   - Insert new activity [rent a boat](activity) 
+   - Can you insert [social media scheduling](activity) element? 
+   - Can you insert [pack Jake's lunch](activity) element? 
+   - Can you insert [social media scheduling](activity) element? 
+   - Can you insert [rent a boat](activity) element? 
+   - Can you insert [send in more inventory](activity) element? 
+   - Can you insert [edit pictures](activity) element? 
+   - I want to add [apples](activity) item
+   - I want to add [rent an apartment](activity) item 
+   - I want to add [expiry coupon](activity) item
+   - I want to add [create model for cogrob](activity) item 
+   - I want to add [pay off a debt](activity) item
+- intent: insert_new_category
+  examples: |
+    - add a list named [sport](category)
+    - add a category with name [football matches](category)
+    - add new category [shopping list](category)
+    - add [supermarket list](category) category
+    - add category named [butcher list](category) 
+    - add [remainder](category) category
+    - add [doctors appointment](category) list 
+    - add category called [playstation games](category)
+    - add a category with name [math homework](category) 
+    - add [italian homework](category) category
+    - create a new [grocery list](category) category
+    - create a new [appointment](category) folder
+    - create a new category named [chemist list](category) 
+    - create a new [pharmacy list](category) category
+    - create a new category with name [bakery list](category) 
+    - create a new category named [toy shop list](category)  
+    - create a new category [newsagent list](category)
+    - create a new category [greengrocer list](category)
+    - bot Add [class schedule](category) category
+    - insert category [commitment](category) 
+    - insert folder [afternoon]{"entity":"category"}
+    - insert holidays to remember]{"entity":"category"} category
+    - insert category [to do]{"entity":"category"}
+    - insert list named [movies to see]{"entity":"category"}
+    - insert the category [wishlist]{"entity":"category"} 
+    - insert [departures]{"entity":"category"} category
+    - insert category [cogrob midterm]{"entity":"category"} 
+    - insert a new [homeowrk]{"entity":"category"} category
+    - insert [english course]{"entity":"category"} category
+    - insert category [italian course]{"entity":"category"}
+    - insert a folder named [science homework]{"entity":"category"} 
+    - insert the category [appointments]{"entity":"category"}
+    - insert a list [classification animals]{"entity":"category"}
+    - insert a foldet named [top five singers]{"entity":"category"}
+    - insert the category [songs to listen to]{"entity":"category"}
+    - ehi bot!, insert an [allert]{"entity":"category"} list
+    - ehi bot!, insert a new category called [holidays]{"entity":"category"}
+    - ehi bot!, can you insert a new category called [secret list]{"entity":"category"}
+    - ehi bot!, i need a new folder with name [best places to visit] {"entity":"category"}
+    - i want to add a new category called [personal]{"entity":"category"}
+    - i want to add a new list called [books to return]{"entity":"category"}
+    - i need a new category called [best places to visit] {"entity":"category"}
+    - i need a new category called [discount offer] {"entity":"category"}
+    - i need a new category called [clothes I want] {"entity":"category"}
+- intent: rephrase
+  examples: |
+    - Ah ok, so add bottles of thè
+    - Add three pineapples
+    - bot, add send an email to Gianluca please
+    - i want some fruits
+    - add some bananas
+    - insert some things
+    - i need a book
+    - can you insert a payment
+    - make coffee
+    - prepare foods
+    - remind me to save my project
+- intent: remove
+  examples: |
+   - remove the activity named [egg](activity)
+   - remove from [items] (category), [hammer] (activity)
+   - remove from [friends] (category), [Lucia] (activity)
+   - remove [call Gianluca](activity) from [things to be done](category)
+   - delete [work](activity) in [Monday](category)
+   - delete from [books](category), [Shakespare](activity)
+   - delete [Econ 202 lecture](activity) from [daily to do](category) category
+   - delete [edit pictures](activity) from [for Alex](category) category
+   - delete [barbecue sauce](activity) from [shopping list](category)
+   - delete [Econ 202 lecture](activity) from [daily to do](category) category
+   - delete [edit pictures](activity) from [for Alex](category) category
+   - delete [barbecue sauce](activity) from [shopping list](category)
+   - delete [work](activity) in [Monday](category)
+   - delete [math homework](activity) from [daily homeworks](category) category
+   - delete [edit code](activity) from [new project](category) category
+   - delete [mayonaisse sauce](activity) from [shopping list](category)
+   - eliminate [cook a birthday cake for Emily](activity)
+   - eliminate [replay to Jhon's mail](activity) form [important](category)category
+   - eliminate [linear regression](activity) form [lessons](category)
+   - take out [load dishwasher](activity) form [after lunch](category)
+   - take out [brainstorm](activity) from [saturday](category) category
+   - take out [answer Dad's e-mail](activity) in [personal remainder](category)
+   - take out [pizza](activity) in [saturday plans](category)
+   - remove [bookstor - printer cartridge](activity) from [Friday things to do](category)
+   - eliminate [blue raspberry](activity) from [shopping list] (category)
+   - can you eliminate [banana](activity) in [things to eat today] (category)?
+   - can you delete [chocolate](activity) in [cake preparation](category)?
+   - can you eliminate [to sleep](activity) in [things to do today] (category)?
+   - can you delete [Lucia](activity) in [group for the birthday gift](category)?
+   - can you delete [Marco](activity) in [group for the birthday gift](category)?
+   - can you eliminate [Maria Rosaria](activity) in [group for the birthday gift](category)?
+   - remove [one](activity) [kiwi](item_name)
+   - i don't want [apples](activity) into [dinner](category). Can you eliminate that?
+   - i don't need [humburger](activity) anymore. Can you eliminate in the [list of the supermarket](category) category?
+   - i don't want [to go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
+   - Remove [go to Francesco's home](activity) from [daily reminder]
+   - remove from the list [books](category) [Pirandello](activity)
+   - remove [go to gym](activity)
+   - remove [computer](activity) 
+   - remove [lunch with Sem](activity)
+   - delete [sign the check](activity)
+   - eliminate [sweet cherry](activity)
+   - now remove [play videogames](activity)
+   - Can you delete [pumpkin](activity)?
+   - Can you delete [tennis](activity) activity?
+   - delete [apples](activity)
+- intent: remove_category
+  examples: |
+   - remove [christmas gifts](category) category
+   - remove [shopping list](category) category
+   - remove [things to do](category) category
+   - remove [place to visit](category) category
+   - delete from [things to buy](category) all the activity
+   - Remove all the activity in the list [tasks](category)
+- intent: look_activity
+  examples: |
+   - can you show me the activities in the category [daily housework](category)?
+   - can you show me [dentist appointment](activity) in the category [daily remainder](category)?
+   - can you show me the deadline of [go to gym](activity) in the [daily remainder](category) category?
+   - can you show me the deadline of [midterm cogrob](activity) in the [monthly deadlines](category)?
+   - can you show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
+   - can you show me [blind date](activity) in [monday](category)?
+   - can you show me [world Cup](activity) in [sport](category)?
+   - can you show me [Volley Cup](activity) in [sport](category)?
+   - can you show me [remainder](category) with [call granfather](activity) deadline?
+   - can you show me [for Alex](category) with [call granfather](activity) deadline?
+   - Please, show me [to remaind](category)category with [doctors appointment](activity) deadline?
+   - Please, show me [remainder](category) with [call granfather](activity) deadline?
+   - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
+   - show me [apples](activity) into [dinner](category)
+   - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
+   - show me the activities in the category [daily housework](category)
+   - show 
+   - show all the activities in [to do](category) category
+   - show me [all categories](category)
+   - Please, show me [shopping list](category) category
+   - Please, show me [clean hause](category) category
+   - Please, show me [to do](category)
+   - Please, show me [remainder](category)
+   - show me 
+   - see
+   - view
+   - show my [list](category)
+   - see list 
+   - What's on the [food](category) category?
+   - What's on the [appointments](category) list?
+   - what is present in the [sales](category) list?
+   - what's present in the list of [lessons](category)?
+   - what i have in [shopping cart](category)?
+   - see [shopping list](category)
+   - what inside [work plain](category)?
+   - what i have [holiday plain](category)?
+   - ok, now show me [the plain](activity)
+   - can i see my [house things](category)?
+   - can you show [remainder](category)?
+   - i want to see [all categories](category)
+   - I want to see [all categories](category), can yuo show me that?
+   - Can you display [things to buy](category)?
+   - i want to see [party](category) list. Can you show that?
+   - i want to see [things to buy](category). show me that
+   - show [place to visit](category) please
+   - i want to see [movies](category)
+   - i want to see my [shopping list](category)
+   - what's on the [meeting](category) list?
+   - please, read me the [shopping](category) list
+   - show list
+   - can i see [places to see](category), please?
+   - Show my [dreams](category) list please
+   - Please can you show to me my [wish list](category)
+   - Very well now show my [friends list](category)
+   - Let see [to contatc] list
+   - Let me see [my music](category) list with [Rihanna](activity) item
+   - Let me see [top five singers](category) list 
+   - display [deadline](deadline) of [midterm design][activity] in [exam](category) set
+   - Please display [ideas](category)
+   - now show [bug to fix](category) list please
+   - plese bot show [user stories](category)
+- intent: empty 
+  examples: |
+    - empty category
+    - ok empty the category
+    - ok can you empty the category
+    - empty the category
+    - bot could you empty category [Shopping list](category)?
+    - Can you empty me category?
+    - can you clean out the category?
+    - I want to clean out me category
+    - ok now empty me category
+    - empty out the category
+    - Perfect now empty me category
+    - Ok clean the category please
+    - Now can you empty me category?
+    - Pepper clear all
+    - empty me category
+    - I'm [Lucia](username), empty the category please 
+    
+#- Which activity is about to expire? 
+
+# - synonyms: add
+  # examples: |
+  #   - insert
+  #   - create
+
+# - synonyms: activity
+#   examples: |
+#   - element
+#   - item
+
+# - synonyms: category
+#   examples: |
+#   - list
+#   - to do list
+#   - set
+#   - folder
+#   - tag
+#   - bookmark
+
+- regex: deadline
+  examples: |
+    - [0-9]{4}-[0-9]{2}-[0-9]{2}
+    - [0-9]{2}-[0-9]{2}-[0-9]{4}
+    - [0-9]{2}:[0-9]{2}
+    - [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}
+    - [0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}
