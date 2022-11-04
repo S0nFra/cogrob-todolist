@@ -11,15 +11,17 @@ stories:
   - intent: thankyou
   - action: utter_noworries
 
-## Questa funziona
-# - story: identify user
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - action: username_form
-#   - slot_was_set:
-#     - requested_slot: username
-#   - action: utter_greet_user
+# Questa funziona
+- story: identify user
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - action: utter_greet_user
+  - action: action_hello_world
+  - action: action_insert
 
 ## Work in progress
 # - story: insertion

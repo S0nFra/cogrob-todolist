@@ -1,36 +1,64 @@
+# This files contains your custom actions which can be used to run
+# custom Python code.
+#
+# See this guide on how to implement these action:
+# https://rasa.com/docs/rasa/custom-actions
+
+
+# This is a simple example for a custom action which utters "Hello World!"
+
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
 
-DATA = {
-    'San Francisco' : {
-        "rbry-mqwu": "Street Z, Number Y",
-        "b27b-2uc7": "Street X, Number Y",
-        "9wzi-peqs": "Street Y, Number X"
-    }
-}
-
-class ActionSubmit(Action):
+class ActionHelloWorld(Action):
 
     def name(self) -> Text:
-        return "action_submit"
+        return "action_hello_world"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Hello World!")
+
+        return []
+
+class ActionInsert(Action):
+    
+    def name(self) -> Text:
+        return "action_insert"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        facility_type = tracker.get_slot("facility_type")
-        location = tracker.get_slot("location")
+        print("\n Ciao:")
+        # prendere lo username
+        username = tracker.get_slot('username')
+        username = username.lower()
 
-        print("\nFacility type:",facility_type)
-        print("Location:",location)
-        
-        if location in DATA and facility_type in DATA[location]:
-            dispatcher.utter_message(text=f"This is the address: {DATA[location][facility_type]}") 
-            return [SlotSet("facility_address", DATA[location][facility_type])]
-        
-        dispatcher.utter_message(text="Sorry. I can't find this facility.") 
+        print("\n Username:", username)
+        # controllare che tutte le entità siano presenti
+        # se manca un entità richiederne l'inserimento
+        category = tracker.get_slot("category")
+        if category is None:
+            dispatcher.utter_message(text = "Please insert category")
+            return []
 
+        activity = tracker.get_slot("activity")
+        if activity is None:
+            dispatcher.utter_message(text = "Please insert activity")
+            return []
+
+        deadline = tracker.get_slot("deadline")
+        if deadline is None:
+            dispatcher.utter_message(text = "Do you want insert a deadline?") 
+            return []
+        
+        dispatcher.utter_message(text = "Tutto apposto")
+        query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{activity}\',\'{category}\',{deadline})"
+          
         return []
+        # query di inserimento al server

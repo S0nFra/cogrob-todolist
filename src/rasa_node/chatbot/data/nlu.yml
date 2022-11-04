@@ -1,4 +1,5 @@
 version: "2.0"
+
 nlu:
 - intent: greet
   examples: |
@@ -42,7 +43,7 @@ nlu:
     - hello everybody
     - hello is anybody there
     - hello robot
-    - Hello 
+
 - intent: goodbye
   examples: |
     - bye
@@ -101,6 +102,7 @@ nlu:
     - i'm off
     - see you later alligator
     - we'll speak soon
+
 - intent: thankyou
   examples: |
     - thanks!
@@ -140,6 +142,7 @@ nlu:
     - yes thanks
     - thanks for your information
     - thanks f
+
 - intent: identification   
   examples: |
     - I'm [Sara](username)
@@ -165,6 +168,7 @@ nlu:
     - My name is [Christian](username)
     - My name is [Lucia](username)
     - My name is [Lory](username)
+
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -203,7 +207,8 @@ nlu:
     - you're a bot
     - you robo
     - real bot then?
-    - are you really a bbot? 
+    - are you really a bbot?
+
 - intent: affirm
   examples: |
     - yes
@@ -216,6 +221,7 @@ nlu:
     - si
     - ok
     - okay
+
 - intent: deny
   examples: |
     - no
@@ -225,7 +231,8 @@ nlu:
     - uh no
     - noope
     - do you have something else
-    - no this does not work for me  
+    - no this does not work for me
+
 - intent: insert_new
   examples: |
     - add [go to gym](activity) in [sport](category) category
@@ -303,6 +310,7 @@ nlu:
     - add [go to the beautician](activity) activity  in [free time](category) category
     - add [book at the hairdresser](activity) activity  in [free time](category) category
     - add [see a movie](activity) activity  in [free time](category) category
+
 - intent: insert_new_activity
   examples: |
     - add [buy pasta](activity) activity
@@ -365,6 +373,7 @@ nlu:
     - I want to add [expiry coupon](activity) item
     - I want to add [create model for cogrob](activity) item 
     - I want to add [pay off a debt](activity) item
+
 - intent: insert_new_category
   examples: |
     - add a list named [sport](category)
@@ -411,6 +420,7 @@ nlu:
     - i need a new category called [best places to visit] {"entity":"category"}
     - i need a new category called [discount offer] {"entity":"category"}
     - i need a new category called [clothes I want] {"entity":"category"}
+
 # - intent: rephrase
 #   examples: |
 #     - Ah ok, so add bottles of thè
@@ -424,6 +434,7 @@ nlu:
 #     - make coffee
 #     - prepare foods
 #     - remind me to save my project
+
 - intent: remove
   examples: |
     - remove the activity named [egg](activity)
@@ -472,6 +483,7 @@ nlu:
     - Can you delete [pumpkin](activity)?
     - Can you delete [tennis](activity) activity?
     - delete [apples](activity)
+
 - intent: remove_category
   examples: |
     - remove [christmas gifts](category) category
@@ -480,6 +492,7 @@ nlu:
     - remove [place to visit](category) category
     - delete from [things to buy](category) all the activity
     - Remove all the activity in the list [tasks](category)
+
 - intent: look_activity
   examples: |
     - can you show me the activities in the category [daily housework](category)?
@@ -543,6 +556,7 @@ nlu:
     - Please display [ideas](category)
     - now show [bug to fix](category) list please
     - plese bot show [user stories](category)
+
 - intent: empty 
   examples: |
     - empty category
@@ -629,7 +643,6 @@ nlu:
     - The deadline is [2024.02.03 14:25](deadline)
     - The deadline is [2022.04.28 18:00](deadline)
     - The deadline is [2023.09.22 20:59](deadline)
-
     - The deadline is [2022-03-04](deadline)
     - The deadline is [2025-04-09](deadline)
     - The deadline is [2023-07-16](deadline)
@@ -650,7 +663,6 @@ nlu:
     - [09-05-2021](deadline) 
     - [01-30-2022](deadline) 
     - [03-29-2022](deadline)
-    
     - [03/29/2022 17:10](deadline)
     - [04/27/2022 17:05](deadline)
     - [06/28/2022 19:20](deadline)
@@ -675,7 +687,6 @@ nlu:
     - [09/05/2021](deadline) 
     - [01/30/2022](deadline) 
     - [03/29/2022](deadline)
-    
     - [03 29 2022 17:10](deadline)
     - [04 27 2022 17:05](deadline)
     - [06 28 2022 19:20](deadline)
@@ -700,7 +711,6 @@ nlu:
     - [09 05 2021](deadline) 
     - [01 30 2022](deadline) 
     - [03 29 2022](deadline)
-    
     - [11:23](deadline)
     - [12:24](deadline)
     - [09:10](deadline)
@@ -710,6 +720,3 @@ nlu:
     - [22:00](deadline)
     - [07:00](deadline)
     - [17:30](deadline)
-    
-
-    
