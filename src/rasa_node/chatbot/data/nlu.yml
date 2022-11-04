@@ -42,6 +42,7 @@ nlu:
     - hello everybody
     - hello is anybody there
     - hello robot
+    - Hello 
 - intent: goodbye
   examples: |
     - bye
