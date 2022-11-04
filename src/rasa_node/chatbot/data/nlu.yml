@@ -139,31 +139,31 @@ nlu:
     - yes thanks
     - thanks for your information
     - thanks f
-- intent: say_name   
+- intent: identification   
   examples: |
-    - I'm [Sara](user)
-    - I'm [Beatrice](user)
-    - I'm [Alessia]](user)
-    - I'm [Roberto](user)
-    - I'm [Francesco](user)
-    - I'm [Margherita](user)
-    - I'm [Mario](user)
-    - I'm [William](user)
-    - I'm [Kate](user)
-    - I'm [Elena]](user)
-    - I'm [Alex]](user)
-    - I'm [Lily](user)
-    - My name is [Anthony](user)
-    - My name is [Silvia](user)
-    - My name is [Gianluca](user)
-    - My name is [Paolo](user)
-    - My name is [Kety](user)
-    - My name is [Katia](user)
-    - My name is [Mark](user)
-    - My name is [James](user)
-    - My name is [Christian](user)
-    - My name is [Lucia](user)
-    - My name is [Lory](user)
+    - I'm [Sara](username)
+    - I'm [Beatrice](username)
+    - I'm [Alessia]](username)
+    - I'm [Roberto](username)
+    - I'm [Francesco](username)
+    - I'm [Margherita](username)
+    - I'm [Mario](username)
+    - I'm [William](username)
+    - I'm [Kate](username)
+    - I'm [Elena]](username)
+    - I'm [Alex]](username)
+    - I'm [Lily](username)
+    - My name is [Anthony](username)
+    - My name is [Silvia](username)
+    - My name is [Gianluca](username)
+    - My name is [Paolo](username)
+    - My name is [Kety](username)
+    - My name is [Katia](username)
+    - My name is [Mark](username)
+    - My name is [James](username)
+    - My name is [Christian](username)
+    - My name is [Lucia](username)
+    - My name is [Lory](username)
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -271,7 +271,7 @@ nlu:
     - i want add a [banana]{"entity":"activity"} in [shopping list]{"entity":"category"} ? 
     - can you insert [The gone girl]{"entity":"activity"} in the [movies to see]{"entity":"category"} category ?
     - can you insert [call Giulia](activity) in [what i have to do]{"entity":"category"}?
-    - ehi bot! add [buy present for parents] in [christmas]{"entity":"category"}
+    - ehi bot! add [buy present for parents](activity) in [christmas]{"entity":"category"}
     - add [go to NY](activity) activity  in [trips](category) category
     - add [visit the theater](activity) activity  in [trips](category) category
     - add [visit the castle](activity) in [trips](category) category  
@@ -304,66 +304,66 @@ nlu:
     - add [see a movie](activity) activity  in [free time](category) category
 - intent: insert_new_activity
   examples: |
-   - add [buy pasta](activity) activity
-   - add [work on FC article](activity) activity
-   - add [make dinner reservation](activity) activity
-   - add [take the kids to the park](activity) activity
-   - add [check email](activity) activity
-   - add [phone mum](activity) activity
-   - add [freez meet](activity) activity
-   - add [History study group](activity) activity
-   - add [need new parking sticker ](activity) activity
-   - add [math 9-10- then do problems](activity) activity
-   - add [go to the gymo workout](activity) activity
-   - add [buy pasta](activity) activity
-   - add [write intents for mideterm cogrob](activity) activity
-   - add [answer Dad's e-mail](activity) activity
-   - add [to pay taxes](activity) element 
-   - add [buy Jhon's present](activity) element 
-   - add [banana bread](activity) item 
-   - add [Atm cash](activity) as activity
-   - add [meeting with Mario](activity) as activity
-   - add [conference on deep neaural network](activity) as activity
-   - add [reunion on job orientation](activity) as activity
-   - add [study the ereditariety on chapter 3](activity) as activity
-   - Please, add [call Pat](activity) activity
-   - Please, add [read chapter 4 of math book](activity) activity
-   - I want to add [piano lesson](activity) activity
-   - Please, insert [book in the library](activity) as activity 
-   - Please, insert [](activity) as activity 
-   - Please, insert [book flight to Sydney](activity) as activity 
-   - Please, insert [book Birthday's restaurant](activity) as activity 
-   - Please, insert [pick up prescription](activity) as activity 
-   - Please, insert [design ad campaign graphics](activity) as activity 
-   - Please, insert [clean living room](activity) as activity 
-   - Please, insert [correcting homework](activity) as activity 
-   - Insert [do the mending](activity) as activity 
-   - Insert [do a load of washing](activity) as activity 
-   - Insert [read 1 chapther of book](activity) as activity 
-   - Insert [declutter Top Drawer of bedroom](activity) as activity 
-   - Insert [make muffin](activity) as activity 
-   - Insert [library study time](activity) as activity 
-   - Insert new activity [take off lights](activity)
-   - Insert new activity [go shopping](activity) 
-   - Insert new activity [listen new James Arthur song](activity) 
-   - Insert new activity [shere photo](activity) 
-   - Insert new activity [buy wedding dress](activity) 
-   - Insert new activity [call Antonio](activity) 
-   - Insert new activity [ask information on New York](activity) 
-   - Insert new activity [buy tickets for Padova travel](activity) 
-   - Insert new activity [go to the dentist]](activity) 
-   - Insert new activity [rent a boat](activity) 
-   - Can you insert [social media scheduling](activity) element? 
-   - Can you insert [pack Jake's lunch](activity) element? 
-   - Can you insert [social media scheduling](activity) element? 
-   - Can you insert [rent a boat](activity) element? 
-   - Can you insert [send in more inventory](activity) element? 
-   - Can you insert [edit pictures](activity) element? 
-   - I want to add [apples](activity) item
-   - I want to add [rent an apartment](activity) item 
-   - I want to add [expiry coupon](activity) item
-   - I want to add [create model for cogrob](activity) item 
-   - I want to add [pay off a debt](activity) item
+    - add [buy pasta](activity) activity
+    - add [work on FC article](activity) activity
+    - add [make dinner reservation](activity) activity
+    - add [take the kids to the park](activity) activity
+    - add [check email](activity) activity
+    - add [phone mum](activity) activity
+    - add [freez meet](activity) activity
+    - add [History study group](activity) activity
+    - add [need new parking sticke](activity) activity
+    - add [math 9-10- then do problems](activity) activity
+    - add [go to the gymo workout](activity) activity
+    - add [buy pasta](activity) activity
+    - add [write intents for mideterm cogrob](activity) activity
+    - add [answer Dad's e-mail](activity) activity
+    - add [to pay taxes](activity) element 
+    - add [buy Jhon's present](activity) element 
+    - add [banana bread](activity) item 
+    - add [Atm cash](activity) as activity
+    - add [meeting with Mario](activity) as activity
+    - add [conference on deep neaural network](activity) as activity
+    - add [reunion on job orientation](activity) as activity
+    - add [study the ereditariety on chapter 3](activity) as activity
+    - Please, add [call Pat](activity) activity
+    - Please, add [read chapter 4 of math book](activity) activity
+    - I want to add [piano lesson](activity) activity
+    - Please, insert [book in the library](activity) as activity 
+    - Please, insert [](activity) as activity 
+    - Please, insert [book flight to Sydney](activity) as activity 
+    - Please, insert [book Birthday's restaurant](activity) as activity 
+    - Please, insert [pick up prescription](activity) as activity 
+    - Please, insert [design ad campaign graphics](activity) as activity 
+    - Please, insert [clean living room](activity) as activity 
+    - Please, insert [correcting homework](activity) as activity 
+    - Insert [do the mending](activity) as activity 
+    - Insert [do a load of washing](activity) as activity 
+    - Insert [read 1 chapther of book](activity) as activity 
+    - Insert [declutter Top Drawer of bedroom](activity) as activity 
+    - Insert [make muffin](activity) as activity 
+    - Insert [library study time](activity) as activity 
+    - Insert new activity [take off lights](activity)
+    - Insert new activity [go shopping](activity) 
+    - Insert new activity [listen new James Arthur song](activity) 
+    - Insert new activity [shere photo](activity) 
+    - Insert new activity [buy wedding dress](activity) 
+    - Insert new activity [call Antonio](activity) 
+    - Insert new activity [ask information on New York](activity) 
+    - Insert new activity [buy tickets for Padova travel](activity) 
+    - Insert new activity [go to the dentist]](activity) 
+    - Insert new activity [rent a boat](activity) 
+    - Can you insert [social media scheduling](activity) element? 
+    - Can you insert [pack Jake's lunch](activity) element? 
+    - Can you insert [social media scheduling](activity) element? 
+    - Can you insert [rent a boat](activity) element? 
+    - Can you insert [send in more inventory](activity) element? 
+    - Can you insert [edit pictures](activity) element? 
+    - I want to add [apples](activity) item
+    - I want to add [rent an apartment](activity) item 
+    - I want to add [expiry coupon](activity) item
+    - I want to add [create model for cogrob](activity) item 
+    - I want to add [pay off a debt](activity) item
 - intent: insert_new_category
   examples: |
     - add a list named [sport](category)
@@ -410,138 +410,138 @@ nlu:
     - i need a new category called [best places to visit] {"entity":"category"}
     - i need a new category called [discount offer] {"entity":"category"}
     - i need a new category called [clothes I want] {"entity":"category"}
-- intent: rephrase
-  examples: |
-    - Ah ok, so add bottles of thè
-    - Add three pineapples
-    - bot, add send an email to Gianluca please
-    - i want some fruits
-    - add some bananas
-    - insert some things
-    - i need a book
-    - can you insert a payment
-    - make coffee
-    - prepare foods
-    - remind me to save my project
+# - intent: rephrase
+#   examples: |
+#     - Ah ok, so add bottles of thè
+#     - Add three pineapples
+#     - bot, add send an email to Gianluca please
+#     - i want some fruits
+#     - add some bananas
+#     - insert some things
+#     - i need a book
+#     - can you insert a payment
+#     - make coffee
+#     - prepare foods
+#     - remind me to save my project
 - intent: remove
   examples: |
-   - remove the activity named [egg](activity)
-   - remove from [items] (category), [hammer] (activity)
-   - remove from [friends] (category), [Lucia] (activity)
-   - remove [call Gianluca](activity) from [things to be done](category)
-   - delete [work](activity) in [Monday](category)
-   - delete from [books](category), [Shakespare](activity)
-   - delete [Econ 202 lecture](activity) from [daily to do](category) category
-   - delete [edit pictures](activity) from [for Alex](category) category
-   - delete [barbecue sauce](activity) from [shopping list](category)
-   - delete [Econ 202 lecture](activity) from [daily to do](category) category
-   - delete [edit pictures](activity) from [for Alex](category) category
-   - delete [barbecue sauce](activity) from [shopping list](category)
-   - delete [work](activity) in [Monday](category)
-   - delete [math homework](activity) from [daily homeworks](category) category
-   - delete [edit code](activity) from [new project](category) category
-   - delete [mayonaisse sauce](activity) from [shopping list](category)
-   - eliminate [cook a birthday cake for Emily](activity)
-   - eliminate [replay to Jhon's mail](activity) form [important](category)category
-   - eliminate [linear regression](activity) form [lessons](category)
-   - take out [load dishwasher](activity) form [after lunch](category)
-   - take out [brainstorm](activity) from [saturday](category) category
-   - take out [answer Dad's e-mail](activity) in [personal remainder](category)
-   - take out [pizza](activity) in [saturday plans](category)
-   - remove [bookstor - printer cartridge](activity) from [Friday things to do](category)
-   - eliminate [blue raspberry](activity) from [shopping list] (category)
-   - can you eliminate [banana](activity) in [things to eat today] (category)?
-   - can you delete [chocolate](activity) in [cake preparation](category)?
-   - can you eliminate [to sleep](activity) in [things to do today] (category)?
-   - can you delete [Lucia](activity) in [group for the birthday gift](category)?
-   - can you delete [Marco](activity) in [group for the birthday gift](category)?
-   - can you eliminate [Maria Rosaria](activity) in [group for the birthday gift](category)?
-   - remove [one](activity) [kiwi](item_name)
-   - i don't want [apples](activity) into [dinner](category). Can you eliminate that?
-   - i don't need [humburger](activity) anymore. Can you eliminate in the [list of the supermarket](category) category?
-   - i don't want [to go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
-   - Remove [go to Francesco's home](activity) from [daily reminder]
-   - remove from the list [books](category) [Pirandello](activity)
-   - remove [go to gym](activity)
-   - remove [computer](activity) 
-   - remove [lunch with Sem](activity)
-   - delete [sign the check](activity)
-   - eliminate [sweet cherry](activity)
-   - now remove [play videogames](activity)
-   - Can you delete [pumpkin](activity)?
-   - Can you delete [tennis](activity) activity?
-   - delete [apples](activity)
+    - remove the activity named [egg](activity)
+    - remove from [items] (category), [hammer] (activity)
+    - remove from [friends] (category), [Lucia] (activity)
+    - remove [call Gianluca](activity) from [things to be done](category)
+    - delete [work](activity) in [Monday](category)
+    - delete from [books](category), [Shakespare](activity)
+    - delete [Econ 202 lecture](activity) from [daily to do](category) category
+    - delete [edit pictures](activity) from [for Alex](category) category
+    - delete [barbecue sauce](activity) from [shopping list](category)
+    - delete [Econ 202 lecture](activity) from [daily to do](category) category
+    - delete [edit pictures](activity) from [for Alex](category) category
+    - delete [barbecue sauce](activity) from [shopping list](category)
+    - delete [work](activity) in [Monday](category)
+    - delete [math homework](activity) from [daily homeworks](category) category
+    - delete [edit code](activity) from [new project](category) category
+    - delete [mayonaisse sauce](activity) from [shopping list](category)
+    - eliminate [cook a birthday cake for Emily](activity)
+    - eliminate [replay to Jhon's mail](activity) form [important](category) category
+    - eliminate [linear regression](activity) form [lessons](category)
+    - take out [load dishwasher](activity) form [after lunch](category)
+    - take out [brainstorm](activity) from [saturday](category) category
+    - take out [answer Dad's e-mail](activity) in [personal remainder](category)
+    - take out [pizza](activity) in [saturday plans](category)
+    - remove [bookstor - printer cartridge](activity) from [Friday things to do](category)
+    - eliminate [blue raspberry](activity) from [shopping list] (category)
+    - can you eliminate [banana](activity) in [things to eat today] (category)?
+    - can you delete [chocolate](activity) in [cake preparation](category)?
+    - can you eliminate [to sleep](activity) in [things to do today] (category)?
+    - can you delete [Lucia](activity) in [group for the birthday gift](category)?
+    - can you delete [Marco](activity) in [group for the birthday gift](category)?
+    - can you eliminate [Maria Rosaria](activity) in [group for the birthday gift](category)?
+    - remove [one](activity) [kiwi](category)
+    - i don't want [apples](activity) into [dinner](category). Can you eliminate that?
+    - i don't need [humburger](activity) anymore. Can you eliminate in the [list of the supermarket](category) category?
+    - i don't want [to go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
+    - Remove [go to Francesco's home](activity) from [daily reminder]
+    - remove from the list [books](category) [Pirandello](activity)
+    - remove [go to gym](activity)
+    - remove [computer](activity) 
+    - remove [lunch with Sem](activity)
+    - delete [sign the check](activity)
+    - eliminate [sweet cherry](activity)
+    - now remove [play videogames](activity)
+    - Can you delete [pumpkin](activity)?
+    - Can you delete [tennis](activity) activity?
+    - delete [apples](activity)
 - intent: remove_category
   examples: |
-   - remove [christmas gifts](category) category
-   - remove [shopping list](category) category
-   - remove [things to do](category) category
-   - remove [place to visit](category) category
-   - delete from [things to buy](category) all the activity
-   - Remove all the activity in the list [tasks](category)
+    - remove [christmas gifts](category) category
+    - remove [shopping list](category) category
+    - remove [things to do](category) category
+    - remove [place to visit](category) category
+    - delete from [things to buy](category) all the activity
+    - Remove all the activity in the list [tasks](category)
 - intent: look_activity
   examples: |
-   - can you show me the activities in the category [daily housework](category)?
-   - can you show me [dentist appointment](activity) in the category [daily remainder](category)?
-   - can you show me the deadline of [go to gym](activity) in the [daily remainder](category) category?
-   - can you show me the deadline of [midterm cogrob](activity) in the [monthly deadlines](category)?
-   - can you show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
-   - can you show me [blind date](activity) in [monday](category)?
-   - can you show me [world Cup](activity) in [sport](category)?
-   - can you show me [Volley Cup](activity) in [sport](category)?
-   - can you show me [remainder](category) with [call granfather](activity) deadline?
-   - can you show me [for Alex](category) with [call granfather](activity) deadline?
-   - Please, show me [to remaind](category)category with [doctors appointment](activity) deadline?
-   - Please, show me [remainder](category) with [call granfather](activity) deadline?
-   - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
-   - show me [apples](activity) into [dinner](category)
-   - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
-   - show me the activities in the category [daily housework](category)
-   - show 
-   - show all the activities in [to do](category) category
-   - show me [all categories](category)
-   - Please, show me [shopping list](category) category
-   - Please, show me [clean hause](category) category
-   - Please, show me [to do](category)
-   - Please, show me [remainder](category)
-   - show me 
-   - see
-   - view
-   - show my [list](category)
-   - see list 
-   - What's on the [food](category) category?
-   - What's on the [appointments](category) list?
-   - what is present in the [sales](category) list?
-   - what's present in the list of [lessons](category)?
-   - what i have in [shopping cart](category)?
-   - see [shopping list](category)
-   - what inside [work plain](category)?
-   - what i have [holiday plain](category)?
-   - ok, now show me [the plain](activity)
-   - can i see my [house things](category)?
-   - can you show [remainder](category)?
-   - i want to see [all categories](category)
-   - I want to see [all categories](category), can yuo show me that?
-   - Can you display [things to buy](category)?
-   - i want to see [party](category) list. Can you show that?
-   - i want to see [things to buy](category). show me that
-   - show [place to visit](category) please
-   - i want to see [movies](category)
-   - i want to see my [shopping list](category)
-   - what's on the [meeting](category) list?
-   - please, read me the [shopping](category) list
-   - show list
-   - can i see [places to see](category), please?
-   - Show my [dreams](category) list please
-   - Please can you show to me my [wish list](category)
-   - Very well now show my [friends list](category)
-   - Let see [to contatc] list
-   - Let me see [my music](category) list with [Rihanna](activity) item
-   - Let me see [top five singers](category) list 
-   - display [deadline](deadline) of [midterm design][activity] in [exam](category) set
-   - Please display [ideas](category)
-   - now show [bug to fix](category) list please
-   - plese bot show [user stories](category)
+    - can you show me the activities in the category [daily housework](category)?
+    - can you show me [dentist appointment](activity) in the category [daily remainder](category)?
+    - can you show me the deadline of [go to gym](activity) in the [daily remainder](category) category?
+    - can you show me the deadline of [midterm cogrob](activity) in the [monthly deadlines](category)?
+    - can you show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
+    - can you show me [blind date](activity) in [monday](category)?
+    - can you show me [world Cup](activity) in [sport](category)?
+    - can you show me [Volley Cup](activity) in [sport](category)?
+    - can you show me [remainder](category) with [call granfather](activity) deadline?
+    - can you show me [for Alex](category) with [call granfather](activity) deadline?
+    - Please, show me [to remaind](category) category with [doctors appointment](activity) deadline?
+    - Please, show me [remainder](category) with [call granfather](activity) deadline?
+    - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
+    - show me [apples](activity) into [dinner](category)
+    - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
+    - show me the activities in the category [daily housework](category)
+    - show 
+    - show all the activities in [to do](category) category
+    - show me [all categories](category)
+    - Please, show me [shopping list](category) category
+    - Please, show me [clean hause](category) category
+    - Please, show me [to do](category)
+    - Please, show me [remainder](category)
+    - show me 
+    - see
+    - view
+    - show my [list](category)
+    - see list 
+    - What's on the [food](category) category?
+    - What's on the [appointments](category) list?
+    - what is present in the [sales](category) list?
+    - what's present in the list of [lessons](category)?
+    - what i have in [shopping cart](category)?
+    - see [shopping list](category)
+    - what inside [work plain](category)?
+    - what i have [holiday plain](category)?
+    - ok, now show me [the plain](activity)
+    - can i see my [house things](category)?
+    - can you show [remainder](category)?
+    - i want to see [all categories](category)
+    - I want to see [all categories](category), can yuo show me that?
+    - Can you display [things to buy](category)?
+    - i want to see [party](category) list. Can you show that?
+    - i want to see [things to buy](category). show me that
+    - show [place to visit](category) please
+    - i want to see [movies](category)
+    - i want to see my [shopping list](category)
+    - what's on the [meeting](category) list?
+    - please, read me the [shopping](category) list
+    - show list
+    - can i see [places to see](category), please?
+    - Show my [dreams](category) list please
+    - Please can you show to me my [wish list](category)
+    - Very well now show my [friends list](category)
+    - Let see [to contatc] list
+    - Let me see [my music](category) list with [Rihanna](activity) item
+    - Let me see [top five singers](category) list 
+    - display [deadline](deadline) of [midterm design][activity] in [exam](category) set
+    - Please display [ideas](category)
+    - now show [bug to fix](category) list please
+    - plese bot show [user stories](category)
 - intent: empty 
   examples: |
     - empty category

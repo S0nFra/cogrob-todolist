@@ -1,9 +1,8 @@
 version: "2.0"
+
 stories:
 - story: story_goodbye
   steps:
-  - intent: greet
-  - action: utter_greet
   - intent: goodbye
   - action: utter_goodbye
 
@@ -11,3 +10,35 @@ stories:
   steps:
   - intent: thankyou
   - action: utter_noworries
+
+## Questa funziona
+# - story: identify user
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - action: username_form
+#   - slot_was_set:
+#     - requested_slot: username
+#   - action: utter_greet_user
+
+## Work in progress
+# - story: insertion
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - action: username_form
+#   - slot_was_set:
+#     - requested_slot: username
+#   - action: utter_greet_user
+#   - intent: insert_new
+#   - action: insert_query_form
+#   - active_loop: insert_query_form
+#   - slot_was_set:
+#     - requested_slot: category
+#   - slot_was_set:
+#     - requested_slot: activity
+#   - active_loop: null
+#   - action: utter_insertion_summary
+#   - slot_was_set:
+#     - requested_slot: deadline
+#   - action: utter_deadline

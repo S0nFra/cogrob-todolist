@@ -6,6 +6,7 @@ intents:
   - thankyou
   - deny
   - affirm
+  - identification
   - inform
   - look_activity
   - insert_new
@@ -25,7 +26,7 @@ entities:
   - activity
   - category
   - deadline
-  - user
+  - username
   
 actions:
   - action_insert
@@ -50,26 +51,39 @@ actions:
   - utter_out_of_scope
   - utter_help
 
-# slots:
-#   facility_type:
-#     type: text
-#     influence_conversation: false
-#   location:
-#     type: text
-#     influence_conversation: false
-#   facility_address:
-#     type: text
-#     influence_conversation: false
+slots:
+  username:
+    type: text
+    influence_conversation: false
+  cur_activity:
+    type: text
+    influence_conversation: false
+  cur_category:
+    type: text
+    influence_conversation: false
+  deadline:
+    type: text
+    influence_conversation: false
 
-# forms:
-#   facility_form:
-#     required_slots:
-#       facility_type:
-#         - type: from_entity
-#           entity: facility_type
-#       location:
-#         - type: from_entity
-#           entity: location
+forms:
+  username_form:
+    required_slots:
+      username:
+      - type: from_entity
+        entity: username
+  insert_query_form:
+    required_slots:
+      cur_category:
+      - type: from_entity
+        entity: category
+      cur_activity:
+      - type: from_entity
+        entity: activity
+  ask_deadline_form:
+    required_slots:
+      deadline:
+      - type: from_entity
+        entity: deadline
 
 responses:
   utter_insert_new:
@@ -82,10 +96,16 @@ responses:
   - text: "Who am I talking to?"
   - text: "What is your name?"
   - text: "May I know your name?"
-  utter_greet:
+  utter_greet_user:
   - text: "Hey {username}! How can I help you?"
   - text: "Hello {username}! How can I help you?"
   - text: "Hi {username}! How can I help you?"
+  utter_greet:
+  - text: "Hi"
+  - text: hey there
+  - text: hi there
+  - text: hello there
+  - text: Hello
   utter_goodbye:
   - text: "Talk to you later!"
   - text: "Have a good day."
@@ -110,6 +130,10 @@ responses:
   utter_add_deadline:
   - text: "What is the deadline for your activity?"
   - text: "What is the deadline?"
+  utter_deadline:
+  - text: "deadline setted for {deadline}"
+  utter_insertion_summary:
+  - text: "Added {cur_activity} to {cur_category}"
   utter_delete_activity:
   - text: "Which activity do you want to remove?"
   utter_delete_category:
@@ -130,6 +154,6 @@ responses:
   utter_thanks:
   - text: "Ok. Thank you!"
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+# session_config:
+#   session_expiration_time: 60
+#   carry_over_slots_to_new_session: true

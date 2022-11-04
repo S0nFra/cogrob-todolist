@@ -7,12 +7,7 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: Add activity 
+- rule: Be gentle
   steps:
-  - intent: insert_new
-  - action: action_add
-  - active_loop: facility_form
-
-
-
-- rule: 
+  - intent: thankyou
+  - action: utter_noworries
