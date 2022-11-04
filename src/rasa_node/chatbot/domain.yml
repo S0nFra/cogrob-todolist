@@ -6,6 +6,7 @@ intents:
   - thankyou
   - identification
   - bot_challenge
+  - choose_deadline
   - affirm
   - deny
   - insert_new
@@ -13,7 +14,7 @@ intents:
   - insert_new_category
   - remove
   - remove_category
-  - look_activity
+  - show
   - empty
   # - rephrase
 
@@ -49,7 +50,7 @@ slots:
     type: text
     influence_conversation: false
   deadline:
-    type: text
+    type: any
     influence_conversation: false
 
 forms:
@@ -58,6 +59,19 @@ forms:
       username:
       - type: from_entity
         entity: username
+  items_form:
+    required_slots:
+      category:
+      - type: from_entity
+        entity: category
+      activity:
+      - type: from_entity
+        entity: activity
+  # deadline_form:
+  #   required_slots:
+  #     deadline:
+  #     - type: from_entity
+  #       entity: deadline
 
 responses:
   utter_ask_username:
@@ -68,6 +82,9 @@ responses:
   - text: "Hey {username}! How can I help you?"
   - text: "Hello {username}! How can I help you?"
   - text: "Hi {username}! How can I help you?"
+  utter_ask_for_more:
+  - text: "Something else {username}?"
+  - text: "Anything more?"
   utter_greet:
   - text: "Hi"
   - text: hey there
@@ -83,15 +100,22 @@ responses:
   utter_noworries:
   - text: "My pleasure."
   - text: "You are welcome!"
-  utter_ask_category:
-  - text: "In which category should I add this activity?"
-  - text: "Do you want to add this activity to a category?"
-  - text: "Do not add this activity to any category?"
-  - text: "Which activity do you want to add in this category?"
   utter_ask_deadline:
   - text: "Do you want to add a deadline to your activity?"
   - text: "What is the deadline for your activity?"
   - text: "What is the deadline?"
+  utter_fill_deadline:
+  - text: "Add a deadline to your activity"
+  - text: "What is the deadline for your activity?"
+  - text: "What is the deadline?"
+  utter_ask_category:
+  - text: "Do you want to add this activity to a category?"
+  - text: "Do not add this activity to any category?"
+  - text: "Which category do you want to add in this activity?"
+  utter_ask_activity:
+  - text: "Wich is the activit?"
+  - text: "Tell me what you have to add"
+  - text: "Insert the activity"
   utter_help:
   - text: "I can help you open a service request ticket, or check the status of your open incidents. \nYou can ask me things like: \n- Open an incident \n- Help me reset my password \n- I'm having a issue with my email \n- What's the status of the ticket I opened?"
   utter_iamabot:

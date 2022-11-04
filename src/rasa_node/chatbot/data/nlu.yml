@@ -493,7 +493,7 @@ nlu:
     - delete from [things to buy](category) all the activity
     - Remove all the activity in the list [tasks](category)
 
-- intent: look_activity
+- intent: show
   examples: |
     - can you show me the activities in the category [daily housework](category)?
     - can you show me [dentist appointment](activity) in the category [daily remainder](category)?
@@ -510,9 +510,9 @@ nlu:
     - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
     - show me [apples](activity) into [dinner](category)
     - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
-    - show me the activities in the category [daily housework](category)
+    - show me the [activities](activity) in the category [daily housework](category)
     - show 
-    - show all the activities in [to do](category) category
+    - show [all](category) the activities in [to do](category) category
     - show me [all categories](category)
     - Please, show me [shopping list](category) category
     - Please, show me [clean hause](category) category

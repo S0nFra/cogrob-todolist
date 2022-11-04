@@ -12,18 +12,16 @@ stories:
   - action: utter_noworries
 
 # Questa funziona
-- story: identify user
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: username_form
-  - slot_was_set:
-    - requested_slot: username
-  - action: utter_greet_user
-  - action: action_hello_world
-  - action: action_insert
+# - story: identify user
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - action: username_form
+#   - slot_was_set:
+#     - requested_slot: username
+#   - action: utter_greet_user
 
-## Work in progress
+# Work in progress
 # - story: insertion
 #   steps:
 #   - intent: greet
@@ -33,14 +31,54 @@ stories:
 #     - requested_slot: username
 #   - action: utter_greet_user
 #   - intent: insert_new
-#   - action: insert_query_form
-#   - active_loop: insert_query_form
+#   - action: items_form
+#   - action_loop: items_form
 #   - slot_was_set:
 #     - requested_slot: category
 #   - slot_was_set:
 #     - requested_slot: activity
+#   - active_loop: false
+#   - action: action_insert
+
+# - story: Insert story
+#   steps:
+#   - intent: insert
+#   - action: items_form
+#   - active_loop: items_form
 #   - active_loop: null
-#   - action: utter_insertion_summary
-#   - slot_was_set:
-#     - requested_slot: deadline
-#   - action: utter_deadline
+#   - action: deadline_form
+#   - active_loop: deadline_form
+#   - intent: deny
+#   - action: utter_ask_for_more
+#   - intent: deny
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - action: action_insert
+
+#- story: insertion
+#  steps:
+#  - intent: insert
+#  - action: items_form
+#  - active_loop: items_form
+#  - active_loop: null
+#  - action: action_insert
+
+# - story: insertion
+#   steps:
+#   - intent: insert
+#   - action: items_form
+#   - active_loop: items_form
+#   - active_loop: null
+#   - action: action_insert
+  
+#- story: insertion_rule_with_deadline
+#  steps:
+#  - intent: insert
+#  - action: items_form
+#  - active_loop: items_form
+#  - active_loop: null
+#  - action: utter_ask_deadline
+#  - intent: affirm
+#  - slot_was_set:
+#    - requested_slot: deadline
+#  - action: action_insert
