@@ -45,9 +45,8 @@ rules:
 - rule: Delete category rule
   steps:
   - intent: remove_category
-  - action: items_form
-  - active_loop: items_form
-  - active_loop: null
+  - slot_was_set:
+    - requested_slot: category
   - action: action_remove
 
 - rule: Show all rule

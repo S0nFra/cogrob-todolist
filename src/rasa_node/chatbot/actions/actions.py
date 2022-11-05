@@ -68,7 +68,7 @@ class ActionInsert(Action):
         # print("deadline setted:", deadline)
 
         con, cur = get_connetion()
-        query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{activity}\',\'{category}\',0)"
+        query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{category}\',\'{activity}\',0)"
         cur.execute(query)
         con.commit()
         con.close()
@@ -98,11 +98,19 @@ class ActionRemove(Action):
         # controllare che tutte le entità siano presenti
         # se manca un entità richiederne l'inserimento
         category = tracker.get_slot("category")
-        if category is None:
-            dispatcher.utter_message(text = "Please insert category")
-            return []
-
         activity = tracker.get_slot("activity")
+        con, cur = get_connetion()
+
+        if category is not None and activity is None:
+            query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' "
+            cur.execute(query)
+            con.commit()
+            con.close()
+            print(query)
+            dispatcher.utter_message(text = "Perfect \""+ username + "\"! I have deleted the category \"" + category + "\"")
+            return [SlotSet("category", None)]
+
+
         if activity is None:
             dispatcher.utter_message(text = "Please insert activity")
             return []
@@ -114,10 +122,11 @@ class ActionRemove(Action):
         # print("deadline setted:", deadline)
 
         query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
-        
+        cur.execute(query)
+        con.commit()
+        con.close()
         print(query)
-
-        dispatcher.utter_message(text = "Deleted \"" + activity + "\" in \"" + category + "\"")
+        dispatcher.utter_message(text = "Perfect \""+ username + "\" I have deleted the activity \"" + activity + "\" from the category \"" + category + "\"")
         
         return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
 
