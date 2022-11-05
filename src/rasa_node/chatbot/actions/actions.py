@@ -12,20 +12,27 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
+import pathlib
 import sqlite3 as sql
 
-class ActionHelloWorld(Action):
+DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
 
-    def name(self) -> Text:
-        return "action_hello_world"
+def get_connetion(path = DB_PATH):
+    con = sql.connect(path)
+    cur = con.cursor()
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text="Hello World!")
-
-        return []
+    try:
+        cur.execute("SELECT * FROM todolist")
+    except sql.OperationalError as e:
+        print("Table creation...",end=' ')
+        cur.execute('''CREATE TABLE todolist(
+        Tag INTEGER PRIMARY KEY AUTOINCREMENT,
+        User varchar(255) NOT NULL,
+        Category varchar(255),
+        Activity varchar(255),
+        Deadline datetime);''')
+    
+    return con, cur
 
 class ActionInsert(Action):
     
@@ -60,7 +67,11 @@ class ActionInsert(Action):
         #     return []
         # print("deadline setted:", deadline)
 
+        con, cur = get_connetion()
         query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{activity}\',\'{category}\',0)"
+        cur.execute(query)
+        con.commit()
+        con.close()
         
         print(query)
 
