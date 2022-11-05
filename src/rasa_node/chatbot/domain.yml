@@ -117,7 +117,7 @@ responses:
   - text: "Which category do you want to add in this activity?"
   utter_ask_activity:
   - text: "Wich is the activit?"
-  - text: "Tell me what you have to add"
+  - text: "Tell me what you want add"
   - text: "Insert the activity"
   utter_help:
   - text: "I can help you open a service request ticket, or check the status of your open incidents. \nYou can ask me things like: \n- Open an incident \n- Help me reset my password \n- I'm having a issue with my email \n- What's the status of the ticket I opened?"
