@@ -17,12 +17,14 @@ intents:
   - remove_category
   - show
   - empty
+  - set_deadline
   # - rephrase
 
 entities:
   - activity
   - category
-  - deadline
+  - date_deadline
+  - hours_deadline
   - username
   
 actions:
