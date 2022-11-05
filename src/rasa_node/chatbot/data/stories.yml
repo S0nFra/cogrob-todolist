@@ -5,11 +5,22 @@ stories:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+  - action: action_reset_user
+  - action: action_restart
 
 - story: story_thankyou
   steps:
   - intent: thankyou
   - action: utter_noworries
+
+- story: identification
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - action: utter_greet_user
 
 # Questa funziona
 # - story: identify user

@@ -9,9 +9,10 @@ intents:
   - choose_deadline
   - affirm
   - deny
-  - insert_new
-  - insert_new_activity
-  - insert_new_category
+  - insert
+  # - insert_new
+  # - insert_new_activity
+  # - insert_new_category
   - remove
   - remove_category
   - show
@@ -25,12 +26,12 @@ entities:
   - username
   
 actions:
-  - action_hello_world
   - action_insert
   - action_remove
   - action_update
-  - action_show  
+  - action_show
   - utter_ask_username
+  - action_reset_user
   - utter_greet_user
   - utter_greet
   - utter_goodbye

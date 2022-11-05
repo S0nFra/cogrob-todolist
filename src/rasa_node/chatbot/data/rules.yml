@@ -6,6 +6,8 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+  - action: action_reset_user
+  - action: action_restart
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
@@ -17,18 +19,9 @@ rules:
   - intent: thankyou
   - action: utter_noworries
   
-- rule: identification
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: username_form
-  - slot_was_set:
-    - requested_slot: username
-  - action: utter_greet_user
-
 - rule: Insert rule
   steps:
-  - intent: insert_new
+  - intent: insert
   - action: items_form
   - active_loop: items_form
   - active_loop: null
@@ -49,12 +42,9 @@ rules:
     - requested_slot: category
   - action: action_remove
 
-- rule: Show all rule
+- rule: Show rule
   steps:
   - intent: show
-  - action: items_form
-  - active_loop: items_form
-  - active_loop: null
   - action: action_show
 
 # - rule: If deadline flag is positive you have to ask it
