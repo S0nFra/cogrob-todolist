@@ -5,3 +5,6 @@ build/
 devel/
 logs/
 !src/
+
+# duckling folder
+src/rasa_node/chatbot/duckling
