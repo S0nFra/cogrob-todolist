@@ -25,6 +25,8 @@ pipeline:
     # Timeout for receiving response from http url of the running duckling server
     # if not set the default timeout of duckling http url is set to 3 seconds.
     #timeout : 3
+  - name: FallbackClassifier
+    threshold: 0.3
 
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
 # # If you'd like to customize it, uncomment and adjust the pipeline.

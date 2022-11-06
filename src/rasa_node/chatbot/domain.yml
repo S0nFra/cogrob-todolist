@@ -6,26 +6,19 @@ intents:
   - thankyou
   - identification
   - bot_challenge
-  #- choose_deadline l'abbiamo rinominata set_deadline?
   - affirm
   - deny
   - insert
-  # - insert_new
-  # - insert_new_activity
-  # - insert_new_category
   - remove
   - remove_category
   - show
   - empty
   - set_deadline
   # - rephrase
-  #- ask_time
 
 entities:
   - activity
   - category
-  #- date_deadline
-  #- hours_deadline
   - username
   - time
   
@@ -34,8 +27,8 @@ actions:
   - action_remove
   - action_update
   - action_show
-  - utter_ask_username
   - action_reset_user
+  - utter_ask_username  
   - utter_greet_user
   - utter_greet
   - utter_goodbye
@@ -43,7 +36,7 @@ actions:
   - utter_ask_category
   - utter_ask_deadline
   - utter_help
-  #- utter_time
+  - utter_please_rephrase
   #- utter_fill_deadline manca
 
 slots:
@@ -57,9 +50,6 @@ slots:
     type: text
     influence_conversation: false
   deadline:
-    type: any
-    influence_conversation: false
-  time:
     type: any
     influence_conversation: false
 
@@ -77,6 +67,9 @@ forms:
       activity:
       - type: from_entity
         entity: activity
+    deadline:
+      - type: from_entity
+        entity: time # <- time è l'entità generata da duckling
   # deadline_form:
   #   required_slots:
   #     deadline:
@@ -132,5 +125,7 @@ responses:
   - text: "Hello, my name is Retrieval Bot."
   - text: "I am called Retrieval Bot!"
   - text: "I'm a bot, powered by Rasa"
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   # utter_time:
   # - text: "It is {time}."
