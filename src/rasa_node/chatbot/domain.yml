@@ -6,7 +6,7 @@ intents:
   - thankyou
   - identification
   - bot_challenge
-  - choose_deadline
+  #- choose_deadline l'abbiamo rinominata set_deadline?
   - affirm
   - deny
   - insert
@@ -19,13 +19,15 @@ intents:
   - empty
   - set_deadline
   # - rephrase
+  #- ask_time
 
 entities:
   - activity
   - category
-  - date_deadline
-  - hours_deadline
+  #- date_deadline
+  #- hours_deadline
   - username
+  - time
   
 actions:
   - action_insert
@@ -41,6 +43,8 @@ actions:
   - utter_ask_category
   - utter_ask_deadline
   - utter_help
+  #- utter_time
+  #- utter_fill_deadline manca
 
 slots:
   username:
@@ -53,6 +57,9 @@ slots:
     type: text
     influence_conversation: false
   deadline:
+    type: any
+    influence_conversation: false
+  time:
     type: any
     influence_conversation: false
 
@@ -125,3 +132,5 @@ responses:
   - text: "Hello, my name is Retrieval Bot."
   - text: "I am called Retrieval Bot!"
   - text: "I'm a bot, powered by Rasa"
+  # utter_time:
+  # - text: "It is {time}."
