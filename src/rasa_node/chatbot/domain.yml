@@ -18,6 +18,7 @@ intents:
   - show
   - empty
   - set_deadline
+  - bot_help
   # - rephrase
 
 entities:
@@ -41,6 +42,7 @@ actions:
   - utter_ask_category
   - utter_ask_deadline
   - utter_help
+  - utter_ask_whatelse
 
 slots:
   username:
@@ -83,17 +85,13 @@ responses:
   - text: "May I know your name?"
   utter_greet_user:
   - text: "Hey {username}! How can I help you?"
-  - text: "Hello {username}! How can I help you?"
+  - text: "Pleasure to meet you {username}! How can I help you?"
   - text: "Hi {username}! How can I help you?"
   utter_ask_for_more:
   - text: "Something else {username}?"
   - text: "Anything more?"
   utter_greet:
-  - text: "Hi"
-  - text: hey there
-  - text: hi there
-  - text: hello there
-  - text: Hello
+  - text: Hallo!
   utter_goodbye:
   - text: "Talk to you later!"
   - text: "Have a good day."
@@ -112,16 +110,17 @@ responses:
   - text: "What is the deadline for your activity?"
   - text: "What is the deadline?"
   utter_ask_category:
-  - text: "Do you want to add this activity to a category?"
-  - text: "Do not add this activity to any category?"
-  - text: "Which category do you want to add in this activity?"
+  - text: "Which category do you want to add?"
   utter_ask_activity:
-  - text: "Wich is the activit?"
-  - text: "Tell me what you have to add"
-  - text: "Insert the activity"
+  - text: "Which is the activity for this category?"
+  - text: "Please, tell me which activity you want to add"
+  - text: "Please, insert the activity"
   utter_help:
-  - text: "I can help you open a service request ticket, or check the status of your open incidents. \nYou can ask me things like: \n- Open an incident \n- Help me reset my password \n- I'm having a issue with my email \n- What's the status of the ticket I opened?"
+  - text: "I can help you insert, look and remove activities from a to-do list. \nYou can ask me things like: \n- Add a new activity\n- Add a new category \n- Add a new category with activity \n- Delete activity from category \n- Show me all my categories \n- Show me category"
   utter_iamabot:
   - text: "Hello, my name is Retrieval Bot."
   - text: "I am called Retrieval Bot!"
   - text: "I'm a bot, powered by Rasa"
+  utter_ask_whatelse:
+  - text: What else can I help you with?
+

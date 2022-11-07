@@ -7,7 +7,12 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
   - action: action_reset_user
-  - action: action_restart
+  - action: action_restart 
+
+- rule: answer bot help
+  steps:
+  - intent: bot_help
+  - action: utter_help
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
@@ -19,15 +24,16 @@ rules:
   - intent: thankyou
   - action: utter_noworries
   
-- rule: Insert rule
+- rule: Insert 
   steps:
   - intent: insert
   - action: items_form
   - active_loop: items_form
   - active_loop: null
   - action: action_insert
+  - action: utter_ask_whatelse
 
-- rule: Delete activity rule
+- rule: Delete activity 
   steps:
   - intent: remove
   - action: items_form
@@ -35,14 +41,14 @@ rules:
   - active_loop: null
   - action: action_remove
 
-- rule: Delete category rule
+- rule: Delete category 
   steps:
   - intent: remove_category
   - slot_was_set:
     - requested_slot: category
   - action: action_remove
 
-- rule: Show rule
+- rule: Show
   steps:
   - intent: show
   - action: action_show

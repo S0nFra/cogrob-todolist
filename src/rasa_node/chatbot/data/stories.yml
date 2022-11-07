@@ -22,6 +22,112 @@ stories:
     - requested_slot: username
   - action: utter_greet_user
 
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: Andrea
+  - slot_was_set:
+    - username: Andrea
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: insert
+    entities:
+    - category: shopping
+  - slot_was_set:
+    - category: shopping
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - category: shopping
+  - slot_was_set:
+    - category: shopping
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: Buy a dress
+  - slot_was_set:
+    - activity: Buy a dress
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - action: utter_ask_whatelse
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: Lucia
+  - slot_was_set:
+    - username: Lucia
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: show
+  - action: action_show
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - intent: insert
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: sport
+  - slot_was_set:
+    - category: sport
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: crossfit class
+  - slot_was_set:
+    - activity: crossfit class
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - action: utter_ask_whatelse
+  - intent: show
+    entities:
+    - category: sport
+  - slot_was_set:
+    - category: sport
+  - action: action_show
+  - slot_was_set:
+    - category: null
+  - intent: thankyou
+  - action: utter_noworries
+
 # Questa funziona
 # - story: identify user
 #   steps:
