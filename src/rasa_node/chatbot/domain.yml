@@ -9,19 +9,19 @@ intents:
   - affirm
   - deny
   - insert
+  - update
   - remove
-  - remove_category
   - show
   - empty
-  - set_deadline
   - bot_help
-  # - rephrase
+  - set_deadline
 
 entities:
   - activity
   - category
   - username
-  - time
+  - time # <- time è l'entità generata da duckling per i tipi datatime
+  - number # <- num è l'entità generata da duckling per i numeri
   
 actions:
   - action_insert
@@ -39,7 +39,6 @@ actions:
   - utter_help
   - utter_ask_whatelse
   - utter_please_rephrase
-  #- utter_fill_deadline manca
 
 slots:
   username:
@@ -52,6 +51,9 @@ slots:
     type: text
     influence_conversation: false
   deadline:
+    type: any
+    influence_conversation: false
+  number:
     type: any
     influence_conversation: false
 
@@ -69,14 +71,9 @@ forms:
       activity:
       - type: from_entity
         entity: activity
-  deadline:
+      deadline:
       - type: from_entity
-        entity: time # <- time è l'entità generata da duckling
-  # deadline_form:
-  #   required_slots:
-  #     deadline:
-  #     - type: from_entity
-  #       entity: deadline
+        entity: time
 
 responses:
   utter_ask_username:
@@ -87,9 +84,6 @@ responses:
   - text: "Hey {username}! How can I help you?"
   - text: "Pleasure to meet you {username}! How can I help you?"
   - text: "Hi {username}! How can I help you?"
-  utter_ask_for_more:
-  - text: "Something else {username}?"
-  - text: "Anything more?"
   utter_greet:
   - text: Hello!
   utter_goodbye:
@@ -102,11 +96,7 @@ responses:
   - text: "My pleasure."
   - text: "You are welcome!"
   utter_ask_deadline:
-  - text: "Do you want to add a deadline to your activity?"
-  - text: "What is the deadline for your activity?"
-  - text: "What is the deadline?"
-  utter_fill_deadline:
-  - text: "Add a deadline to your activity"
+  - text: "Please insert the dealine"
   - text: "What is the deadline for your activity?"
   - text: "What is the deadline?"
   utter_ask_category:
@@ -122,5 +112,8 @@ responses:
   - text: "I am called Retrieval Bot!"
   - text: "I'm a bot, powered by Rasa"
   utter_ask_whatelse:
-  - text: What else can I help you with?
-
+  - text: What else can I help you with?  
+  - text: "Something else {username}?"
+  - text: "Anything more?"
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?

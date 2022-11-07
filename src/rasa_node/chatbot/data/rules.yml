@@ -6,10 +6,9 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
-  - action: action_reset_user
-  - action: action_restart 
+  - action: action_restart
 
-- rule: answer bot help
+- rule: Answer bot help
   steps:
   - intent: bot_help
   - action: utter_help
@@ -38,20 +37,30 @@ rules:
   - action: action_insert
   - action: utter_ask_whatelse
 
-- rule: Delete activity 
+- rule: Delete
   steps:
   - intent: remove
-  - action: items_form
-  - active_loop: items_form
-  - active_loop: null
   - action: action_remove
 
-- rule: Delete category 
+- rule: Update
   steps:
-  - intent: remove_category
-  - slot_was_set:
-    - requested_slot: category
-  - action: action_remove
+  - intent: update
+  - action: action_update
+
+# - rule: Delete activity 
+#   steps:
+#   - intent: remove
+#   - action: items_form
+#   - active_loop: items_form
+#   - active_loop: null
+#   - action: action_remove
+
+# - rule: Delete category 
+#   steps:
+#   - intent: remove_category
+#   - slot_was_set:
+#     - requested_slot: category
+#   - action: action_remove
 
 - rule: Show
   steps:

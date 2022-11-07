@@ -1,12 +1,15 @@
 version: "2.0"
 
 stories:
-- story: story_goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_reset_user
-  - action: action_restart
+
+# - story: Say goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_restart
 
 - story: story_thankyou
   steps:
