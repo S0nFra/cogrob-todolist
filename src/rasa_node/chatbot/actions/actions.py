@@ -21,7 +21,7 @@ CREATE_TABLE_QUERY = """CREATE TABLE todolist(
   	user varchar(255) NOT NULL,
 	category varchar(255),
 	activity varchar(255),
-	deadline datetime,
+	deadline datetimeoffset,
 	unique(user,activity,category)
 );
 """
@@ -38,6 +38,18 @@ def get_connetion(path = DB_PATH):
     
     return con, cur
 
+def check_exists_activity(cur,username, category, activity, tag = None):
+    if tag is not None:
+        query = f"select * from todolist where tag=\'{tag}\'"
+    else:
+        query = f"select * from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
+    
+    try:
+        cur.execute(query)
+    except sql.OperationalError as e:
+        return False
+    return True
+
 class ActionInsert(Action):
     
     def name(self) -> Text:
@@ -51,7 +63,7 @@ class ActionInsert(Action):
         username = tracker.get_slot('username')
         username = username.lower()
 
-        print("Username:", username)
+        print("\n> Username:", username)
         
         # controllare che tutte le entità siano presenti
         # se manca un entità richiederne l'inserimento
@@ -65,18 +77,20 @@ class ActionInsert(Action):
             dispatcher.utter_message(text = "Please insert activity")
             return []
 
-        # deadline = tracker.get_slot("deadline")
-        # if deadline is None:
-        #     dispatcher.utter_message(text = "Do you want insert a deadline?") 
-        #     return []
-        # print("deadline setted:", deadline)
+        deadline = tracker.get_slot("deadline")
+        if deadline is None:
+            dispatcher.utter_message(text = "No deadline") 
+            return []
+        print("deadline setted:", deadline)
 
         con, cur = get_connetion()
-        query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{category}\',\'{activity}\',0)"
+        query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{category}\',\'{activity}\',\'{deadline}\')"
+        print(query)
         try:
-            cur.execute(query)
+            res = cur.execute(query)
         except sql.OperationalError as e:
-            dispatcher.utter_message(text = "Somethigs goes wrong! maybe empty database")
+            dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
+            return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
         except sql.IntegrityError as err:
             dispatcher.utter_message(text = "This activity already exists, try something else")
             return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
@@ -84,7 +98,7 @@ class ActionInsert(Action):
         con.close()
         
         print(query)
-        dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\"")
+        dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"")
         
         return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
 
@@ -102,7 +116,7 @@ class ActionRemove(Action):
         username = tracker.get_slot('username')
         username = username.lower()
 
-        print("Username:", username)
+        print("\n> Username:", username)
         
         # controllare che tutte le entità siano presenti
         # se manca un entità richiederne l'inserimento
@@ -114,8 +128,8 @@ class ActionRemove(Action):
         if category is not None and activity is None:
             query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' "
             res = cur.execute(query)
-            tmp = res.fetchall()
-            if len(tmp) == 0:
+            # cur.rowcount -> ritorna il numero di righe coinvolte nell'ultima query
+            if cur.rowcount == 0:
                 dispatcher.utter_message(text = "Something wrong, maybe no category")
                 return [SlotSet("category", None)]
             con.commit()
@@ -124,11 +138,10 @@ class ActionRemove(Action):
             dispatcher.utter_message(text = "Perfect \""+ username + "\"! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
 
-        # elimina una attività in una categoria
+        # elimina un'attività in una categoria
         query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
         res = cur.execute(query)
-        tmp = res.fetchall()
-        if len(tmp) == 0:
+        if cur.rowcount == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no activity")
             return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
 
@@ -152,7 +165,7 @@ class ActionShow(Action):
         username = tracker.get_slot('username')
         username = username.lower()
 
-        print("Username:", username)
+        print("\n> Username:", username)
         
         # controllare che tutte le entità siano presenti
         # se manca un entità richiederne l'inserimento
@@ -165,10 +178,10 @@ class ActionShow(Action):
             res = cur.execute(query)
             tmp = res.fetchall()
             if len(tmp) == 0:
-                dispatcher.utter_message(text = "Something wrong, maybe no activities")
+                dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
                 return [SlotSet("category", None)] 
             
-            dispatcher.utter_message(text = f"Ok {username}, showing activities in {category}")
+            dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             for col in tmp:
                 dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\t activity: " + str(col[1]) + "\t deadline " + str(col[2]))
             con.commit()
@@ -191,6 +204,43 @@ class ActionShow(Action):
         
         return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
 
+class ActionUpdate(Action):
+    
+    def name(self) -> Text:
+        return "action_update"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # prendere lo username
+        username = tracker.get_slot('username')
+        username = username.lower()
+
+        print("\n> Username:", username)
+        
+        # controllare che tutte le entità siano presenti
+        # se manca un entità richiederne l'inserimento
+        category = tracker.get_slot("category")
+        activities = tracker.get_latest_entity_values("activity")
+        tag = tracker.get_slot("number")
+        con, cur = get_connetion()
+
+        query = None
+        if len(activities) > 1 and tag is None:
+            old_activity, new_activity = (activities[0], activities[1]) if check_exists_activity(cur, username, category, activities[0]) else (activities[1], activities[0])
+            query = f"update todolist set activity=\'{new_activity}\' where user=\'{username}\' and category =\'{category}\' and activity = \'{old_activity}\'"
+        elif check_exists_activity(cur, tag=tag):
+            query = f"update todolist set activity=\'{activities[0]}\' where tag=\'{tag}\'"
+
+        if query is None:
+            dispatcher.utter_message(text = "Something wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
+        
+        res = cur.execute(query)
+        con.commit()
+        con.close()
+
+        return [SlotSet("category", None), SlotSet("activity", None), SlotSet("number", None)]
+
 class ActionResetUser(Action):
     
     def name(self) -> Text:
@@ -200,4 +250,4 @@ class ActionResetUser(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        return [SlotSet("username", None)]  
+        return [SlotSet("username", None),SlotSet("category", None), SlotSet("activity", None), SlotSet("number", None)]  

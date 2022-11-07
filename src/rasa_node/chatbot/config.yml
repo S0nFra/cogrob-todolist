@@ -15,7 +15,7 @@ pipeline:
     # url of the running duckling server
     url: "http://localhost:8000"
     # dimensions to extract
-    dimensions: ["time"]
+    dimensions: ["time","number"]
     # allows you to configure the locale, by default the language is
     # used
     #locale: "de_DE"
@@ -66,3 +66,4 @@ policies:
   - name: TEDPolicy
     max_history: 5
     epochs: 10
+    constrain_similarities: True
