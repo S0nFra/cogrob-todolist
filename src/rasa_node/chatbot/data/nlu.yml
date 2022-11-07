@@ -546,7 +546,7 @@ nlu:
     - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
     - show me [apples](activity) into [dinner](category)
     - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
-    - show me the [activities](activity) in the category [daily housework](category)
+    - show me the activities in the category [daily housework](category)
     - show 
     - show all the activities in [to do](category) category
     - show me all categories
@@ -650,7 +650,7 @@ nlu:
     - i want change a [banana]{"entity":"activity"} in [shopping list](category) with [apple](activity)  
     - I want to replace the activity at tag 20 to [create model for cogrob](activity) item 
     - I want to change at tag 6 with [pay off a debt](activity)
-    - change a activity named [rent a boat](activities) in [reminder](category) to [talk with seller](activity)    
+    - change a activity named [rent a boat](activity) in [reminder](category) to [talk with seller](activity)    
     - update [top five singers](activity) in [song](category) with [top ten singers](activity)
     - update [songs to listen to](activity) to [songs to dedicate](activity)
     - ehi bot!, update the [allert](activity) activity in [Wake Up](activity)
@@ -662,7 +662,7 @@ nlu:
     - i need to update activity number 6 to [buy some sweets](activity)
     - i need to change [bring boxs to new house](activity) in [bring bed](activity)
     - i need to replace activity number twenty in [make coffe for friends](activity)
-    - Please change [Buy a dress](activity) activity in category [telegram offers](category) to [buy new notebook](activiy)
+    - Please change [Buy a dress](activity) activity in category [telegram offers](category) to [buy new notebook](activity)
     - Please, can you change activity 15 to [buy taxes](activity)
     - I want to change acitivty with tag one in [buy toys for kids](activity) 
     - I want to change [crossfit class](activity) in [gym](category) to [karate class](activity)

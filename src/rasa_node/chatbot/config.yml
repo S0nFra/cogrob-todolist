@@ -11,7 +11,12 @@ pipeline:
   - name: CRFEntityExtractor
   - name: EntitySynonymMapper
   - name: SklearnIntentClassifier
-  - name: "DucklingHTTPExtractor"
+    kernels: ["linear","poly","rbf"]
+  - name: ResponseSelector
+    epochs: 100
+    model_confidence: "linear_norm"
+    constrain_similarities: true
+  - name: "DucklingEntityExtractor"
     # url of the running duckling server
     url: "http://localhost:8000"
     # dimensions to extract
