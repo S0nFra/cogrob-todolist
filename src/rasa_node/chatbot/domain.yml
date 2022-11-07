@@ -6,13 +6,9 @@ intents:
   - thankyou
   - identification
   - bot_challenge
-  - choose_deadline
   - affirm
   - deny
   - insert
-  # - insert_new
-  # - insert_new_activity
-  # - insert_new_category
   - remove
   - remove_category
   - show
@@ -24,17 +20,16 @@ intents:
 entities:
   - activity
   - category
-  - date_deadline
-  - hours_deadline
   - username
+  - time
   
 actions:
   - action_insert
   - action_remove
   - action_update
   - action_show
-  - utter_ask_username
   - action_reset_user
+  - utter_ask_username
   - utter_greet_user
   - utter_greet
   - utter_goodbye
@@ -43,6 +38,8 @@ actions:
   - utter_ask_deadline
   - utter_help
   - utter_ask_whatelse
+  - utter_please_rephrase
+  #- utter_fill_deadline manca
 
 slots:
   username:
@@ -72,6 +69,9 @@ forms:
       activity:
       - type: from_entity
         entity: activity
+  deadline:
+      - type: from_entity
+        entity: time # <- time è l'entità generata da duckling
   # deadline_form:
   #   required_slots:
   #     deadline:
@@ -91,7 +91,7 @@ responses:
   - text: "Something else {username}?"
   - text: "Anything more?"
   utter_greet:
-  - text: Hallo!
+  - text: Hello!
   utter_goodbye:
   - text: "Talk to you later!"
   - text: "Have a good day."
