@@ -226,14 +226,18 @@ class ActionUpdate(Action):
         con, cur = get_connetion()
 
         query = None
-        if len(activities) > 1 and tag is None:
-            old_activity, new_activity = (activities[0], activities[1]) if check_exists_activity(cur, username, category, activities[0]) else (activities[1], activities[0])
+        for activity in activities:
+            if check_exists_activity(cur, username, category, activity):
+                old_activity = activity
+            else:
+                new_activity = activity
+        if tag is None:
             query = f"update todolist set activity=\'{new_activity}\' where user=\'{username}\' and category =\'{category}\' and activity = \'{old_activity}\'"
         elif check_exists_activity(cur, tag=tag):
-            query = f"update todolist set activity=\'{activities[0]}\' where tag=\'{tag}\'"
+            query = f"update todolist set activity=\'{new_activity}\' where tag=\'{tag}\'"
 
         if query is None:
-            dispatcher.utter_message(text = "Something wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
+            dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
         
         res = cur.execute(query)
         con.commit()
