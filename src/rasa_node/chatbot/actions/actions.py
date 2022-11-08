@@ -38,17 +38,15 @@ def get_connetion(path = DB_PATH):
     
     return con, cur
 
-def check_exists_activity(cur,username, category, activity, tag = None):
+def check_exists_activity(cur,username=None, category=None, activity=None, tag = None):
     if tag is not None:
         query = f"select * from todolist where tag=\'{tag}\'"
     else:
         query = f"select * from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
     
-    try:
-        cur.execute(query)
-    except sql.OperationalError as e:
-        return False
-    return True
+    res = cur.execute(query)
+    return len(res.fetchall()) != 0
+        
 
 class ActionInsert(Action):
     
@@ -224,24 +222,29 @@ class ActionUpdate(Action):
         activities = tracker.get_latest_entity_values("activity")
         tag = tracker.get_slot("number")
         con, cur = get_connetion()
-
+        new_activity = None
+        old_activity = None
         query = None
-        for activity in activities:
-            if check_exists_activity(cur, username, category, activity):
-                old_activity = activity
-            else:
-                new_activity = activity
         if tag is None:
+            for activity in activities:
+                if check_exists_activity(cur, username, category, activity):
+                    old_activity = activity
+                else:
+                    new_activity = activity
             query = f"update todolist set activity=\'{new_activity}\' where user=\'{username}\' and category =\'{category}\' and activity = \'{old_activity}\'"
+            msg = f"The {old_activity} activity has been replaced successfully with {new_activity} activity"
         elif check_exists_activity(cur, tag=tag):
+            new_activity = next(activities)
             query = f"update todolist set activity=\'{new_activity}\' where tag=\'{tag}\'"
-
+            msg = f"The activity tagged with {tag} has been replaced successfully with {new_activity} activity"
+        print(query)
         if query is None:
             dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
         
         res = cur.execute(query)
         con.commit()
         con.close()
+        dispatcher.utter_message(text = msg)
 
         return [SlotSet("category", None), SlotSet("activity", None), SlotSet("number", None)]
 

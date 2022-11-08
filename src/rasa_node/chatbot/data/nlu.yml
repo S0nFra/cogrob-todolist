@@ -625,22 +625,22 @@ nlu:
     - change the tag 10 in [go to the meccanic]
     - change the activity [call Angela](activity) activity in [remainder](category) category to [call father](activity)
     - change the tag 4 to [study](activity)
-    - change the activity [Mario's birthday](activity) item in [remainder](category) to [take the present](activity)
-    - change the activity [ice cream](activity) element in [shopping](category) to [piadina](activity) 
+    - change the activity [Mario's birthday](activity) item in [remainder](category) with [take the present](activity)
+    - change the activity [ice cream](activity) element in [shopping](category) with [piadina](activity) 
     - change the tag 12 to [buy a computer](activity)
-    - can you change the activity [chips and fish](activity) in [shopping](category) to [burrito](activity)
+    - can you change the activity [chips and fish](activity) in [shopping](category) with [burrito](activity)
     - can you change the tag 6 to [go to Ikea](activity)
-    - Perfect, now i have decided to change the activity [apples](activity) in [shopping list](category) to [cake](activity)
+    - Perfect, now i have decided to change the activity [apples](activity) in [shopping list](category) with [cake](activity)
     - Perfect, now i have decided to update the tag 9 to [call Francesco](activity)
-    - Perfect, now i have decided to replace the activity [dancing shoes](activity) in [shopping list](category) to [crossfit shoes](activity)
-    - change [submit data analysis](activity) in [commitment](category) to [submit Cybersecurity](activity) activity
-    - update [submit cogrob midterm]{"entity":"activity"} in the category [commitment](category) to [submit DSS](activity)
+    - Perfect, now i have decided to replace the activity [dancing shoes](activity) in [shopping list](category) with [crossfit shoes](activity)
+    - change [submit data analysis](activity) in [commitment](category) with [submit Cybersecurity](activity) activity
+    - update [submit cogrob midterm]{"entity":"activity"} in the category [commitment](category) with [submit DSS](activity)
     - update [read last Marc's article]{"entity":"activity"} in the category [afternoon](category) with [correct last Giovanni's article] activity
     - update [Michi's birthday]{"entity":"activity"} in [holidays to remember](activity) category with [Michi's party](activity)
-    - update [accompany Angela to the dentist]{"entity":"activity"} in [to do](category) to [book an apointment for Angela to the dentist](activity) activity
+    - update [accompany Angela to the dentist]{"entity":"activity"} in [to do](category) with [book an apointment for Angela to the dentist](activity) activity
     - update in [wishlist](category) the activity [Ipad]{"entity":"activity"} with the activity [Iphone](activity)
     - update [fly Napoli-Milano]{"entity":"activity"} in [fly Roma-Milano](activity) in [departure](category) 
-    - update [fix bugs]{"entity":"activity"} in [cogrob midterm](category) to [add a new class](activity) 
+    - update [fix bugs]{"entity":"activity"} in [cogrob midterm](category) with [add a new class](activity) 
     - update tag 10 to [present perfect]{"entity":"activity"} in [homework](category) 
     - update [Theater course]{"entity":"activity"} with [Cinema course](activity) in [hobby](category)
     - update [book hotels for Rome]{"entity":"activity"} to [book hotel for Milano](activity) in category [reservations](category)    
@@ -650,28 +650,26 @@ nlu:
     - i want change a [banana]{"entity":"activity"} in [shopping list](category) with [apple](activity)  
     - I want to replace the activity at tag 20 to [create model for cogrob](activity) item 
     - I want to change at tag 6 with [pay off a debt](activity)
-    - change a activity named [rent a boat](activity) in [reminder](category) to [talk with seller](activity)    
-    - update [top five singers](activity) in [song](category) with [top ten singers](activity)
-    - update [songs to listen to](activity) to [songs to dedicate](activity)
-    - ehi bot!, update the [allert](activity) activity in [Wake Up](activity)
+    - change a activity named [rent a boat](activity) in [reminder](category) with [talk with seller](activity)    
+    - update in [top five singers](category) the [Imagine Dragon](activity) activity with [One Republic](activity)
+    - ehi bot!, update the [allert](activity) activity in [Wake Up](category) with [music](activity)
     - ehi bot!, update the activity 3 with the activity [holidays](activity)
-    - ehi bot!, can you update the activity called [visit to the museum] with the activity called [visit to the theater](activity)
-    - ehi bot!, i need to update [best places to visit](activity) with [best cities to visit](activity)
-    - i want to change activity number teen in [retrieve personal access token](activity)
-    - i want to change the activity called [return books to library](activity) in [return notebooks](activity)
-    - i need to update activity number 6 to [buy some sweets](activity)
-    - i need to change [bring boxs to new house](activity) in [bring bed](activity)
-    - i need to replace activity number twenty in [make coffe for friends](activity)
+    - ehi bot!, can you update the activity called [visit to the museum](activity) in the category [things to do today](category) with the activity called [visit to the theater](activity)
+    - ehi bot!, i need to update in [best places to visit](category) the activity [Miami's beach] with [New York](activity)
+    - i want to change activity number ten in [retrieve personal access token](category) with [github password](activity)
+    - i want to change the activity called [return books to library](activity) in [library reminder](category) with [take a new book](activity)
+    - i need to update activity number 6 with [buy some sweets](activity)
+    - i need to change [bring boxs to new house](activity) in the category [moving house](category) with [bring bed](activity)
+    - i need to replace activity number twenty with [make coffe for friends](activity)
     - Please change [Buy a dress](activity) activity in category [telegram offers](category) to [buy new notebook](activity)
     - Please, can you change activity 15 to [buy taxes](activity)
     - I want to change acitivty with tag one in [buy toys for kids](activity) 
     - I want to change [crossfit class](activity) in [gym](category) to [karate class](activity)
-
-#    - update [dentist]{"entity":"activity"} in [appointments](activity)
-#    - update [dog]{"entity":"activity"} in [classification animals](activity)
-#    - in [top five singers](activity) update [Mengoni]{"entity":"activity"}
-#    - in [songs to listen to](activity) update [Sky]{"entity":"activity"}
-#    - in [allert](activity) update [midterm]{"entity":"activity"}
+    - update [dentist]{"entity":"activity"} in [appointments](category) with [therapist](activity)
+    - update [dog]{"entity":"activity"} in [classification animals](category) with [cat](activity)
+    - in [top five singers](category) update [Mengoni]{"entity":"activity"} with [Celentano](activity)
+    - in [songs to listen to](category) update [Sky]{"entity":"activity"} with [buy a recorder](activity)
+    - in [allert](category) update [midterm]{"entity":"activity"} with [final exam](activity)
 #    - in [remainder](activity) update [buy Christrmas presents]{"entity":"activity"} 
 #    - in [english course](activity) update [Present and past perfect]{"entity":"activity"}
 #    - can you update [The gone girl]{"entity":"activity"} in the [movies to see](category) category ?
