@@ -28,7 +28,6 @@ actions:
   - action_remove
   - action_update
   - action_show
-  - action_reset_user
   - utter_ask_username
   - utter_greet_user
   - utter_greet
@@ -56,6 +55,15 @@ slots:
   number:
     type: any
     influence_conversation: false
+  reminder:
+    type: bool
+    influence_conversation: false
+  time:
+    type: any
+    influence_conversation: false
+  logical:
+    type: bool
+    influence_conversation: false
 
 forms:
   username_form:
@@ -71,9 +79,23 @@ forms:
       activity:
       - type: from_entity
         entity: activity
+      logical:
+      - type: from_intent
+        intent: deny
+        value: False
+  deadline_form:
+   required_slots:
       deadline:
-      - type: from_entity
-        entity: time
+        - type: from_entity
+          entity: time
+      reminder:
+      - type: from_intent
+        intent: affirm
+        value: True
+      - type: from_intent
+        intent: deny
+        value: False
+      
 
 responses:
   utter_ask_username:
@@ -117,3 +139,7 @@ responses:
   - text: "Anything more?"
   utter_please_rephrase:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_ask_logical:
+  - text: Do you want insert a deadline?
+  utter_ask_reminder:
+  - text: Do you want a reminder?

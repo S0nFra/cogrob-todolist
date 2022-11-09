@@ -27,7 +27,7 @@ rules:
   steps:
   - intent: thankyou
   - action: utter_noworries
-  
+
 - rule: Insert 
   steps:
   - intent: insert
@@ -35,7 +35,17 @@ rules:
   - active_loop: items_form
   - active_loop: null
   - action: action_insert
-  - action: utter_ask_whatelse
+
+- rule: Insert deadline
+  condition:
+  - active_loop: items_form
+  steps:
+  - intent: affirm
+  - action: deadline_form
+  - action: action_insert
+  # - action: items_form
+  # - active_loop: items_form
+
 
 - rule: Delete
   steps:

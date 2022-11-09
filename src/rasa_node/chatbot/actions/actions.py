@@ -247,14 +247,3 @@ class ActionUpdate(Action):
         dispatcher.utter_message(text = msg)
 
         return [SlotSet("category", None), SlotSet("activity", None), SlotSet("number", None)]
-
-class ActionResetUser(Action):
-    
-    def name(self) -> Text:
-        return "action_reset_user"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        return [SlotSet("username", None),SlotSet("category", None), SlotSet("activity", None), SlotSet("number", None)]  
