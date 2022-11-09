@@ -22,10 +22,10 @@ CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 	category varchar(255),
 	activity varchar(255),
 	deadline datetimeoffset,
+    reminder boolean,
 	unique(user,activity,category)
 );
 """
-
 def get_connetion(path = DB_PATH):
     con = sql.connect(path)
     cur = con.cursor()
@@ -60,48 +60,53 @@ class ActionInsert(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # prendere lo username
-        username = tracker.get_slot('username')
-        username = username.lower()
-
+        # take current user
+        username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        # controllare che tutte le entità siano presenti
-        # se manca un entità richiederne l'inserimento
-        category = tracker.get_slot("category")
-        if category is None:
-            dispatcher.utter_message(text = "Please insert category")
-            return []
-
-        activity = tracker.get_slot("activity")
-        if activity is None:
-            dispatcher.utter_message(text = "Please insert activity")
-            return []
-
-        deadline = tracker.get_slot("deadline")
-        if deadline is None:
-            dispatcher.utter_message(text = "No deadline") 
-            return reset_slots()
+        # load needed slots
+        category = tracker.get_slot("category").lower()
+        activity = tracker.get_slot("activity").lower()
+        deadline = tracker.get_slot("deadline").lower()
+        logical = tracker.get_slot("logical").lower()
+        reminder = tracker.get_slot("reminder").lower()
 
         con, cur = get_connetion()
-        query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{category}\',\'{activity}\',\'{deadline}\')"
-        print(query)
-        try:
-            res = cur.execute(query)
-        except sql.OperationalError as e:
-            dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
-            return reset_slots()
-        except sql.IntegrityError as err:
-            dispatcher.utter_message(text = "This activity already exists, try something else")
-            return reset_slots()
-        con.commit()
-        con.close()
-        
-        print(query)
-        dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"")
-        
-        return reset_slots()
 
+        if logical == False:
+            query = f"insert into todolist(user, category, activity,deadline,reminder) values(\'{username}\',\'{category}\',\'{activity}\',None, False)"
+            
+            try:
+                res = cur.execute(query)
+            except sql.OperationalError as e:
+                dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
+                return reset_slots()
+            except sql.IntegrityError as err:
+                dispatcher.utter_message(text = "This activity already exists, try something else")
+            con.commit()
+            con.close()
+            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" ")
+            
+            print(query)
+            return reset_slots()
+        else:
+            query = f"insert into todolist(user, category, activity, deadline, reminder) values(\'{username}\',\'{category}\',\'{activity}\',\'{deadline}\',\'{reminder}\')"
+            
+            try:
+                res = cur.execute(query)
+            except sql.OperationalError as e:
+                dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
+                return reset_slots()
+            except sql.IntegrityError as err:
+                dispatcher.utter_message(text = "This activity already exists, try something else")
+                return reset_slots()
+            con.commit()
+            con.close()
+            
+            print(query)
+            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"" + "\" and reminder \"" +str(reminder) + "\"")
+            
+            return reset_slots()
 
 class ActionRemove(Action):
     
@@ -112,33 +117,32 @@ class ActionRemove(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # prendere lo username
-        username = tracker.get_slot('username')
-        username = username.lower()
-
+        # take current user
+        username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        # controllare che tutte le entità siano presenti
-        # se manca un entità richiederne l'inserimento
-        category = tracker.get_slot("category")
-        activity = tracker.get_slot("activity")
+        # load needed slots
+        category = tracker.get_slot("category").lower()
+        activity = tracker.get_slot("activity").lower()
         con, cur = get_connetion()
 
-        # Elimina una categoria
+        # Remove category
         if category is not None and activity is None:
             query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' "
             res = cur.execute(query)
-            # cur.rowcount -> ritorna il numero di righe coinvolte nell'ultima query
+
+            # cur.rowcount -> returns the number of rows involved in the last query
             if cur.rowcount == 0:
                 dispatcher.utter_message(text = "Something wrong, maybe no category")
                 return [SlotSet("category", None)]
             con.commit()
             con.close()
+
             print(query)
             dispatcher.utter_message(text = "Perfect "+ username + "! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
 
-        # elimina un'attività in una categoria
+        # Remove an activity
         query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
         res = cur.execute(query)
         if cur.rowcount == 0:
@@ -148,7 +152,7 @@ class ActionRemove(Action):
         con.commit()
         con.close()
         print(query)
-        dispatcher.utter_message(text = "Perfect \""+ username + "\" I have deleted the activity \"" + activity + "\" from the category \"" + category + "\"")
+        dispatcher.utter_message(text = "Perfect "+ username + ", I have deleted the activity \"" + activity + "\" from the category \"" + category + "\"")
         
         return reset_slots()
 
@@ -161,20 +165,17 @@ class ActionShow(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # prendere lo username
-        username = tracker.get_slot('username')
-        username = username.lower()
-
+        # take current user
+        username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        # controllare che tutte le entità siano presenti
-        # se manca un entità richiederne l'inserimento
-        category = tracker.get_slot("category")
+        # load needed slots
+        category = tracker.get_slot("category").lower()
         con, cur = get_connetion()
 
-        # data la categoria mostrami tutte le attività in essa contenute
+        # given the category show me all the activities contained in it
         if category is not None:
-            query = f"select tag, activity, deadline from todolist where user=\'{username}\' and category = \'{category}\'"
+            query = f"select tag, activity, deadline, reminder from todolist where user=\'{username}\' and category = \'{category}\'"
             res = cur.execute(query)
             tmp = res.fetchall()
             if len(tmp) == 0:
@@ -184,12 +185,12 @@ class ActionShow(Action):
             dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             for col in tmp:
                 dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\t activity: " + str(col[1]) + "\t deadline " + str(col[2]))
-            con.commit()
+
             con.close()
             print(query)
             return [SlotSet("category", None)]            
 
-        # mostrami tutte le categorie per l'unte corrente
+        # show me all categories for the current user
         query = f"select category from todolist where user=\'{username}\'"
         res = cur.execute(query)
         tmp = set(res.fetchall())
@@ -200,8 +201,9 @@ class ActionShow(Action):
         dispatcher.utter_message(text = f"Ok {username}, showing your category")
         for i,col in enumerate(tmp):
               dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
-        print(query)
         
+        con.close()
+        print(query)        
         return reset_slots()
 
 class ActionUpdate(Action):
@@ -212,21 +214,17 @@ class ActionUpdate(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # prendere lo username
-        username = tracker.get_slot('username')
-        username = username.lower()
 
+        # take current user
+        username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        # controllare che tutte le entità siano presenti
-        # se manca un entità richiederne l'inserimento
-        category = tracker.get_slot("category")
-        activities = tracker.get_latest_entity_values("activity")
+        # load needed slots
+        category = tracker.get_slot("category").lower()
         tag = tracker.get_slot("number")
+        activities = tracker.get_latest_entity_values("activity")
         con, cur = get_connetion()
-        new_activity = None
-        old_activity = None
-        query = None
+
         if tag is None:
             for activity in activities:
                 if check_exists_activity(cur, username, category, activity):
@@ -235,10 +233,12 @@ class ActionUpdate(Action):
                     new_activity = activity
             query = f"update todolist set activity=\'{new_activity}\' where user=\'{username}\' and category =\'{category}\' and activity = \'{old_activity}\'"
             msg = f"The {old_activity} activity has been replaced successfully with {new_activity} activity"
+
         elif check_exists_activity(cur, tag=tag):
             new_activity = next(activities)
             query = f"update todolist set activity=\'{new_activity}\' where tag=\'{tag}\'"
             msg = f"The activity tagged with {tag} has been replaced successfully with {new_activity} activity"
+        
         print(query)
         if query is None:
             dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
@@ -246,6 +246,6 @@ class ActionUpdate(Action):
         res = cur.execute(query)
         con.commit()
         con.close()
+        print(query)
         dispatcher.utter_message(text = msg)
-
         return reset_slots()
