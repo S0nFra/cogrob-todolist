@@ -47,6 +47,9 @@ def check_exists_activity(cur,username=None, category=None, activity=None, tag =
     res = cur.execute(query)
     return len(res.fetchall()) != 0
         
+def reset_slots(slots = ["category","activity","deadline","reminder","logical"]):
+    to_reset = [SlotSet(slot, None) for slot in slots]
+    return to_reset
 
 class ActionInsert(Action):
     
@@ -78,8 +81,7 @@ class ActionInsert(Action):
         deadline = tracker.get_slot("deadline")
         if deadline is None:
             dispatcher.utter_message(text = "No deadline") 
-            return []
-        print("deadline setted:", deadline)
+            return reset_slots()
 
         con, cur = get_connetion()
         query = f"insert into todolist(user, category, activity, deadline) values(\'{username}\',\'{category}\',\'{activity}\',\'{deadline}\')"
@@ -88,17 +90,17 @@ class ActionInsert(Action):
             res = cur.execute(query)
         except sql.OperationalError as e:
             dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
-            return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+            return reset_slots()
         except sql.IntegrityError as err:
             dispatcher.utter_message(text = "This activity already exists, try something else")
-            return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+            return reset_slots()
         con.commit()
         con.close()
         
         print(query)
         dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"")
         
-        return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+        return reset_slots()
 
 
 class ActionRemove(Action):
@@ -133,7 +135,7 @@ class ActionRemove(Action):
             con.commit()
             con.close()
             print(query)
-            dispatcher.utter_message(text = "Perfect \""+ username + "\"! I have deleted the category \"" + category + "\"")
+            dispatcher.utter_message(text = "Perfect "+ username + "! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
 
         # elimina un'attività in una categoria
@@ -141,14 +143,14 @@ class ActionRemove(Action):
         res = cur.execute(query)
         if cur.rowcount == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no activity")
-            return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+            return reset_slots()
 
         con.commit()
         con.close()
         print(query)
         dispatcher.utter_message(text = "Perfect \""+ username + "\" I have deleted the activity \"" + activity + "\" from the category \"" + category + "\"")
         
-        return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+        return reset_slots()
 
 class ActionShow(Action):
     
@@ -193,14 +195,14 @@ class ActionShow(Action):
         tmp = set(res.fetchall())
         if len(tmp) == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no categories")
-            return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+            return reset_slots()
         
         dispatcher.utter_message(text = f"Ok {username}, showing your category")
         for i,col in enumerate(tmp):
               dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
         print(query)
         
-        return [SlotSet("category", None), SlotSet("activity", None), SlotSet("deadline", None)]
+        return reset_slots()
 
 class ActionUpdate(Action):
     
@@ -246,4 +248,4 @@ class ActionUpdate(Action):
         con.close()
         dispatcher.utter_message(text = msg)
 
-        return [SlotSet("category", None), SlotSet("activity", None), SlotSet("number", None)]
+        return reset_slots()

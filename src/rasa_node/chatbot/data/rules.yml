@@ -38,7 +38,9 @@ rules:
 
 - rule: Insert deadline
   condition:
-  - active_loop: items_form
+  # - active_loop: items_form
+  - slot_was_set:
+    - logical: True
   steps:
   - intent: affirm
   - action: deadline_form

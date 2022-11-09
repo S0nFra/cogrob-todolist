@@ -58,9 +58,6 @@ slots:
   reminder:
     type: bool
     influence_conversation: false
-  time:
-    type: any
-    influence_conversation: false
   logical:
     type: bool
     influence_conversation: false

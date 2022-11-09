@@ -272,6 +272,7 @@ nlu:
     - noope
     - do you have something else
     - no this does not work for me
+    - nope
 
 - intent: insert
   examples: |
