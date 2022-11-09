@@ -67,14 +67,15 @@ class ActionInsert(Action):
         # load needed slots
         category = tracker.get_slot("category").lower()
         activity = tracker.get_slot("activity").lower()
-        deadline = tracker.get_slot("deadline").lower()
-        logical = tracker.get_slot("logical").lower()
-        reminder = tracker.get_slot("reminder").lower()
+        deadline = tracker.get_slot("deadline")
+        logical = tracker.get_slot("logical")
+        reminder = tracker.get_slot("reminder")
 
         con, cur = get_connetion()
 
         if logical == False:
-            query = f"insert into todolist(user, category, activity,deadline,reminder) values(\'{username}\',\'{category}\',\'{activity}\',None, False)"
+            query = f"insert into todolist(user, category, activity, deadline, reminder) values(\'{username}\',\'{category}\',\'{activity}\', \'None\', False)"
+            print(query)
             
             try:
                 res = cur.execute(query)
@@ -87,11 +88,11 @@ class ActionInsert(Action):
             con.close()
             dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" ")
             
-            print(query)
             return reset_slots()
         else:
             query = f"insert into todolist(user, category, activity, deadline, reminder) values(\'{username}\',\'{category}\',\'{activity}\',\'{deadline}\',\'{reminder}\')"
-            
+            print(query)
+
             try:
                 res = cur.execute(query)
             except sql.OperationalError as e:
@@ -103,8 +104,7 @@ class ActionInsert(Action):
             con.commit()
             con.close()
             
-            print(query)
-            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"" + "\" and reminder \"" +str(reminder) + "\"")
+            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"" + "\" and reminder setted to \"" +str(reminder) + "\"")
             
             return reset_slots()
 
@@ -128,7 +128,9 @@ class ActionRemove(Action):
 
         # Remove category
         if category is not None and activity is None:
-            query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' "
+            query = f"delete from todolist where user=\'{username}\' and category = \'{category}\'"
+            print(query)
+
             res = cur.execute(query)
 
             # cur.rowcount -> returns the number of rows involved in the last query
@@ -137,21 +139,22 @@ class ActionRemove(Action):
                 return [SlotSet("category", None)]
             con.commit()
             con.close()
-
-            print(query)
+            
             dispatcher.utter_message(text = "Perfect "+ username + "! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
 
         # Remove an activity
         query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
+        print(query)
+
         res = cur.execute(query)
+
         if cur.rowcount == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no activity")
             return reset_slots()
 
         con.commit()
         con.close()
-        print(query)
         dispatcher.utter_message(text = "Perfect "+ username + ", I have deleted the activity \"" + activity + "\" from the category \"" + category + "\"")
         
         return reset_slots()
@@ -169,13 +172,15 @@ class ActionShow(Action):
         username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        # load needed slots
-        category = tracker.get_slot("category").lower()
+        category = tracker.get_slot("category")
         con, cur = get_connetion()
 
         # given the category show me all the activities contained in it
         if category is not None:
+            category = category.lower()
             query = f"select tag, activity, deadline, reminder from todolist where user=\'{username}\' and category = \'{category}\'"
+            print(query)
+
             res = cur.execute(query)
             tmp = res.fetchall()
             if len(tmp) == 0:
@@ -184,14 +189,14 @@ class ActionShow(Action):
             
             dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             for col in tmp:
-                dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\t activity: " + str(col[1]) + "\t deadline " + str(col[2]))
+                dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
 
             con.close()
-            print(query)
             return [SlotSet("category", None)]            
 
         # show me all categories for the current user
         query = f"select category from todolist where user=\'{username}\'"
+        print(query)
         res = cur.execute(query)
         tmp = set(res.fetchall())
         if len(tmp) == 0:
@@ -203,7 +208,6 @@ class ActionShow(Action):
               dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
         
         con.close()
-        print(query)        
         return reset_slots()
 
 class ActionUpdate(Action):
@@ -246,6 +250,5 @@ class ActionUpdate(Action):
         res = cur.execute(query)
         con.commit()
         con.close()
-        print(query)
         dispatcher.utter_message(text = msg)
         return reset_slots()
