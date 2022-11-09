@@ -46,7 +46,7 @@ def check_exists_activity(cur,username=None, category=None, activity=None, tag =
     
     res = cur.execute(query)
     return len(res.fetchall()) != 0
-        
+    
 def reset_slots(slots = ["category","activity","deadline","reminder","logical"]):
     to_reset = [SlotSet(slot, None) for slot in slots]
     return to_reset
@@ -185,14 +185,14 @@ class ActionShow(Action):
             tmp = res.fetchall()
             if len(tmp) == 0:
                 dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
-                return [SlotSet("category", None)] 
+                return reset_slots()
             
             dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             for col in tmp:
                 dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
 
             con.close()
-            return [SlotSet("category", None)]            
+            return reset_slots()           
 
         # show me all categories for the current user
         query = f"select category from todolist where user=\'{username}\'"
@@ -229,8 +229,10 @@ class ActionUpdate(Action):
         activities = tracker.get_latest_entity_values("activity")
         con, cur = get_connetion()
 
+        # update activity by (username, category, activity)
         if tag is None:
             for activity in activities:
+                activity = activity.lower()
                 if check_exists_activity(cur, username, category, activity):
                     old_activity = activity
                 else:
@@ -238,8 +240,9 @@ class ActionUpdate(Action):
             query = f"update todolist set activity=\'{new_activity}\' where user=\'{username}\' and category =\'{category}\' and activity = \'{old_activity}\'"
             msg = f"The {old_activity} activity has been replaced successfully with {new_activity} activity"
 
+        # update activity by tag
         elif check_exists_activity(cur, tag=tag):
-            new_activity = next(activities)
+            new_activity = next(activities).lower()
             query = f"update todolist set activity=\'{new_activity}\' where tag=\'{tag}\'"
             msg = f"The activity tagged with {tag} has been replaced successfully with {new_activity} activity"
         
