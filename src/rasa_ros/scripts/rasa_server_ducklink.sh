@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOT_DIR="/home/sonfra/cogrob-todolist/src/rasa_node/chatbot/duckling"
+BOT_DIR="/home/sonfra/cogrob-todolist/src/rasa_ros/chatbot/duckling"
 
 cd $BOT_DIR
 

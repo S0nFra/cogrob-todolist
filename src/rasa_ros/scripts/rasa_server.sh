@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOT_DIR="/home/mivia/Desktop/cogrob_chatbot"
+BOT_DIR="/home/sonfra/cogrob-todolist/src/rasa_ros/chatbots"
 
 cd $BOT_DIR
 
