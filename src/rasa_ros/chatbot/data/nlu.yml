@@ -691,6 +691,264 @@ nlu:
     - in [top five singers](category) update [Mengoni]{"entity":"activity"} with [Celentano](activity)
     - in [songs to listen to](category) update [Sky]{"entity":"activity"} with [buy a recorder](activity)
     - in [allert](category) update [midterm]{"entity":"activity"} with [final exam](activity)
+    - change deadline for [rent a boat](activity) activity in [special called meeting (oaths of office)](category) to 06/30/2023 11:15 AM
+    - change deadline for [reception from the professor](activity) activity in [special called meeting](category) to 10/16/2014 10:26 PM
+    - change deadline for [book the classroom](activity) in [austin energy rates work session](category) category to 11/09/2016 03:16 PM
+    - change deadline for [cake](activity) activity in [budget meeting](category) category to 07/17/2020 08:30 PM
+    - change deadline for [reunion on job orientation](activity) in [special called meeting - 9:00 am](category) to 10/29/2011 04:24 AM
+    - change deadline for [golf club](activity) in [things to be done](category) to 03/22/2017 11:36 PM
+    - change deadline for [send in more inventory](activity) in [playstation games](category) category to 09/09/2023 12:31 AM
+    - change deadline for [linear regression](activity) in [work plain](category) category to 08/13/2010 04:33 AM
+    - change deadline for [swimming pool](activity) in [list](category) category to 03/17/2013 06:35 PM
+    - change deadline for [banana bread](activity) in [after lunch](category) category to 01/01/2019 01:16 PM
+    - change deadline for [to sleep](activity) in [chemist list](category) category to 01/19/2015 03:45 AM
+    - change deadline for [english course](activity) in [appointment](category) to 07/11/2014 10:14 AM
+    - change deadline for [chips and fish](activity) in [remainder](category) to 12/26/2019 02:13 AM
+    - change deadline for [football match](activity) in [supermarket list](category) to 12/29/2020 11:06 PM
+    - update deadline for [buy protein](activity) activity in [chemist list](category) category to 10/21/2019 10:36 AM
+    - update deadline for [piano lesson](activity) in [clean hause](category) to 06/16/2009 03:57 PM
+    - update deadline for [read 1 chapther of book](activity) activity in [homework](category) to 11/08/2009 08:39 PM
+    - update deadline for [see a movie](activity) in [group for the birthday gift](category) to 02/08/2022 06:25 PM
+    - update deadline for [take the book](activity) activity in [wish list](category) category to 11/03/2008 01:35 PM
+    - update deadline for [design ad campaign graphics](activity) activity in [shopping](category) to 08/01/2010 06:21 AM
+    - update deadline for [piano lesson](activity) in [cogrob midterm](category) category to 07/03/2019 08:22 PM
+    - update deadline for [bring boxs to new house](activity) activity in [monthly expenses](category) category to 08/15/2009 03:41 AM
+    - update deadline for [banana](activity) activity in [group for the birthday gift](category) to 05/03/2017 11:17 PM
+    - update deadline for [add a new class](activity) activity in [departure](category) category to 08/25/2015 11:37 PM
+    - modify deadline for [call father](activity) activity in [daily housework](category) to 03/26/2014 05:59 PM
+    - modify deadline for [buy toys for kids](activity) activity in [supermarket list](category) category to 02/17/2011 05:35 AM
+    - modify deadline for [read 1 chapther of book](activity) in [friends list](category) to 11/17/2010 01:03 PM
+    - modify deadline for [sign the check](activity) in [moving house](category) category to 08/07/2021 09:53 AM
+    - modify deadline for [blind date](activity) activity in [things to do today](category) category to 09/27/2014 02:07 PM
+    - modify deadline for [movies to see](activity) in [food](category) to 11/10/2019 06:25 AM
+    - modify deadline for [talk with seller](activity) in [place to visit](category) to 09/17/2018 02:46 PM
+    - modify deadline for [write intents for mideterm cogrob](activity) activity in [retrieve personal access token](category) category to 11/01/2014 10:15 AM
+    - modify deadline for [cat](activity) activity in [work](category) category to 03/02/2014 01:39 PM
+    - modify deadline for [crossfit class](activity) activity in [afternoon](category) to 10/30/2019 03:04 PM
+    - modify deadline for [charge your computer](activity) activity in [things to be done](category) category to 11/15/2010 06:56 AM
+    - modify deadline for [crossfit shoes](activity) in [trips](category) category to 12/30/2012 08:07 AM
+    - modify deadline for [mayonaisse sauce](activity) activity in [appointments](category) to 03/12/2008 08:35 AM
+    - modify deadline for [edit pictures](activity) activity in [doctors appointment](category) category to 12/10/2010 03:52 PM
+    - modify deadline for [make coffe for friends](activity) in [ideas](category) to 02/19/2012 02:09 PM
+    - modify deadline for [talk with seller](activity) activity in [thing to do today](category) to 12/24/2016 11:48 AM
+    - modify deadline for [movies to see](activity) in [shopping](category) category to 02/24/2017 12:13 AM
+    - reset deadline for [football match](activity) activity in [reminder](category) category to 09/14/2014 10:19 PM
+    - reset deadline for [return books to library](activity) in [christmas](category) to 08/15/2016 11:50 PM
+    - reset deadline for [need new parking sticke](activity) in [dreams](category) category to 03/21/2009 04:32 PM
+    - reset deadline for [study](activity) in [places to see](category) category to 09/27/2011 10:23 PM
+    - reset deadline for [load dishwasher](activity) in [remainder](category) category to 06/14/2012 10:22 AM
+    - reset deadline for [buy protein](activity) activity in [christmas gifts](category) category to 11/07/2009 11:51 AM
+    - reset deadline for [make muffin](activity) in [places to see](category) to 09/04/2023 05:02 AM
+    - reset deadline for [dentist appointment](activity) in [work plain](category) to 10/11/2023 05:53 AM
+    - reset deadline for [italian course](activity) activity in [christmas](category) to 02/04/2008 03:34 AM
+    - reset deadline in [budget work session](category) category for [do a load of washing](activity) to 03/23/2023 08:18 AM
+    - reset deadline in [ahfc meeting](category) for [the plain](activity) to 03/12/2012 12:57 PM
+    - reset deadline in [special called budget meeting](category) category for [to sleep](activity) activity to 03/16/2011 08:32 AM
+    - reset deadline in [special called budget meeting](category) category for [study](activity) to 02/01/2016 09:33 PM
+    - reset deadline in [special called meeting (morning)](category) for [check email](activity) activity to 02/27/2008 08:02 AM
+    - reset deadline in [things to buy](category) category for [create model for cogrob](activity) to 09/16/2012 11:11 AM
+    - reset deadline in [reminder](category) for [computer](activity) to 06/05/2017 07:27 PM
+    - reset deadline in [daily to do](category) for [go shopping](activity) to 08/21/2016 11:11 PM
+    - reset deadline in [cogrob midterm](category) category for [burrito](activity) activity to 05/22/2010 12:46 AM
+    - reset deadline in [shopping](category) category for [crossfit shoes](activity) activity to 10/09/2011 02:07 PM
+    - reset deadline in [greengrocer list](category) for [correcting homework](activity) activity to 12/24/2021 01:42 AM
+    - reset deadline in [cogrob midterm](category) for [study the ereditariety on chapter 3](activity) activity to 02/18/2008 06:26 PM
+    - reset deadline in [my music](category) for [dancing shoes](activity) activity to 02/07/2019 11:57 AM
+    - reset deadline in [top five singers](category) for [see a movie](activity) activity to 01/06/2016 11:06 PM
+    - reset deadline in [remainder](category) for [brainstorm](activity) activity to 03/10/2009 05:59 AM
+    - reset deadline in [bakery list](category) category for [meeting](activity) activity to 01/12/2012 05:10 PM
+    - reset deadline in [best places to visit](category) category for [swimming pool](activity) activity to 02/10/2021 09:19 AM
+    - reset deadline in [monday](category) for [sign the check](activity) to 11/09/2013 12:19 AM
+    - reset deadline in [commitment](category) for [to do](activity) activity to 11/17/2018 11:56 AM
+    - reset deadline in [list of the supermarket](category) for [make muffin](activity) to 04/11/2012 09:52 AM
+    - reset deadline in [christmas gifts](category) for [book at the hairdresser](activity) activity to 05/09/2020 09:25 PM
+    - reset deadline in [what i have to do](category) for [music](activity) activity to 03/24/2016 05:48 PM
+    - reset deadline in [cogrob midterm](category) for [play football](activity) to 12/22/2021 05:26 AM
+    - reset deadline in [kiwi](category) for [go to the beautician](activity) to 04/04/2013 08:55 PM
+    - change deadline in [appointment](category) for [call granfather](activity) to 04/29/2015 04:03 PM
+    - change deadline in [reminder](category) for [pumpkin](activity) to 01/23/2016 10:24 AM
+    - change deadline in [math homework](category) for [buy taxes](activity) activity to 01/23/2021 03:25 AM
+    - change deadline in [monthly expenses](category) category for [submit data analysis](activity) to 09/08/2017 09:57 PM
+    - change deadline in [cake preparation](category) category for [buy a recorder](activity) to 06/27/2018 09:07 PM
+    - change deadline in [playstation games](category) for [egg](activity) activity to 02/17/2020 05:34 AM
+    - change deadline in [appointments](category) category for [wishlist](activity) activity to 01/14/2022 06:36 AM
+    - change deadline in [cogrob midterm](category) category for [allert](activity) activity to 01/20/2008 10:54 PM
+    - change deadline in [clean hause](category) category for [see a movie](activity) to 04/24/2008 03:02 PM
+    - change deadline in [cake preparation](category) category for [buy toys for kids](activity) activity to 07/25/2018 10:31 AM
+    - change deadline for activity tagged with 4 to 10/03/2016 10:57 PM
+    - change deadline for activity tagged with 11 to 10/07/2008 03:55 PM
+    - change deadline for activity tagged with 2 to 06/05/2015 04:47 PM
+    - change deadline for activity tagged with 25 to 05/14/2012 04:15 AM
+    - change deadline for activity tagged with 19 to 01/28/2019 04:00 AM
+    - change deadline for activity tagged with 25 to 05/10/2013 07:32 PM
+    - change deadline for activity tagged with 11 to 02/13/2016 02:24 AM
+    - change deadline for activity tagged with 3 to 08/20/2018 07:40 AM
+    - change deadline for activity tagged with 2 to 01/18/2009 03:05 PM
+    - change deadline for activity tagged with 18 to 08/11/2018 07:44 AM
+    - change deadline for activity tagged with 21 to 01/11/2014 03:16 AM
+    - change deadline for activity tagged with 9 to 04/11/2010 03:25 AM
+    - change deadline for activity tagged with 29 to 04/21/2013 09:41 PM
+    - change deadline for activity tagged with 24 to 07/07/2022 03:04 AM
+    - change deadline for activity tagged with 17 to 01/07/2021 07:01 AM
+    - change deadline for activity tagged with 26 to 11/28/2019 04:59 PM
+    - change deadline for activity tagged with 13 to 12/21/2021 10:04 PM
+    - change deadline for activity tagged with 18 to 06/15/2016 04:22 AM
+    - change deadline for activity tagged with 8 to 04/18/2019 07:48 AM
+    - change deadline for activity tagged with 20 to 10/25/2012 01:12 PM
+    - change deadline for activity tagged with 15 to 06/04/2014 06:36 AM
+    - replace deadline for activity tagged with 13 to 06/16/2022 06:16 AM
+    - replace deadline for activity tagged with 6 to 12/26/2012 10:27 PM
+    - replace deadline for activity tagged with 3 to 10/08/2015 02:05 AM
+    - replace deadline for activity tagged with 2 to 12/13/2017 02:31 PM
+    - replace deadline for activity tagged with 29 to 12/08/2016 03:02 AM
+    - replace deadline for activity tagged with 10 to 05/16/2008 08:00 AM
+    - replace deadline for activity tagged with 19 to 03/17/2021 08:24 AM
+    - replace deadline for activity tagged with 8 to 07/28/2022 06:38 PM
+    - replace deadline for activity tagged with 25 to 08/09/2010 03:11 AM
+    - replace deadline for activity tagged with 5 to 07/14/2016 07:15 PM
+    - replace deadline for activity tagged with 19 to 03/06/2008 06:03 PM
+    - replace deadline for activity tagged with 30 to 05/24/2018 12:27 PM
+    - replace deadline for activity tagged with 25 to 07/06/2015 05:25 PM
+    - replace deadline for activity tagged with 16 to 08/01/2011 12:09 AM
+    - replace deadline for activity tagged with 25 to 03/28/2016 01:55 PM
+    - replace deadline for activity tagged with 10 to 11/05/2019 02:46 AM
+    - replace deadline for activity tagged with 5 to 04/21/2016 04:35 AM
+    - replace deadline for activity tagged with 29 to 06/07/2011 10:46 AM
+    - replace deadline for activity tagged with 28 to 01/13/2018 05:55 PM
+    - replace deadline for activity tagged with 29 to 05/29/2011 03:27 PM
+    - replace deadline for activity tagged with 6 to 04/24/2013 02:11 AM
+    - replace deadline for activity tagged with 1 to 10/08/2012 12:20 PM
+    - replace deadline for activity tagged with 22 to 11/23/2018 07:55 AM
+    - replace deadline for activity tagged with 2 to 02/11/2016 09:26 AM
+    - replace deadline for activity tagged with 30 to 06/15/2020 12:52 AM
+    - replace deadline for activity tagged with 13 to 12/13/2018 05:26 AM
+    - replace deadline for activity tagged with 11 to 02/11/2022 03:59 AM
+    - replace deadline for activity tagged with 21 to 10/09/2012 06:05 PM
+    - replace deadline for activity tagged with 4 to 02/09/2011 03:46 PM
+    - replace deadline for activity with tag 29 to 05/29/2023 06:28 PM
+    - replace deadline for activity with tag 30 to 06/18/2012 04:47 AM
+    - replace deadline for activity with tag 15 to 03/03/2008 09:37 AM
+    - replace deadline for activity with tag 6 to 02/03/2019 04:02 PM
+    - replace deadline for activity with tag 28 to 01/13/2015 02:37 PM
+    - replace deadline for activity with tag 3 to 08/23/2014 08:09 AM
+    - replace deadline for activity with tag 16 to 03/08/2012 10:18 AM
+    - replace deadline for activity with tag 5 to 04/29/2023 11:10 PM
+    - replace deadline for activity with tag 17 to 09/18/2021 05:55 PM
+    - replace deadline for activity with tag 16 to 10/12/2008 02:30 PM
+    - replace deadline for activity with tag 18 to 03/14/2016 04:44 PM
+    - replace deadline for activity with tag 15 to 10/13/2009 03:24 PM
+    - replace deadline for activity with tag 7 to 10/20/2009 12:35 PM
+    - replace deadline for activity with tag 8 to 05/16/2021 03:58 AM
+    - replace deadline for activity with tag 3 to 01/12/2022 01:31 PM
+    - replace deadline for activity with tag 19 to 02/27/2017 11:43 AM
+    - replace deadline for activity with tag 15 to 02/23/2010 08:13 PM
+    - replace deadline for activity with tag 21 to 12/23/2021 05:01 PM
+    - replace deadline for activity with tag 6 to 12/23/2019 01:34 PM
+    - replace deadline for activity with tag 17 to 10/05/2014 11:18 AM
+    - replace deadline for activity with tag 26 to 05/17/2020 12:18 PM
+    - replace deadline for activity with tag 23 to 06/01/2008 03:47 AM
+    - i have changed idea, replace deadline for activity with tag 27 to 09/21/2011 03:04 PM
+    - i have changed idea, replace deadline for activity with tag 23 to 05/21/2017 01:17 AM
+    - i have changed idea, replace deadline for activity with tag 12 to 10/17/2019 12:07 PM
+    - i have changed idea, replace deadline for activity with tag 28 to 04/26/2016 08:40 AM
+    - i have changed idea, replace deadline for activity with tag 7 to 06/24/2020 01:57 AM
+    - i have changed idea, replace deadline for activity with tag 10 to 03/03/2011 09:26 AM
+    - i have changed idea, replace deadline for activity with tag 11 to 10/11/2021 02:15 AM
+    - i have changed idea, replace deadline for activity with tag 24 to 01/17/2020 01:56 PM
+    - i have changed idea, replace deadline for activity with tag 29 to 12/04/2014 01:28 PM
+    - i have changed idea, replace deadline for activity with tag 1 to 03/06/2017 12:36 AM
+    - i have changed idea, replace deadline for activity with tag 16 to 12/09/2021 04:14 PM
+    - i have changed idea, replace deadline for activity with tag 8 to 05/02/2009 07:30 PM
+    - i have changed idea, replace deadline for activity with tag 12 to 01/15/2019 09:18 PM
+    - i have changed idea, replace deadline for activity with tag 6 to 07/14/2013 02:34 PM
+    - i have changed idea, replace deadline for activity with tag 13 to 07/30/2008 09:58 PM
+    - i have changed idea, replace deadline for activity with tag 6 to 04/19/2010 10:44 AM
+    - i have changed idea, replace deadline for activity with tag 26 to 01/24/2022 09:55 AM
+    - i have changed idea, replace deadline for activity with tag 23 to 02/17/2013 07:02 AM
+    - i have changed idea, replace deadline for activity with tag 10 to 07/26/2023 08:23 PM
+    - i have changed idea, replace deadline for activity with tag 26 to 04/16/2014 05:44 AM
+    - i have changed idea, replace deadline for activity with tag 20 to 12/02/2009 11:11 AM
+    - i have changed idea, replace deadline for activity with tag 1 to 05/08/2020 05:21 PM
+    - i have changed idea, replace deadline for activity with tag 18 to 12/21/2013 12:50 AM
+    - i have changed idea, replace deadline for activity with tag 12 to 04/16/2019 01:11 AM
+    - i have changed idea, replace deadline for activity with tag 24 to 01/21/2020 02:22 PM
+    - i have changed idea, replace deadline for activity with tag 2 to 02/05/2021 02:16 AM
+    - i have changed idea, replace deadline for activity with tag 28 to 01/01/2018 06:50 PM
+    - i have changed idea, replace deadline for activity with tag 14 to 09/09/2022 11:08 AM
+    - set a reminder for [apples](activity) activity in [special called canvassing meeting](category) category 
+    - set a reminder for [go out with your friends](activity) activity in [special called meeting (oaths of office)](category) 
+    - set a reminder for [phone mum](activity) activity in [top five singers](category) 
+    - set a reminder for [github password](activity) in [retrieve personal access token](category) 
+    - set a reminder for [take the gym bag](activity) activity in [new project](category) 
+    - set a reminder for [go to the secretariat](activity) in [bug to fix](category) 
+    - set a reminder for [final exam](activity) in [trips](category) category 
+    - set a reminder for [buy a computer](activity) in [grocery list](category) 
+    - set a reminder for [return books to library](activity) in [shopping](category) category 
+    - set a reminder for [take a new book](activity) in [wishlist](category) 
+    - set a reminder for [swimming pool](activity) in [appointment](category) category 
+    - set a reminder for [clean the room](activity) in [appointments](category) 
+    - set a reminder for [holidays](activity) in [my music](category) 
+    - set a reminder for [apples](activity) in [ideas](category) category 
+    - set a reminder for [piano lesson](activity) in [grocery list](category) category 
+    - set a reminder for [buy taxes](activity) activity in [friends list](category) category 
+    - set a reminder for [go to the beautician](activity) activity in [friends list](category) category 
+    - set a reminder for [get off the dog](activity) in [tasks](category) category 
+    - set a reminder for [meeting](activity) activity in [things to be done](category) category 
+    - set a reminder for [afternoon](activity) in [football matches](category) category 
+    - set a reminder for [go to the beautician](activity) in [songs to listen to](category) category 
+    - set a reminder for [chips and fish](activity) activity in [things to be done](category) category 
+    - set a reminder for [check email](activity) activity in [list](category) category 
+    - set a reminder for [remainder](activity) activity in [things to do](category) 
+    - for [holidays to remember](activity) in [regular meeting](category) set a reminder
+    - for [design ad campaign graphics](activity) in [regular meeting (budget reading)](category) category set a reminder
+    - for [buy toys for kids](activity) in [new project](category) category set a reminder
+    - for [buy toys for kids](activity) activity in [reservations](category) set a reminder
+    - for [visit the theater](activity) in [telegram offers](category) set a reminder
+    - for [remainder](activity) activity in [daily homeworks](category) category set a reminder
+    - for [social media scheduling](activity) in [class schedule](category) set a reminder
+    - for [shere photo](activity) activity in [grocery list](category) category set a reminder
+    - for [sign the check](activity) in [cogrob midterm](category) category set a reminder
+    - for [music](activity) activity in [pharmacy list](category) set a reminder
+    - for [sign the check](activity) in [shopping list](category) set a reminder
+    - for [take the book](activity) in [list of the supermarket](category) set a reminder
+    - for [rent a boat](activity) activity in [class schedule](category) set a reminder
+    - for [submit data analysis](activity) activity in [thing to do today](category) set a reminder
+    - for [crossfit class](activity) in [saturday plans](category) category set a reminder
+    - for [go to the beautician](activity) activity in [remainder](category) category set a reminder
+    - for [rent a boat](activity) activity in [library reminder](category) category set a reminder
+    - for [appointments](activity) in [work plain](category) set a reminder
+    - for [buy a recorder](activity) in [cogrob midterm](category) category set a reminder
+    - for [humburger](activity) in [to do](category) category set a reminder
+    - for [metting](activity) in [shopping cart](category) category set a reminder
+    - for [banana bread](activity) in [sport](category) category set a reminder
+    - for [get off the dog](activity) in [cogrob midterm](category) set a reminder
+    - for [meeting](activity) activity in [homework](category) set a reminder
+    - set a reminder for activity tagged with 25
+    - set a reminder for activity tagged with 2
+    - set a reminder for activity tagged with 27
+    - set a reminder for activity tagged with 5
+    - set a reminder for activity tagged with 17
+    - set a reminder for activity tagged with 6
+    - set a reminder for activity tagged with 21
+    - set a reminder for activity tagged with 7
+    - set a reminder for activity tagged with 26
+    - set a reminder for activity tagged with 14
+    - set a reminder for activity tagged with 18
+    - set a reminder for activity tagged with 16
+    - set a reminder for activity tagged with 19
+    - set a reminder for activity tagged with 24
+    - set a reminder for activity tagged with 26
+    - set a reminder for activity tagged with 8
+    - set a reminder for activity tagged with 11
+    - set a reminder for activity tagged with 14
+    - set a reminder for activity tagged with 16
+    - set a reminder for activity tagged with 15
+    - set a reminder for activity tagged with 8
+    - set a reminder for activity tagged with 20
+    - set a reminder for activity tagged with 9
+    - set a reminder for activity tagged with 27
+    - set a reminder for activity tagged with 5
+
 #    - in [remainder](activity) update [buy Christrmas presents]{"entity":"activity"} 
 #    - in [english course](activity) update [Present and past perfect]{"entity":"activity"}
 #    - can you update [The gone girl]{"entity":"activity"} in the [movies to see](category) category ?
@@ -816,27 +1074,6 @@ nlu:
 #    - update a folder named [science homework](activity) 
 #    - update the category [appointments](activity)
 #    - update a list [classification animals](activity)
-
-#- Which activity is about to expire? 
-
-- synonym: add
-  examples: |
-    - insert
-    - create
-
-- synonym: activity
-  examples: |
-    - element
-    - item
-
-- synonym: category
-  examples: |
-    - list
-    - to do list
-    - set
-    - folder
-    - tag
-    - bookmark
 
 - intent: set_deadline
   examples: |
@@ -1170,3 +1407,22 @@ nlu:
     - for 7-31-2020 at 08:32:59
     - for 5-18-2020 at 22:32:42
     - for 3-11-2022 at 03:17:24
+
+# - synonym: add
+#   examples: |
+#     - insert
+#     - create
+
+# - synonym: activity
+#   examples: |
+#     - element
+#     - item
+
+# - synonym: category
+#   examples: |
+#     - list
+#     - to do list
+#     - set
+#     - folder
+#     - tag
+#     - bookmark

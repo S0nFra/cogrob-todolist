@@ -75,7 +75,7 @@ class ActionInsert(Action):
         con, cur = get_connetion()
 
         if logical == False:
-            query = f"insert into todolist(user, category, activity, deadline, reminder) values(?,?,?, \'None\', False)"
+            query = f"insert into todolist(user, category, activity, deadline, reminder) values(?,?,?, \'NULL\', False)"
             print(query)
             
             try:
@@ -93,9 +93,7 @@ class ActionInsert(Action):
             return reset_slots()
         else:
             query = "insert into todolist(user,category,activity,deadline,reminder) values(?,?,?,?,?)"
-
             print(query)
-
 
             try:
                 res = cur.execute(query,(username,category,activity,deadline,reminder))
@@ -108,7 +106,7 @@ class ActionInsert(Action):
             con.commit()
             con.close()
             
-            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\"" + "\" and reminder setted to \"" +str(reminder) + "\"")
+            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\" and reminder setted to \"" +str(reminder) + "\"")
             
             return reset_slots()
 
