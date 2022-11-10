@@ -499,8 +499,7 @@ nlu:
     - delete [math homework](activity) from [daily homeworks](category) category
     - delete [edit code](activity) from [new project](category) category
     - delete [mayonaisse sauce](activity) from [shopping list](category)
-    - eliminate [Emily's birthday](category) category
-    
+    - eliminate [Emily's birthday](category) category    
     - eliminate [replay to Jhon's mail](activity) form [important](category) category
     - eliminate [linear regression](activity) form [lessons](category)
     - take out [load dishwasher](activity) form [after lunch](category)
@@ -524,11 +523,8 @@ nlu:
     - Can you delete [pumpkin](activity)?
     - Can you delete [tennis](activity) activity?
     - delete [apples](activity)
-
-
     - eliminate
     - take out
-    
     - remove [christmas gifts](category) category
     - remove [shopping list](category) category
     - remove [things to do](category) category

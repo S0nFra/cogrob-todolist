@@ -75,7 +75,7 @@ class ActionInsert(Action):
         con, cur = get_connetion()
 
         if logical == False:
-            query = f"insert into todolist(user, category, activity, deadline, reminder) values(?,?,?, \'NULL\', False)"
+            query = f"insert into todolist(user, category, activity, deadline, reminder) values(?,?,?, \'NULL\', 0)"
             print(query)
             
             try:
@@ -231,33 +231,80 @@ class ActionUpdate(Action):
         # load needed slots
         category = tracker.get_slot("category")
         tag = tracker.get_slot("number")
-        activities = tracker.get_latest_entity_values("activity")
+        activities = list(tracker.get_latest_entity_values("activity"))
+        deadline = tracker.get_slot("time")
         con, cur = get_connetion()
+
         old_activity = None
         new_activity = None
-        # update activity by (username, category, activity)
+        query = None
+        
         if tag is None:
-            category.lower()
-            for activity in activities:
-                activity = activity.lower()
-                if check_exists_activity(cur, username, category, activity):
-                    old_activity = activity
+            # update by (username, category, activity)
+            if len(activities) > 1:
+                # update activity
+                for activity in activities:
+                    activity = activity.lower()
+                    if check_exists_activity(cur, username, category, activity):
+                        old_activity = activity
+                    else:
+                        new_activity = activity
+                if old_activity == None:
+                    dispatcher.utter_message(text = "There isn't this activity in " + category + "category")
+                    return reset_slots()
+                elif new_activity == None:
+                    dispatcher.utter_message(text = "Ops, you haven't insert a new activity")
+                    return reset_slots()
+
+                query = f"update todolist set activity= ? where user= ? and category = ? and activity = ?"
+                msg = f"The \"{old_activity}\" activity has been replaced successfully with \"{new_activity}\" activity"
+                res = cur.execute(query, (new_activity,username,category,old_activity))
+            
+            elif deadline is not None:
+                # update deadline
+                # deadline = next(deadline)
+                activity = tracker.get_slot("activity").lower()
+
+                if not check_exists_activity(cur, username, category, activity):
+                    dispatcher.utter_message(text = "No activity with this deadline")
+                    return reset_slots()
+                query = f"update todolist set deadline= ? where user= ? and category = ? and activity = ?"
+                msg = f"Previus deadline has been replaced with {deadline}"
+                res = cur.execute(query, (deadline, username, category, activity))
+            
+            else:
+                # update reminder
+                activity = tracker.get_slot("activity")
+                if not check_exists_activity(cur, username, category, activity):
+                    dispatcher.utter_message(text = "Ops, activity does not exists")
+                    return reset_slots()
+
+                query = f"select reminder from todolist where user= ? and category = ? and activity = ? and deadline != NULL"
+                res = cur.execute(query, (username, category, activity))
+                tmp = res.fetchall()
+                if len(tmp) == 0:
+                    dispatcher.utter_message(text = "Something wrong, maybe no deadline to remind")
+                    return reset_slots()
+                
+                # tmp is something like this [(0,)]
+                print(tmp)
+                query = f"update todolist set reminder= ? where user= ? and category = ? and activity = ?"
+                if tmp[0][0]:      
+                    tmp = False
+                    msg = f"Reminder disabled"
                 else:
-                    new_activity = activity
-            query = f"update todolist set activity= ? where user= ? and category = ? and activity = ?"
-            msg = f"The {old_activity} activity has been replaced successfully with {new_activity} activity"
-            res = cur.execute(query, (new_activity,username,category,old_activity))
-        # update activity by tag
-        elif check_exists_activity(cur, tag=tag):
-            new_activity = next(activities).lower()
-            query = f"update todolist set activity= ? where tag= ?"
-            msg = f"The activity tagged with {tag} has been replaced successfully with {new_activity} activity"
-            res = cur.execute(query,(new_activity,tag))
+                    tmp = True
+                    msg = f"Reminder enabled"
+                    
+                res = cur.execute(query, (tmp, username, category, activity))
+
+        else:
+            # update by (tag)
+            pass
         
         print(query)
         if query is None:
             dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
-        
 
         con.commit()
         con.close()
