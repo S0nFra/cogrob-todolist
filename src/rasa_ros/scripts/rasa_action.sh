@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BOT_DIR="/home/mario/Documents/GitHub/cogrob-todolist/src/rasa_ros/chatbot"
+BOT_DIR=$( cd -- "$(dirname "${0}")" >/dev/null 2>&1 ; pwd -P )
 
-cd $BOT_DIR
+cd "$BOT_DIR/../chatbot"
 
 rasa run actions
