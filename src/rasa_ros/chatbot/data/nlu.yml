@@ -478,22 +478,29 @@ nlu:
 - intent: remove
   examples: |
     - remove the activity named [egg](activity) in the category [kitchen](category)
-    - remove from [items] (category), [hammer] (activity)
-    - remove from [friends] (category), [Lucia] (activity)
+    - remove [hammer] (activity) from [items] (category)
+    - remove from [friends] (category) the [Lucia] (activity) activity
     - remove [call Gianluca](activity) from [things to be done](category)
-    - delete [work](activity) in [Monday](category)
-    - delete from [books](category), [Shakespare](activity)
+    - remove [gym reminder](category) category
+    - remove [computer shopping list](category) 
+    - remove all the activity from [work engagements](category)
+    - remove from the list [books](category) [Pirandello](activity)
+    - remove [go to Francesco's home](activity) from [daily reminder]
+    - delete [work](activity) in [tasks to do](category)
+    - now remove [videogames to play](category)
+    - delete from [books](category) the activity [Metro reading](activity) activity
     - delete [Econ 202 lecture](activity) from [daily to do](category) category
-    - delete [edit pictures](activity) from [for Alex](category) category
+    - delete from [for Alex](category) category the [edit pictures](activity) activity
     - delete [barbecue sauce](activity) from [shopping list](category)
-    - delete [Econ 202 lecture](activity) from [daily to do](category) category
-    - delete [edit pictures](activity) from [for Alex](category) category
-    - delete [barbecue sauce](activity) from [shopping list](category)
-    - delete [work](activity) in [Monday](category)
+    - delete from [jobs offers](category) category [Ubisoft interview](activity) 
+    - delete [Van Gogh show](activity) from [exhibitions](category) category
+    - delete from [hamburger shopping list](category) [paprika sauce](activity) 
+    - delete [buy cover](activity) in [things to buy](category)
     - delete [math homework](activity) from [daily homeworks](category) category
     - delete [edit code](activity) from [new project](category) category
     - delete [mayonaisse sauce](activity) from [shopping list](category)
-    - eliminate [cook a birthday cake for Emily](activity)
+    - eliminate [Emily's birthday](category) category
+    
     - eliminate [replay to Jhon's mail](activity) form [important](category) category
     - eliminate [linear regression](activity) form [lessons](category)
     - take out [load dishwasher](activity) form [after lunch](category)
@@ -512,23 +519,36 @@ nlu:
     - i don't want [apples](activity) into [dinner](category). Can you eliminate that?
     - i don't need [humburger](activity) anymore. Can you eliminate in the [list of the supermarket](category) category?
     - i don't want [to go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
-    - Remove [go to Francesco's home](activity) from [daily reminder]
-    - remove from the list [books](category) [Pirandello](activity)
-    - remove [go to gym](activity)
-    - remove [computer](activity) 
-    - remove [lunch with Sem](activity)
     - delete [sign the check](activity)
     - eliminate [sweet cherry](activity)
-    - now remove [play videogames](activity)
     - Can you delete [pumpkin](activity)?
     - Can you delete [tennis](activity) activity?
     - delete [apples](activity)
+
+
+    - eliminate
+    - take out
+    
     - remove [christmas gifts](category) category
     - remove [shopping list](category) category
     - remove [things to do](category) category
     - remove [place to visit](category) category
-    - delete from [things to buy](category) all the activity
-    - Remove all the activity in the list [tasks](category)
+    - remove
+    - delete [movies](category)
+    - delete
+    - delete
+    - delete
+    - delete
+    - delete all the activity from [things to buy](category)
+    - delete all the activity from [pizzeria management](category) 
+    - delete whatever is in [Netflix list](category)
+    - delete whatever is in the [university](category) list
+    - delete everything from 
+    - remove all the activity in the [tasks](category) list
+    - remove all the activity in [school](category)
+    - remove whatever is in the [meeting](category) list
+    - remove whatever is in [shopping list](category)
+    - remove everything in [stocks](category)
 
 - intent: show
   examples: |
@@ -596,24 +616,24 @@ nlu:
     - Please bot, show me my categoies
     - Can you show me [sport](category) category with his activities?
 
-- intent: empty 
-  examples: |
-    - empty category
-    - ok empty the category
-    - ok can you empty the category
-    - empty the category
-    - bot could you empty category [Shopping list](category)?
-    - Can you empty me category?
-    - can you clean out the category?
-    - I want to clean out me category
-    - ok now empty me category
-    - empty out the category
-    - Perfect now empty me category
-    - Ok clean the category please
-    - Now can you empty me category?
-    - Pepper clear all
-    - empty me category
-    - I'm [Lucia](username), empty the category please
+# - intent: empty 
+#   examples: |
+#     - empty category
+#     - ok empty the category
+#     - ok can you empty the category
+#     - empty the category
+#     - bot could you empty category [Shopping list](category)?
+#     - Can you empty me category?
+#     - can you clean out the category?
+#     - I want to clean out me category
+#     - ok now empty me category
+#     - empty out the category
+#     - Perfect now empty me category
+#     - Ok clean the category please
+#     - Now can you empty me category?
+#     - Pepper clear all
+#     - empty me category
+#     - I'm [Lucia](username), empty the category please
 
 - intent: update
   examples: |
@@ -799,24 +819,24 @@ nlu:
 
 #- Which activity is about to expire? 
 
-# - synonyms: add
-  # examples: |
-  #   - insert
-  #   - create
+- synonym: add
+  examples: |
+    - insert
+    - create
 
-# - synonyms: activity
-#   examples: |
-#   - element
-#   - item
+- synonym: activity
+  examples: |
+  - element
+  - item
 
-# - synonyms: category
-#   examples: |
-#   - list
-#   - to do list
-#   - set
-#   - folder
-#   - tag
-#   - bookmark
+- synonym: category
+  examples: |
+  - list
+  - to do list
+  - set
+  - folder
+  - tag
+  - bookmark
 
 - intent: set_deadline
   examples: |

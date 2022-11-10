@@ -232,7 +232,7 @@ class ActionUpdate(Action):
         tag = tracker.get_slot("number")
         activities = tracker.get_latest_entity_values("activity")
         con, cur = get_connetion()
-
+        old_activity, new_activity= None
         # update activity by (username, category, activity)
         if tag is None:
             category.lower()
