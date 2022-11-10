@@ -35,7 +35,7 @@ rules:
   - active_loop: items_form
   - active_loop: null
   - action: action_insert
-  - action: utter_ask_whatelse
+
 
 - rule: Insert deadline
   condition:
@@ -45,19 +45,19 @@ rules:
   - intent: affirm
   - action: deadline_form
   - action: action_insert
-  - action: utter_ask_whatelse
+  
 
 - rule: Delete
   steps:
   - intent: remove
   - action: action_remove
-  - action: utter_ask_whatelse
+ 
 
 - rule: Update
   steps:
   - intent: update
   - action: action_update
-  - action: utter_ask_whatelse
+
 
 # - rule: Delete activity 
 #   steps:

@@ -174,7 +174,6 @@ stories:
     - reminder: null
   - slot_was_set:
     - logical: null
-  - action: utter_ask_whatelse
   - intent: insert
     entities:
     - activity: dance lesson
@@ -220,7 +219,6 @@ stories:
     - reminder: null
   - slot_was_set:
     - logical: null
-  - action: utter_ask_whatelse
   - intent: insert
     entities:
     - activity: buy a bag
@@ -258,4 +256,3 @@ stories:
     - reminder: null
   - slot_was_set:
     - logical: null
-  - action: utter_ask_whatelse
