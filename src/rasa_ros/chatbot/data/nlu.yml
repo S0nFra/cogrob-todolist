@@ -477,7 +477,7 @@ nlu:
 
 - intent: remove
   examples: |
-    - remove the activity named [egg](activity)
+    - remove the activity named [egg](activity) in the category [kitchen](category)
     - remove from [items] (category), [hammer] (activity)
     - remove from [friends] (category), [Lucia] (activity)
     - remove [call Gianluca](activity) from [things to be done](category)

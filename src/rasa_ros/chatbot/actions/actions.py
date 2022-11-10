@@ -84,6 +84,7 @@ class ActionInsert(Action):
                 return reset_slots()
             except sql.IntegrityError as err:
                 dispatcher.utter_message(text = "This activity already exists, try something else")
+                return reset_slots()
             con.commit()
             con.close()
             dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" ")
@@ -122,12 +123,13 @@ class ActionRemove(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category").lower()
-        activity = tracker.get_slot("activity").lower()
+        category = tracker.get_slot("category")
+        activity = tracker.get_slot("activity")
         con, cur = get_connetion()
 
         # Remove category
         if category is not None and activity is None:
+            category.lower()
             query = f"delete from todolist where user=\'{username}\' and category = \'{category}\'"
             print(query)
 
@@ -142,7 +144,9 @@ class ActionRemove(Action):
             
             dispatcher.utter_message(text = "Perfect "+ username + "! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
-
+        elif category is None and activity is not None:
+            dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please rewrite the phrase specifying the category.")
+            return reset_slots()
         # Remove an activity
         query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
         print(query)
@@ -224,13 +228,14 @@ class ActionUpdate(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category").lower()
+        category = tracker.get_slot("category")
         tag = tracker.get_slot("number")
         activities = tracker.get_latest_entity_values("activity")
         con, cur = get_connetion()
 
         # update activity by (username, category, activity)
         if tag is None:
+            category.lower()
             for activity in activities:
                 activity = activity.lower()
                 if check_exists_activity(cur, username, category, activity):
