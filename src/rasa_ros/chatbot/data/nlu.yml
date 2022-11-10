@@ -207,6 +207,7 @@ nlu:
     - My name is [Christian](username)
     - My name is [Lucia](username)
     - My name is [Lory](username)
+    - My name is [Antonio](username)
     - Yes, I'm [Andrea](username)
 
 - intent: bot_challenge
@@ -281,11 +282,11 @@ nlu:
     - add [go running](activity) in [sport](category) 
     - add [swimming pool](activity) in [sport](category) 
     - add [take the gym bag](activity) in [sport](category) 
-    - add [book at the restaurant](activity) in [remainder](category) 
-    - add [go to the dentist](activity) in [remainder](category) [monday 15th](deadline)
-    - add [call Angela](activity) activity in [remainder](category) category
-    - add [go shopping](activity) activity in [remainder](category) 
-    - add [Mario's birthday](activity) item in [remainder](category) 
+    - add [book at the restaurant](activity) in reminder](category) 
+    - add [go to the dentist](activity) in reminder](category) [monday 15th](deadline)
+    - add [call Angela](activity) activity in reminder](category) category
+    - add [go shopping](activity) activity in reminder](category) 
+    - add [Mario's birthday](activity) item in reminder](category) 
     - add [ice cream](activity) element in [shopping](category) 
     - add [pizza](activity) in [shoppinh(category) category
     - can you add [chips and fish](activity) in [shopping](category) 
@@ -296,6 +297,10 @@ nlu:
     - Perfect, now i have decided to add [metting](activity) in [work](category)
     - Perfect, now i have decided to add [dancing shoes](activity) in [shopping list](category)
     - add
+    - I want to add a new activity called [Sara's birthday](activity) in [reminder](category)
+    - Please add [dance lesson](activity) in [dessert](category)
+    - The deadline is in 3 hours
+    - please create a new avtivity called [buy a bag](activity) in single'[s day sales]{"entity": "category", "value": "single's day sales"}
     - insert   
     - insert [submit cogrob midterm]{"entity":"activity"} in the category [commitment]{"entity":"category"}
     - insert [read last Marc's article]{"entity":"activity"} in the category [afternoon]{"entity":"category"}
@@ -312,11 +317,11 @@ nlu:
     - in [top five singers]{"entity":"category"} insert [Mengoni]{"entity":"activity"}
     - in [songs to listen to]{"entity":"category"} insert [Sky]{"entity":"activity"}
     - in [allert]{"entity":"category"} insert [midterm]{"entity":"activity"}
-    - in [remainder]{"entity":"category"} insert [buy Christrmas presents]{"entity":"activity"} 
+    - in reminder]{"entity":"category"} insert [buy Christrmas presents]{"entity":"activity"} 
     - in [english course]{"entity":"category"} insert [Present and past perfect]{"entity":"activity"}
     - I wanna add
     - i want to add
-    - i want to add [play piano]{"entity":"activity"} in [remainder]{"entity":"category"}
+    - i want to add [play piano]{"entity":"activity"} in reminder]{"entity":"category"}
     - i want add a [banana]{"entity":"activity"} in [shopping list]{"entity":"category"} ? 
     - can you insert [The gone girl]{"entity":"activity"} in the [movies to see]{"entity":"category"} category ?
     - can you insert [call Giulia](activity) in [what i have to do]{"entity":"category"}?
@@ -416,7 +421,7 @@ nlu:
     - add new category [shopping list](category)
     - add [supermarket list](category) category
     - add category named [butcher list](category) 
-    - add [remainder](category) category
+    - add reminder](category) category
     - add [doctors appointment](category) list 
     - add category called [playstation games](category)
     - add a category with name [math homework](category) 
@@ -499,12 +504,12 @@ nlu:
     - delete [math homework](activity) from [daily homeworks](category) category
     - delete [edit code](activity) from [new project](category) category
     - delete [mayonaisse sauce](activity) from [shopping list](category)
-    - eliminate [Emily's birthday](category) category    
-    - eliminate [replay to Jhon's mail](activity) form [important](category) category
-    - eliminate [linear regression](activity) form [lessons](category)
+    - eliminate [Emily's birthday](category) category
+    - eliminate [replay to Jhon's mail](activity) from [important](category) category
+    - eliminate [linear regression](activity) form [Data analysis lessons](category)
     - take out [load dishwasher](activity) form [after lunch](category)
-    - take out [brainstorm](activity) from [saturday](category) category
-    - take out [answer Dad's e-mail](activity) in [personal remainder](category)
+    - take out [brainstorming](activity) from [saturday](category) category
+    - take out [answer Dad's e-mail](activity) in [persona reminder](category)
     - take out [pizza](activity) in [saturday plans](category)
     - remove [bookstor - printer cartridge](activity) from [Friday things to do](category)
     - eliminate [blue raspberry](activity) from [shopping list] (category)
@@ -514,52 +519,81 @@ nlu:
     - can you delete [Lucia](activity) in [group for the birthday gift](category)?
     - can you delete [Marco](activity) in [group for the birthday gift](category)?
     - can you eliminate [Maria Rosaria](activity) in [group for the birthday gift](category)?
-    - remove [one](activity) [kiwi](category)
+    - remove [update project plans](activity) in [in progress](category)
     - i don't want [apples](activity) into [dinner](category). Can you eliminate that?
+    - i don't want [send out meeting request](activity) into [medium priority](category). Can you eliminate that?
+    - i don't want [email teams for update](activity) into [high priority](category). Can you eliminate that?
+    - i don't want [book conference room](activity) into [low priority](category). Can you eliminate that?
     - i don't need [humburger](activity) anymore. Can you eliminate in the [list of the supermarket](category) category?
-    - i don't want [to go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
-    - delete [sign the check](activity)
-    - eliminate [sweet cherry](activity)
-    - Can you delete [pumpkin](activity)?
-    - Can you delete [tennis](activity) activity?
-    - delete [apples](activity)
-    - eliminate
-    - take out
-    - remove [christmas gifts](category) category
+    - i don't need [create a meeting agenda](activity) anymore. Can you eliminate in the [in progress](category) category?
+    - i don't need [contact service center](activity) anymore. Can you eliminate in the [in progress](category) category?
+    - i don't want [go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
+    - delete [verify project budget](activity) in [team project](category) category
+    - delete [answer teach team queries](activity) in [in progress](category) category
+    - delete [book for SPA](activity) in [birthday's presents](category) category
+    - eliminate [sweet cherry](activity) in [food](category)
+    - eliminate [ice cream](activity) in [shopping list](category)
+    - eliminate [cake](activity) in [dinner date](category)
+    - eliminate [fish and chips](activity) in [lanch with Meg](category)
+    - Can you delete [pumpkin](activity) in [halloween dinner](category)?
+    - Can you delete [tennis](activity) activity in [sport](category)?
+    - delete [apples](activity) in [shopping list](category)
+    - Please, I want to delete the item [guerra e pace](activity) in [best books 2022](category)
+    - Please, I want to delete the item [call me by your name](activity) in [reading book](category)
+    - Please, I want to delete the item [la solitudine dei numeri primi](activity) in [reading book](category)
+    - Please, I want to delete the item [list the new maneskin song](activity) in [reminder](category)
+    - Please, I want to delete the item [try risotto](activity) in [recipes](category)
+    - ok bot, now empty the [to take on the snow](category) category
+    - can you empty [math](category) category?
+    - if possible I would like to empty the category [shopping list](category)
+    - empty [useless things to mark](category)
+    - empty [moving house](category) section
+    - empty [preparation for the party](category)
+    - empty all the [things to fix](category) list
+    - empty [plants to water](category) section
+    - empty [recipes to try](category)
+    - can you empty the [books to read](category) category?
+    - can you eliminate [party](category) category?
+    - throws the whole section [cooked](category)
+    - remove [christmas gifts](category) category from the database
     - remove [shopping list](category) category
+    - remove [people to thank](category) class
     - remove [things to do](category) category
     - remove [place to visit](category) category
-    - remove
+    - remove [things to buy](category) section
+    - if possible, I would like to remove [music to listen to](category) section
     - delete [movies](category)
-    - delete
-    - delete
-    - delete
-    - delete
+    - delete [veterinary](category)
+    - delete [books to print](category) class
+    - I would like to delete [fruit to buy] class from the database
+    - please, can you delete the category [study](category)?
     - delete all the activity from [things to buy](category)
     - delete all the activity from [pizzeria management](category) 
     - delete whatever is in [Netflix list](category)
     - delete whatever is in the [university](category) list
-    - delete everything from 
-    - remove all the activity in the [tasks](category) list
+    - delete everything from [appointments](category)
+    - delete everything contained in [sport](category)
+    - well, now can you delete all from [shopping list](category)?
+    - remove all the activity in the [tasks](category) class
     - remove all the activity in [school](category)
-    - remove whatever is in the [meeting](category) list
+    - remove whatever is in the [meeting](category) section
     - remove whatever is in [shopping list](category)
     - remove everything in [stocks](category)
 
 - intent: show
   examples: |
     - can you show me the activities in the category [daily housework](category)?
-    - can you show me [dentist appointment](activity) in the category [daily remainder](category)?
-    - can you show me the deadline of [go to gym](activity) in the [daily remainder](category) category?
+    - can you show me [dentist appointment](activity) in the category [dail reminder](category)?
+    - can you show me the deadline of [go to gym](activity) in the [dail reminder](category) category?
     - can you show me the deadline of [midterm cogrob](activity) in the [monthly deadlines](category)?
     - can you show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
     - can you show me [blind date](activity) in [monday](category)?
     - can you show me [world Cup](activity) in [sport](category)?
     - can you show me [Volley Cup](activity) in [sport](category)?
-    - can you show me [remainder](category) with [call granfather](activity) deadline?
+    - can you show me reminder](category) with [call granfather](activity) deadline?
     - can you show me [for Alex](category) with [call granfather](activity) deadline?
     - Please, show me [to remaind](category) category with [doctors appointment](activity) deadline?
-    - Please, show me [remainder](category) with [call granfather](activity) deadline?
+    - Please, show me reminder](category) with [call granfather](activity) deadline?
     - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
     - show me [apples](activity) into [dinner](category)
     - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
@@ -570,7 +604,7 @@ nlu:
     - Please, show me [shopping list](category) category
     - Please, show me [clean hause](category) category
     - Please, show me [to do](category)
-    - Please, show me [remainder](category)
+    - Please, show me reminder](category)
     - show me 
     - see
     - view
@@ -586,7 +620,7 @@ nlu:
     - what i have [holiday plain](category)?
     - ok, now show me [the plain](activity)
     - can i see my [house things](category)?
-    - can you show [remainder](category)?
+    - can you show reminder](category)?
     - i want to see all categories
     - I want to see all categories, can yuo show me that?
     - Can you display [things to buy](category)?
@@ -640,9 +674,9 @@ nlu:
     - change [take the gym bag](activity) in [sport](category) in [bring the headphone](activity)
     - change the tag 2 in [delete overwatch]
     - change the tag 10 in [go to the meccanic]
-    - change the activity [call Angela](activity) activity in [remainder](category) category to [call father](activity)
+    - change the activity [call Angela](activity) activity in reminder](category) category to [call father](activity)
     - change the tag 4 to [study](activity)
-    - change the activity [Mario's birthday](activity) item in [remainder](category) with [take the present](activity)
+    - change the activity [Mario's birthday](activity) item in reminder](category) with [take the present](activity)
     - change the activity [ice cream](activity) element in [shopping](category) with [piadina](activity) 
     - change the tag 12 to [buy a computer](activity)
     - can you change the activity [chips and fish](activity) in [shopping](category) with [burrito](activity)
@@ -663,7 +697,7 @@ nlu:
     - update [book hotels for Rome]{"entity":"activity"} to [book hotel for Milano](activity) in category [reservations](category)    
     - I wanna change
     - i want to change
-    - i want to change [play piano]{"entity":"activity"} in [remainder](activity) with [clean the room](activity)
+    - i want to change [play piano]{"entity":"activity"} in reminder](activity) with [clean the room](activity)
     - i want change a [banana]{"entity":"activity"} in [shopping list](category) with [apple](activity)  
     - I want to replace the activity at tag 20 to [create model for cogrob](activity) item 
     - I want to change at tag 6 with [pay off a debt](activity)
@@ -699,7 +733,7 @@ nlu:
     - change deadline for [banana bread](activity) in [after lunch](category) category to 01/01/2019 01:16 PM
     - change deadline for [to sleep](activity) in [chemist list](category) category to 01/19/2015 03:45 AM
     - change deadline for [english course](activity) in [appointment](category) to 07/11/2014 10:14 AM
-    - change deadline for [chips and fish](activity) in [remainder](category) to 12/26/2019 02:13 AM
+    - change deadline for [chips and fish](activity) in reminder](category) to 12/26/2019 02:13 AM
     - change deadline for [football match](activity) in [supermarket list](category) to 12/29/2020 11:06 PM
     - update deadline for [buy protein](activity) activity in [chemist list](category) category to 10/21/2019 10:36 AM
     - update deadline for [piano lesson](activity) in [clean hause](category) to 06/16/2009 03:57 PM
@@ -732,7 +766,7 @@ nlu:
     - reset deadline for [return books to library](activity) in [christmas](category) to 08/15/2016 11:50 PM
     - reset deadline for [need new parking sticke](activity) in [dreams](category) category to 03/21/2009 04:32 PM
     - reset deadline for [study](activity) in [places to see](category) category to 09/27/2011 10:23 PM
-    - reset deadline for [load dishwasher](activity) in [remainder](category) category to 06/14/2012 10:22 AM
+    - reset deadline for [load dishwasher](activity) in reminder](category) category to 06/14/2012 10:22 AM
     - reset deadline for [buy protein](activity) activity in [christmas gifts](category) category to 11/07/2009 11:51 AM
     - reset deadline for [make muffin](activity) in [places to see](category) to 09/04/2023 05:02 AM
     - reset deadline for [dentist appointment](activity) in [work plain](category) to 10/11/2023 05:53 AM
@@ -751,7 +785,7 @@ nlu:
     - reset deadline in [cogrob midterm](category) for [study the ereditariety on chapter 3](activity) activity to 02/18/2008 06:26 PM
     - reset deadline in [my music](category) for [dancing shoes](activity) activity to 02/07/2019 11:57 AM
     - reset deadline in [top five singers](category) for [see a movie](activity) activity to 01/06/2016 11:06 PM
-    - reset deadline in [remainder](category) for [brainstorm](activity) activity to 03/10/2009 05:59 AM
+    - reset deadline in reminder](category) for [brainstorm](activity) activity to 03/10/2009 05:59 AM
     - reset deadline in [bakery list](category) category for [meeting](activity) activity to 01/12/2012 05:10 PM
     - reset deadline in [best places to visit](category) category for [swimming pool](activity) activity to 02/10/2021 09:19 AM
     - reset deadline in [monday](category) for [sign the check](activity) to 11/09/2013 12:19 AM
@@ -894,13 +928,13 @@ nlu:
     - set a reminder for [go to the beautician](activity) in [songs to listen to](category) category 
     - set a reminder for [chips and fish](activity) activity in [things to be done](category) category 
     - set a reminder for [check email](activity) activity in [list](category) category 
-    - set a reminder for [remainder](activity) activity in [things to do](category) 
+    - set a reminder for reminder](activity) activity in [things to do](category) 
     - for [holidays to remember](activity) in [regular meeting](category) set a reminder
     - for [design ad campaign graphics](activity) in [regular meeting (budget reading)](category) category set a reminder
     - for [buy toys for kids](activity) in [new project](category) category set a reminder
     - for [buy toys for kids](activity) activity in [reservations](category) set a reminder
     - for [visit the theater](activity) in [telegram offers](category) set a reminder
-    - for [remainder](activity) activity in [daily homeworks](category) category set a reminder
+    - for reminder](activity) activity in [daily homeworks](category) category set a reminder
     - for [social media scheduling](activity) in [class schedule](category) set a reminder
     - for [shere photo](activity) activity in [grocery list](category) category set a reminder
     - for [sign the check](activity) in [cogrob midterm](category) category set a reminder
@@ -910,7 +944,7 @@ nlu:
     - for [rent a boat](activity) activity in [class schedule](category) set a reminder
     - for [submit data analysis](activity) activity in [thing to do today](category) set a reminder
     - for [crossfit class](activity) in [saturday plans](category) category set a reminder
-    - for [go to the beautician](activity) activity in [remainder](category) category set a reminder
+    - for [go to the beautician](activity) activity in reminder](category) category set a reminder
     - for [rent a boat](activity) activity in [library reminder](category) category set a reminder
     - for [appointments](activity) in [work plain](category) set a reminder
     - for [buy a recorder](activity) in [cogrob midterm](category) category set a reminder
@@ -945,7 +979,7 @@ nlu:
     - set a reminder for activity tagged with 27
     - set a reminder for activity tagged with 5
 
-#    - in [remainder](activity) update [buy Christrmas presents]{"entity":"activity"} 
+#    - in reminder](activity) update [buy Christrmas presents]{"entity":"activity"} 
 #    - in [english course](activity) update [Present and past perfect]{"entity":"activity"}
 #    - can you update [The gone girl]{"entity":"activity"} in the [movies to see](category) category ?
 #    - can you update [call Giulia](activity) in [what i have to do](category)?
@@ -1042,7 +1076,7 @@ nlu:
 #    - change new category [shopping list](category)
 #    - change [supermarket list](category) category
 #    - change category named [butcher list](category) 
-#    - change [remainder](category) category
+#    - change reminder](category) category
 #    - change [doctors appointment](category) list 
 #    - change category called [playstation games](category)
 #    - change a category with name [math homework](category) 
@@ -1070,6 +1104,29 @@ nlu:
 #    - update a folder named [science homework](activity) 
 #    - update the category [appointments](activity)
 #    - update a list [classification animals](activity)
+
+#- Which activity is about to expire? 
+
+- synonym: add
+  examples: |
+    - insert
+    - create
+
+- synonym: activity
+  examples: |
+    - element
+    - item
+
+- synonym: category
+  examples: |
+    - list
+    - to do list
+    - set
+    - folder
+    - class
+    - section 
+  #  - bookmark
+  #  - tag 
 
 - intent: set_deadline
   examples: |

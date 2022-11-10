@@ -121,3 +121,138 @@ stories:
 #  - slot_was_set:
 #    - requested_slot: deadline
 #  - action: action_insert
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: Antonio
+  - slot_was_set:
+    - username: Antonio
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: insert
+    entities:
+    - activity: Sara's birthday
+    - category: reminder
+  - slot_was_set:
+    - activity: Sara's birthday
+  - slot_was_set:
+    - category: reminder
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - category: reminder
+  - slot_was_set:
+    - activity: Sara's birthday
+  - slot_was_set:
+    - category: reminder
+  - slot_was_set:
+    - activity: Sara's birthday
+  - slot_was_set:
+    - requested_slot: logical
+  - slot_was_set:
+    - logical: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - intent: insert
+    entities:
+    - activity: dance lesson
+    - category: dessert
+  - slot_was_set:
+    - activity: dance lesson
+  - slot_was_set:
+    - category: dessert
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - category: dessert
+  - slot_was_set:
+    - activity: dance lesson
+  - slot_was_set:
+    - category: dessert
+  - slot_was_set:
+    - activity: dance lesson
+  - slot_was_set:
+    - requested_slot: logical
+  - intent: affirm
+  - action: deadline_form
+  - active_loop: deadline_form
+  - slot_was_set:
+    - requested_slot: deadline
+  - slot_was_set:
+    - deadline: '2022-11-10T21:13:00.000+01:00'
+  - slot_was_set:
+    - requested_slot: reminder
+  - slot_was_set:
+    - reminder: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - intent: insert
+    entities:
+    - activity: buy a bag
+    - time: '2022-11-10T18:26:38.000+01:00'
+    - category: single's day sales
+  - slot_was_set:
+    - activity: buy a bag
+  - slot_was_set:
+    - category: single's day sales
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - category: single's day sales
+  - slot_was_set:
+    - activity: buy a bag
+  - slot_was_set:
+    - category: single's day sales
+  - slot_was_set:
+    - activity: buy a bag
+  - slot_was_set:
+    - requested_slot: logical
+  - slot_was_set:
+    - logical: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null

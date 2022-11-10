@@ -36,6 +36,7 @@ rules:
   - active_loop: null
   - action: action_insert
 
+
 - rule: Insert deadline
   condition:
   - slot_was_set:
@@ -44,16 +45,19 @@ rules:
   - intent: affirm
   - action: deadline_form
   - action: action_insert
+  
 
 - rule: Delete
   steps:
   - intent: remove
   - action: action_remove
+ 
 
 - rule: Update
   steps:
   - intent: update
   - action: action_update
+
 
 # - rule: Delete activity 
 #   steps:
@@ -74,6 +78,7 @@ rules:
   steps:
   - intent: show
   - action: action_show
+  - action: utter_ask_whatelse
 
 # - rule: If deadline flag is positive you have to ask it
 #   steps:
