@@ -826,17 +826,17 @@ nlu:
 
 - synonym: activity
   examples: |
-  - element
-  - item
+    - element
+    - item
 
 - synonym: category
   examples: |
-  - list
-  - to do list
-  - set
-  - folder
-  - tag
-  - bookmark
+    - list
+    - to do list
+    - set
+    - folder
+    - tag
+    - bookmark
 
 - intent: set_deadline
   examples: |

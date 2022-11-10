@@ -40,11 +40,12 @@ def get_connetion(path = DB_PATH):
 
 def check_exists_activity(cur,username=None, category=None, activity=None, tag = None):
     if tag is not None:
-        query = f"select * from todolist where tag=\'{tag}\'"
+        query = f"select * from todolist where tag = \'{tag}\'"
+        res = cur.execute(query)
     else:
-        query = f"select * from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
-    
-    res = cur.execute(query)
+        query = f"select * from todolist where user= ? and category = ? and activity = ?"
+        res = cur.execute(query,(username,category,activity))
+
     return len(res.fetchall()) != 0
     
 def reset_slots(slots = ["category","activity","deadline","reminder","logical"]):
@@ -74,11 +75,11 @@ class ActionInsert(Action):
         con, cur = get_connetion()
 
         if logical == False:
-            query = f"insert into todolist(user, category, activity, deadline, reminder) values(\'{username}\',\'{category}\',\'{activity}\', \'None\', False)"
+            query = f"insert into todolist(user, category, activity, deadline, reminder) values(?,?,?, \'None\', False)"
             print(query)
             
             try:
-                res = cur.execute(query)
+                res = cur.execute(query,(username,category,activity))
             except sql.OperationalError as e:
                 dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
                 return reset_slots()
@@ -91,13 +92,15 @@ class ActionInsert(Action):
             
             return reset_slots()
         else:
-            query = f"insert into todolist(user, category, activity, deadline, reminder) values(\'{username}\',\'{category}\',\'{activity}\',\'{deadline}\',\'{reminder}\')"
+            query = "insert into todolist(user,category,activity,deadline,reminder) values(?,?,?,?,?)"
+
             print(query)
 
+
             try:
-                res = cur.execute(query)
+                res = cur.execute(query,(username,category,activity,deadline,reminder))
             except sql.OperationalError as e:
-                dispatcher.utter_message(text = "Somethigs goes wrong! maybe already exists")
+                dispatcher.utter_message(text = e)
                 return reset_slots()
             except sql.IntegrityError as err:
                 dispatcher.utter_message(text = "This activity already exists, try something else")
@@ -130,10 +133,10 @@ class ActionRemove(Action):
         # Remove category
         if category is not None and activity is None:
             category.lower()
-            query = f"delete from todolist where user=\'{username}\' and category = \'{category}\'"
+            query = f"delete from todolist where user= ? and category = ?"
             print(query)
 
-            res = cur.execute(query)
+            res = cur.execute(query,(username,category))
 
             # cur.rowcount -> returns the number of rows involved in the last query
             if cur.rowcount == 0:
@@ -148,10 +151,10 @@ class ActionRemove(Action):
             dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please rewrite the phrase specifying the category.")
             return reset_slots()
         # Remove an activity
-        query = f"delete from todolist where user=\'{username}\' and category = \'{category}\' and activity = \'{activity}\'"
+        query = f"delete from todolist where user= ? and category = ? and activity = ?"
         print(query)
 
-        res = cur.execute(query)
+        res = cur.execute(query,(username,category,activity))
 
         if cur.rowcount == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no activity")
@@ -182,10 +185,10 @@ class ActionShow(Action):
         # given the category show me all the activities contained in it
         if category is not None:
             category = category.lower()
-            query = f"select tag, activity, deadline, reminder from todolist where user=\'{username}\' and category = \'{category}\'"
+            query = f"select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
             print(query)
 
-            res = cur.execute(query)
+            res = cur.execute(query,(username,category))
             tmp = res.fetchall()
             if len(tmp) == 0:
                 dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
@@ -199,9 +202,9 @@ class ActionShow(Action):
             return reset_slots()           
 
         # show me all categories for the current user
-        query = f"select category from todolist where user=\'{username}\'"
+        query = f"select category from todolist where user= ?"
         print(query)
-        res = cur.execute(query)
+        res = cur.execute(query,(username,))
         tmp = set(res.fetchall())
         if len(tmp) == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no categories")
@@ -232,7 +235,8 @@ class ActionUpdate(Action):
         tag = tracker.get_slot("number")
         activities = tracker.get_latest_entity_values("activity")
         con, cur = get_connetion()
-        old_activity, new_activity= None
+        old_activity = None
+        new_activity = None
         # update activity by (username, category, activity)
         if tag is None:
             category.lower()
@@ -242,20 +246,21 @@ class ActionUpdate(Action):
                     old_activity = activity
                 else:
                     new_activity = activity
-            query = f"update todolist set activity=\'{new_activity}\' where user=\'{username}\' and category =\'{category}\' and activity = \'{old_activity}\'"
+            query = f"update todolist set activity= ? where user= ? and category = ? and activity = ?"
             msg = f"The {old_activity} activity has been replaced successfully with {new_activity} activity"
-
+            res = cur.execute(query, (new_activity,username,category,old_activity))
         # update activity by tag
         elif check_exists_activity(cur, tag=tag):
             new_activity = next(activities).lower()
-            query = f"update todolist set activity=\'{new_activity}\' where tag=\'{tag}\'"
+            query = f"update todolist set activity= ? where tag= ?"
             msg = f"The activity tagged with {tag} has been replaced successfully with {new_activity} activity"
+            res = cur.execute(query,(new_activity,tag))
         
         print(query)
         if query is None:
             dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
         
-        res = cur.execute(query)
+
         con.commit()
         con.close()
         dispatcher.utter_message(text = msg)
