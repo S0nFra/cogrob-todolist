@@ -207,6 +207,7 @@ nlu:
     - My name is [Christian](username)
     - My name is [Lucia](username)
     - My name is [Lory](username)
+    - My name is [Antonio](username)
     - Yes, I'm [Andrea](username)
 
 - intent: bot_challenge
@@ -296,6 +297,10 @@ nlu:
     - Perfect, now i have decided to add [metting](activity) in [work](category)
     - Perfect, now i have decided to add [dancing shoes](activity) in [shopping list](category)
     - add
+    - I want to add a new activity called [Sara's birthday](activity) in [reminder](category)
+    - Please add [dance lesson](activity) in [dessert](category)
+    - The deadline is in 3 hours
+    - please create a new avtivity called [buy a bag](activity) in single'[s day sales]{"entity": "category", "value": "single's day sales"}
     - insert   
     - insert [submit cogrob midterm]{"entity":"activity"} in the category [commitment]{"entity":"category"}
     - insert [read last Marc's article]{"entity":"activity"} in the category [afternoon]{"entity":"category"}
@@ -835,8 +840,10 @@ nlu:
     - to do list
     - set
     - folder
-    - tag
-    - bookmark
+    - class
+    - section 
+  #  - bookmark
+  #  - tag 
 
 - intent: set_deadline
   examples: |
