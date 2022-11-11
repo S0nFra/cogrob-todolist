@@ -20,8 +20,7 @@ entities:
   - activity
   - category
   - username
-  - time # <- time è l'entità generata da duckling per i tipi datatime
-  - number # <- num è l'entità generata da duckling per i numeri
+  - time # <- time is the duckling-generated entity for datetime types
   
 actions:
   - action_insert
@@ -50,9 +49,6 @@ slots:
     type: text
     influence_conversation: false
   deadline:
-    type: any
-    influence_conversation: false
-  number:
     type: any
     influence_conversation: false
   reminder:
