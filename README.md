@@ -1,6 +1,6 @@
 # Cognitive Robotics
 
-## ROS setup
+## ROS Setup
 
 Installazione di ROS
 
@@ -47,10 +47,16 @@ Installazione del modello utilizzato
 python3 -m spacy download en_core_web_md
 ```
 
-Scaricare e preparare Duckling
+
+
+### Duckling
+
+Duckling è un extractor per RASA da noi utilizzato per estrarre entità temporali come la deadline. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](https://rasa.com/docs/rasa/2.x/components#ducklingentityextractor).
+
+Seguire i seguenti comandi per la configurazione. Attenersi ai path riportati.
 
 ```bash
-# Dependecies
+# Dependecies for Duckling
 wget -qO- https://get.haskellstack.org/ | sh 
 sudo apt install libicu-dev
 sudo apt install libpcre3-dev
@@ -64,19 +70,29 @@ stack build
 
 
 
-## Setup progetto
+## Run project
 
+Rendere gli script di lancio eseguibili se non dovessero esserlo
 
-
-Rendere gli script di lancio eseguibili
-
-```
+```bash
 chmod u+x cogrob-todolist/src/rasa_ros/scripts/*
 ```
 
-Una volta recati nella proprio ROS worksapace
+A questo punto il setup è completo. Per lanciare il progetto dalla workspace ROS eseguire i seguenti comandi:
 
-```
+```bash
+cd cogrob-todolist # workspace ROS
+source devel/setup.bash
 roslaunch rasa_ros chatbot.launch
 ```
 
+
+
+# Contacts - Team 6
+
+| Student            | E-mail | Matricola |
+| ------------------ | ------ | --------- |
+| Mario Amato        | m.amato72@studenti.unisa.it | 0622701670 |
+| Margherita Avitabile   | m.avitabile6@studenti.unisa.it | 0622701825 |
+| Lucia Battipaglia| l.battipaglia6@studenti.unisa.it | 0622701758 |
+| Francesco Sonnessa | f.sonnessa@studenti.unisa.it | 0622701672 |
