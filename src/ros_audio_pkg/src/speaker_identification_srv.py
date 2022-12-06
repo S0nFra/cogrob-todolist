@@ -20,11 +20,13 @@ class SpeakerIdentification():
         self.model = get_deep_speaker(os.path.join(REF_PATH,'deep_speaker.h5'))
         # Load existring embedding if exists
         self.data = self._load_data()
-        self.identity = None
+        self.pred_identity = None
         self.current_user = None
-        self.reidentification_service = None
-        self.current_user_service = None
         self.queue = []
+        
+        # Service
+        self.get_predicted_identity = None
+        self.set_current_user = None        
         
     def _load_data(self):
         try:
@@ -45,10 +47,10 @@ class SpeakerIdentification():
             print("[RE-IDENTIFICATION] Can't save the state.")
         
     def start(self):
-        rospy.init_node('speaker_id_node')
-        self.get_predicted_identity = rospy.Service('speaker_identification/get_predicted_identity', Reidentification, self._get_predicted_identity)
-        self.set_current_user = rospy.Service('speaker_identification/set_current_user', SetCurrentUser, self._set_current_user)
-        self.reset_user = rospy.Service('speaker_identification/reset_user', ResetUser, self._reset_user)
+        rospy.init_node('speaker_reidentification_node')
+        self.get_predicted_identity = rospy.Service('speaker_reidentification/get_predicted_identity', Reidentification, self._get_predicted_identity)
+        self.set_current_user = rospy.Service('speaker_reidentification/set_current_user', SetCurrentUser, self._set_current_user)
+        self.reset_user = rospy.Service('speaker_reidentification/reset_user', ResetUser, self._reset_user)
         rospy.Subscriber("voice_data", Int16MultiArray, self._identify)
         rospy.spin()
         
@@ -73,9 +75,9 @@ class SpeakerIdentification():
             emb_voice = np.repeat(ukn, len(self.data['X']), 0)
             cos_dist = batch_cosine_similarity(np.array(self.data['X']), emb_voice)
             # Matching
-            self.identity = dist2id(cos_dist, self.data['y'], TH, mode='avg')
+            self.pred_identity = dist2id(cos_dist, self.data['y'], TH, mode='avg')
             
-        if len(self.data['X']) == 0 or self.identity is None:
+        if len(self.data['X']) == 0 or self.pred_identity is None:
             
             self.queue.append(ukn[0])
             print('non ti so. len(queue):',len(self.queue))
@@ -90,12 +92,12 @@ class SpeakerIdentification():
                 self.queue.pop(0)
             pass
         
-        print('predicted:',self.identity)
+        print('predicted:',self.pred_identity)
         
         pass
     
     def _get_predicted_identity(self, data):
-        return ReidentificationResponse(self.identity)
+        return ReidentificationResponse(self.pred_identity)
     
     def _set_current_user(self, user:SetCurrentUserRequest):
         self.current_user = user.user
