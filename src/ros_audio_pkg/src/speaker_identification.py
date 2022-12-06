@@ -10,7 +10,6 @@ from identification.deep_speaker.audio import get_mfcc
 from identification.deep_speaker.model import get_deep_speaker
 from identification.utils import batch_cosine_similarity, dist2id
 
-
 REF_PATH = os.path.dirname(os.path.abspath(__file__))
 RATE = 16000
 
@@ -39,6 +38,8 @@ def listener():
 
         # Prediction
         ukn = model.predict(np.expand_dims(ukn, 0))
+        print('ukn type:', type(ukn))
+        print('ukn:',ukn)
 
         if len(X) > 0:
             # Distance between the sample and the support set
@@ -48,6 +49,8 @@ def listener():
             
             # Matching
             id_label = dist2id(cos_dist, y, TH, mode='avg')
+            print('id_label type:',type(id_label))
+            
         
         if len(X) == 0 or id_label is None:
             c = input("Voce non conosciuta. Vuoi inserire un nuovo campione? (S/N):")
