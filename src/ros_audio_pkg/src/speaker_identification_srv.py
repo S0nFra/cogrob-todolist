@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import rospy
-from std_msgs.msg import Int16MultiArray, Float32MultiArray
+from std_msgs.msg import Int16MultiArray, String, Float32MultiArray
 import numpy as np
 import pickle
 import os
@@ -49,9 +49,12 @@ class SpeakerIdentification():
         
     def start(self):
         rospy.init_node('speaker_reidentification_node')
-        self.get_predicted_identity = rospy.Service('speaker_reidentification/get_predicted_identity', Reidentification, self._get_predicted_identity)
-        self.set_current_user = rospy.Service('speaker_reidentification/set_current_user', SetCurrentUser, self._set_current_user)
-        self.reset_user = rospy.Service('speaker_reidentification/reset_user', ResetUser, self._reset_user)
+        # self.get_predicted_identity = rospy.Service('speaker_reidentification/get_predicted_identity', Reidentification, self._get_predicted_identity)
+        # self.set_current_user = rospy.Service('speaker_reidentification/set_current_user', SetCurrentUser, self._set_current_user)
+        # self.reset_user = rospy.Service('speaker_reidentification/reset_user', ResetUser, self._reset_user)
+        self.pub_predicted_identity = rospy.Publisher("predicted_identity", String, queue_size=10)
+        rospy.Subscriber("current_user", String, self._set_current_user)
+        rospy.Subscriber("reset_user", String, self._reset_user)
         rospy.Subscriber("voice_data", Int16MultiArray, self._identify)
         rospy.spin()
         
