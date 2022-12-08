@@ -32,7 +32,8 @@ class SpeakerIdentification():
         try:
             with open(os.path.join(REF_PATH, EMBEDDING_FILENAME), 'rb') as fh:
                 data = pickle.load(fh)
-            print(len(data['X']),set(data['y']))
+            for u in set(data['y']):
+                print(u,data['y'].count(u))
         except Exception as e:
             data = dict()
             data['X'] = list()
@@ -71,6 +72,7 @@ class SpeakerIdentification():
         ukn = self.model.predict(np.expand_dims(ukn, 0))
         
         if len(self.data['X']) > 0:
+            print("Try...")
             # Distance between the sample and the support set
             emb_voice = np.repeat(ukn, len(self.data['X']), 0)
             cos_dist = batch_cosine_similarity(np.array(self.data['X']), emb_voice)
@@ -87,10 +89,10 @@ class SpeakerIdentification():
                 for _ in range(len(self.queue)):
                     self.data['X'].append(self.queue.pop(0))
                     self.data['y'].append(self.current_user)
+                self._save_data()
                 # salva i dati
             elif len(self.queue) >= QUEUE_MAX:
                 self.queue.pop(0)
-            pass
         
         print('predicted:',self.pred_identity)
         
@@ -109,14 +111,19 @@ class SpeakerIdentification():
             for _ in range(len(self.queue)):
                 self.data['X'].append(self.queue.pop(0))
                 self.data['y'].append(self.current_user)
-        self._save_data()
+            self._save_data()
         self.current_user = None
+        self.pred_identity = None
+        
+        for u in set(self.data['y']):
+            print(u, self.data['y'].count(u))
+        
         return ResetUserResponse('[ACK]')        
 
 if __name__ == '__main__':
     try:
         identifcator = SpeakerIdentification()
-        identifcator.start()
         print('[RE-IDENTIFICATION] Start')
+        identifcator.start()
     except rospy.ROSInterruptException:
         pass
