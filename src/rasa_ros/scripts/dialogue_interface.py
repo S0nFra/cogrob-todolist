@@ -6,6 +6,16 @@ from std_msgs.msg import Int16MultiArray, String
 
 from ros_audio_pkg.srv import *
 
+PEPPER = False
+LANGUAGE = 'en-GB' # it-IT
+
+def t2s(text):
+    if PEPPER:
+        # parla pepper
+        pass
+    else:
+        print("[OUT]:",text)
+
 class S2TInterface():
     
     def __init__(self):
@@ -40,30 +50,38 @@ def main():
     # rospy.wait_for_service('reset_user')
     # reset_user = rospy.ServiceProxy('reset_user', Dialogue)
     
+    # rospy.Subscriber("voice_txt", String, terminal.callback)
     terminal = S2TInterface()
-    rospy.Subscriber("voice_txt", String, terminal.callback)
     print('[READY]')
     
     while not rospy.is_shutdown():
         id = rospy.wait_for_message("predicted_identity", String)
-        if id.data is not None:
+        print('>>>',id.data)
+        if id.data != '':
             dialogue_service('Hi')
             dialogue_service(f"I'm {id.data}")
         else:
-            dialogue_service('Hi')
-        
-        session = True
-        
+            bot_answer = dialogue_service('Hi')
+            # t2s(bot_answer)
+            user = rospy.wait_for_message("voice_txt", String)
+            print('0>>',user)
+            user = user.data.split(' ')[-1]
+            print('1>>',user)
+            # TODO: Inserire la pubblicazione dello user sul topic
+              
+        session = True        
         while session:
-            if terminal.changed:
-                message = terminal.get_text()
-                if message == 'exit': 
-                    break         
-                try:
-                    bot_answer = dialogue_service(message)
-                    terminal.set_text(bot_answer.answer)
-                except rospy.ServiceException as e:
-                    print("Service call failed: %s"%e)
+            message = rospy.wait_for_message("voice_txt", String)
+            if message.data == 'exit':
+                break
+            if 'bye' in message.data:
+                session = False
+                # TODO: far resettare lo user per accoglierne uno nuovo
+            try:
+                bot_answer = dialogue_service(message.data)
+                terminal.set_text(bot_answer.answer)
+            except rospy.ServiceException as e:
+                print("Service call failed: %s"%e)
     
     # bot_answer = dialogue_service(f"I'm {id}")
         

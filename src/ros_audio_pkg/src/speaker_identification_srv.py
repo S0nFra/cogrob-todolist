@@ -98,19 +98,21 @@ class SpeakerIdentification():
                 self.queue.pop(0)
         
         print('predicted:',self.pred_identity)
+        self.pub_predicted_identity.publish(self.pred_identity)
         
         pass
     
     def _get_predicted_identity(self, data):
-        return ReidentificationResponse(self.pred_identity)
+        return self.pred_identity
+        #return ReidentificationResponse(self.pred_identity)
     
-    def _set_current_user(self, user:SetCurrentUserRequest):
-        self.current_user = user.user
-        print('current user setted:',user.user)
-        return SetCurrentUserResponse(f'current user setted: {user.user}')
+    def _set_current_user(self, user):
+        self.current_user = user
+        print('current user setted:',user)
+        # return SetCurrentUserResponse(f'current user setted: {user.user}')
     
     def _reset_user(self, data):
-        if len(self.queue) > 0:
+        if len(self.queue) > 0 and self.current_user is not None:
             for _ in range(len(self.queue)):
                 self.data['X'].append(self.queue.pop(0))
                 self.data['y'].append(self.current_user)
@@ -120,8 +122,8 @@ class SpeakerIdentification():
         
         for u in set(self.data['y']):
             print(u, self.data['y'].count(u))
-        
-        return ResetUserResponse('[ACK]')        
+        print('User reset')
+        # return ResetUserResponse('[ACK]')        
 
 if __name__ == '__main__':
     try:
