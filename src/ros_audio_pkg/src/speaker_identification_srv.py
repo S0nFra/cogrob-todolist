@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import rospy
-from std_msgs.msg import Int16MultiArray, Float32MultiArray
+from std_msgs.msg import Int16MultiArray, String, Float32MultiArray
 import numpy as np
 import pickle
 import os
@@ -32,7 +32,8 @@ class SpeakerIdentification():
         try:
             with open(os.path.join(REF_PATH, EMBEDDING_FILENAME), 'rb') as fh:
                 data = pickle.load(fh)
-            print(len(data['X']),set(data['y']))
+            for u in set(data['y']):
+                print(u,data['y'].count(u))
         except Exception as e:
             data = dict()
             data['X'] = list()
@@ -48,9 +49,12 @@ class SpeakerIdentification():
         
     def start(self):
         rospy.init_node('speaker_reidentification_node')
-        self.get_predicted_identity = rospy.Service('speaker_reidentification/get_predicted_identity', Reidentification, self._get_predicted_identity)
-        self.set_current_user = rospy.Service('speaker_reidentification/set_current_user', SetCurrentUser, self._set_current_user)
-        self.reset_user = rospy.Service('speaker_reidentification/reset_user', ResetUser, self._reset_user)
+        # self.get_predicted_identity = rospy.Service('speaker_reidentification/get_predicted_identity', Reidentification, self._get_predicted_identity)
+        # self.set_current_user = rospy.Service('speaker_reidentification/set_current_user', SetCurrentUser, self._set_current_user)
+        # self.reset_user = rospy.Service('speaker_reidentification/reset_user', ResetUser, self._reset_user)
+        self.pub_predicted_identity = rospy.Publisher("predicted_identity", String, queue_size=10)
+        rospy.Subscriber("current_user", String, self._set_current_user)
+        rospy.Subscriber("reset_user", String, self._reset_user)
         rospy.Subscriber("voice_data", Int16MultiArray, self._identify)
         rospy.spin()
         
@@ -71,6 +75,7 @@ class SpeakerIdentification():
         ukn = self.model.predict(np.expand_dims(ukn, 0))
         
         if len(self.data['X']) > 0:
+            print("Try...")
             # Distance between the sample and the support set
             emb_voice = np.repeat(ukn, len(self.data['X']), 0)
             cos_dist = batch_cosine_similarity(np.array(self.data['X']), emb_voice)
@@ -87,36 +92,43 @@ class SpeakerIdentification():
                 for _ in range(len(self.queue)):
                     self.data['X'].append(self.queue.pop(0))
                     self.data['y'].append(self.current_user)
+                self._save_data()
                 # salva i dati
             elif len(self.queue) >= QUEUE_MAX:
                 self.queue.pop(0)
-            pass
         
         print('predicted:',self.pred_identity)
+        self.pub_predicted_identity.publish(self.pred_identity)
         
         pass
     
     def _get_predicted_identity(self, data):
-        return ReidentificationResponse(self.pred_identity)
+        return self.pred_identity
+        #return ReidentificationResponse(self.pred_identity)
     
-    def _set_current_user(self, user:SetCurrentUserRequest):
-        self.current_user = user.user
-        print('current user setted:',user.user)
-        return SetCurrentUserResponse(f'current user setted: {user.user}')
+    def _set_current_user(self, user):
+        self.current_user = user
+        print('current user setted:',user)
+        # return SetCurrentUserResponse(f'current user setted: {user.user}')
     
     def _reset_user(self, data):
-        if len(self.queue) > 0:
+        if len(self.queue) > 0 and self.current_user is not None:
             for _ in range(len(self.queue)):
                 self.data['X'].append(self.queue.pop(0))
                 self.data['y'].append(self.current_user)
-        self._save_data()
+            self._save_data()
         self.current_user = None
-        return ResetUserResponse('[ACK]')        
+        self.pred_identity = None
+        
+        for u in set(self.data['y']):
+            print(u, self.data['y'].count(u))
+        print('User reset')
+        # return ResetUserResponse('[ACK]')        
 
 if __name__ == '__main__':
     try:
         identifcator = SpeakerIdentification()
-        identifcator.start()
         print('[RE-IDENTIFICATION] Start')
+        identifcator.start()
     except rospy.ROSInterruptException:
         pass

@@ -6,6 +6,8 @@ import numpy as np
 from speech_recognition import AudioData
 import speech_recognition as sr
 
+from config import *
+
 # Initialize a Recognizer
 r = sr.Recognizer()
 
@@ -20,7 +22,7 @@ def callback(audio):
     audio_data = AudioData(data.tobytes(), 16000, 2)
 
     try:
-        spoken_text= r.recognize_google(audio_data, language='en-GB') # it-IT
+        spoken_text= r.recognize_google(audio_data, language=LANGUAGE) 
         print("Google Speech Recognition pensa tu abbia detto: " + spoken_text)
         pub1.publish(audio) # Publish audio only if it contains words
         pub2.publish(spoken_text)
