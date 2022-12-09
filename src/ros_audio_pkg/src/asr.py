@@ -16,6 +16,8 @@ rospy.init_node('speech_recognition', anonymous=True)
 pub1 = rospy.Publisher('voice_data', Int16MultiArray, queue_size=10)
 pub2 = rospy.Publisher('voice_txt', String, queue_size=10)
 
+# pub = rospy.Publisher("s2t_data",stt,queue_size=10)
+
 # this is called from the background thread
 def callback(audio):
     data = np.array(audio.data,dtype=np.int16)
@@ -26,6 +28,10 @@ def callback(audio):
         print("Google Speech Recognition pensa tu abbia detto: " + spoken_text)
         pub1.publish(audio) # Publish audio only if it contains words
         pub2.publish(spoken_text)
+        # data = stt()
+        # data.voice_data = audio
+        # data.voice_txt = spoken_text
+        # pub.publish(data)
     except sr.UnknownValueError:
         print("Google Speech Recognition non riesce a capire da questo file audio")
     except sr.RequestError as e:

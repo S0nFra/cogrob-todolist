@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   roscpp
-  message_generation
+  # message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -50,17 +50,14 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 # add_message_files(
 #   FILES
-#   Message1.msg
-#   Message2.msg
+#   message1.msg
 # )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  Reidentification.srv
-  SetCurrentUser.srv
-  ResetUser.srv
-)
+# add_service_files(
+#   FILES
+#   service1.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -70,10 +67,10 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
