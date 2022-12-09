@@ -33,15 +33,15 @@ def callback(username):
     
     con, cur = get_connetion()
     str = None
-    query = f"select deadline from todolist where reminder=true and user={username}"
+    query = f"select activity,deadline from todolist where reminder=true and user={username}"
     res = cur.execute(query)
     tmp = res.fetchall()
     if len(tmp) == 0:
         return None
     for el in tmp:
-        deadline = datetime.fromisoformat(el)
+        deadline = datetime.fromisoformat(el[1])
         if (deadline.replace(tzinfo=None) - timedelta(hours=1) < datetime.now()):
-            str += el + "\n"
+            str += el[0] + "\n"
     con.close()
     pub.publish(str)
     return str
