@@ -259,7 +259,7 @@ class ActionUpdate(Action):
         
         elif deadline is not None:
             # update deadline
-            activity = tracker.get_slot("activity").lower()
+            activity = tracker.get_slot("activity")
             if not check_exists_activity(cur, username, category, activity):
                 dispatcher.utter_message(text = "No activity with this deadline")
                 return reset_slots()

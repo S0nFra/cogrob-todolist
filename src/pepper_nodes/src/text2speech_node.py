@@ -17,18 +17,20 @@ class Text2SpeechNode:
         self.port = port
         self.session = Session(ip, port)
         self.tts = self.session.get_service("ALTextToSpeech")
+        
      
     '''
     Rececives a Text2Speech message and call the ALTextToSpeech service.
     The robot will play the text of the message
     '''
     def say(self, msg):
+        self.tts.setVolume(0.5)
         try:
-            self.tts.say(msg.speech)
+            self.tts.say(msg.speech, "English")
         except:
             self.session.reconnect()
             self.tts = self.session.get_service("ALTextToSpeech")
-            self.tts.say(msg.speech)
+            self.tts.say(msg.speech, "English")
         return "ACK"
     
     '''

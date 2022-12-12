@@ -4,13 +4,21 @@ import rospy
 from rasa_ros.srv import Dialogue, DialogueResponse
 from std_msgs.msg import Int16MultiArray, String
 
+from pepper_nodes.srv import Text2Speech, Text2SpeechRequest, Text2SpeechResponse
+
 from config import * 
 
-def t2s(text):
-    if PEPPER:
-        # parla pepper
-        pass
-    else:
+class T2SInterface():
+    
+    def __init__(self):
+        self.tts = rospy.ServiceProxy("/tts", Text2Speech)
+
+    def speech(self, text: str):
+        if PEPPER:
+            msg = Text2SpeechRequest()
+            msg.speech = text
+            resp = self.tts(text)
+            rospy.loginfo(resp.ack)
         print("[OUT]:",text)
 
 def main():
@@ -22,6 +30,7 @@ def main():
     
     pub_current_user = rospy.Publisher('current_user', String, queue_size=3)
     pub_reset_user = rospy.Publisher('reset_user', String, queue_size=3)
+    t2s = T2SInterface()
     
     # rospy.Subscriber("voice_txt", String, terminal.callback)
     # terminal = S2TInterface()
@@ -33,17 +42,17 @@ def main():
         if id.data != '':
             dialogue_service('Hi')
             bot_answer = dialogue_service(f"I'm {id.data}")
-            t2s(bot_answer.answer)
+            t2s.speech(bot_answer.answer)
         else:
             bot_answer = dialogue_service('Hi')
-            t2s(bot_answer.answer)
+            t2s.speech(bot_answer.answer)
             user = rospy.wait_for_message("voice_txt", String)
             print('0>>',user)
             user = user.data.split(' ')[-1]
             print('1>>',user)
             pub_current_user.publish(user)
             bot_answer = dialogue_service(f"I'm {user}")
-            t2s(bot_answer.answer)
+            t2s.speech(bot_answer.answer)
               
         session = True
         while session:
@@ -52,7 +61,7 @@ def main():
                 break
             try:
                 bot_answer = dialogue_service(message.data)
-                t2s(bot_answer.answer)
+                t2s.speech(bot_answer.answer)
             except rospy.ServiceException as e:
                 print("Service call failed: %s"%e)
             if 'bye' in message.data:

@@ -1,6 +1,6 @@
 import os
 
-PEPPER = False
+PEPPER = True
 LANGUAGE = 'en-GB' # it-IT
 
 ## Speaker identification variables

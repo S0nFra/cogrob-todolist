@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="ros_audio_pkg" type="reminder.py" name="reminder" output="screen"/>
+</launch>
