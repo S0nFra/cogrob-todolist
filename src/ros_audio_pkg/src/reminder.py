@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import pathlib
 import rospy
 from datetime import datetime,timedelta
 from std_msgs.msg import String
@@ -15,40 +16,74 @@ CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 );
 """
 
-def get_connetion(path = "Music\\database.db"):
-    con = sql.connect(path)
-    cur = con.cursor()
-
-    try:
-        cur.execute("SELECT * FROM todolist")
-    except sql.OperationalError as e:
-        print("Table creation...")
-        cur.execute(CREATE_TABLE_QUERY)
+class Reminder():
     
-    return con, cur
+    def __init__(self, db_path, username = None):
+        self.db_path = db_path
+        self.username = username        
 
-def callback(username):
-    pub = rospy.Publisher('give_reminder', String, queue_size=10)
-    rospy.init_node('reminder_node', anonymous=True)
+    def get_username(self):
+        if self.username is None:
+            raise RuntimeError
+        return self.username
     
-    con, cur = get_connetion()
-    str = None
-    query = f"select activity,deadline from todolist where reminder=true and user={username}"
-    res = cur.execute(query)
-    tmp = res.fetchall()
-    if len(tmp) == 0:
-        return None
-    for el in tmp:
-        deadline = datetime.fromisoformat(el[1])
-        if (deadline.replace(tzinfo=None) - timedelta(hours=1) < datetime.now()):
-            str += el[0] + "\n"
-    con.close()
-    pub.publish(str)
-    return str
+    def set_username(self, username):
+        self.username = username
 
-def listener():
-    stringa = rospy.Subscriber("give_reminder", String, callback('francesco'))
-    rospy.spin()
+    def _get_connetion(self):
+        con = sql.connect(self.db_path)
+        cur = con.cursor()
 
-if __name__ == '__main__':
-    listener()
+        try:
+            cur.execute("SELECT * FROM todolist")
+        except sql.OperationalError as e:
+            print("Table creation...")
+            cur.execute(CREATE_TABLE_QUERY)
+
+        return con, cur
+
+    def check_deadline(self):
+        con, cur = self._get_connetion()
+        expiring = dict()
+        query = f"select tag,category,activity,deadline from todolist where reminder=true and user=?"
+        # print('>>',query)
+        res = cur.execute(query,(self.get_username(),))
+        tmp = res.fetchall()
+        # print('>>',tmp)
+        if len(tmp) == 0:
+            return None
+        for el in tmp:
+            deadline = datetime.fromisoformat(el[3])
+            print("d>>",deadline,',',el)
+            if (deadline.replace(tzinfo=None) - timedelta(hours=1) < datetime.now()):
+                if el[1] in expiring:
+                    expiring[el[1]] += [el[2]]
+                else:
+                    expiring[el[1]] = [el[2]]
+                query = f"update todolist set reminder= 0 where tag = ?"
+                res = cur.execute(query,(el[0],))
+        con.commit()
+        con.close()
+        return expiring
+    
+    def remind_me(self):
+        resp = self.check_deadline()
+        
+        if resp is None:
+            return None
+        
+        to_say = ''
+        for category in resp:
+            to_say += f'In category {category} are expiring the following activities\n'
+            for activity in resp[category]:
+                to_say += activity + '\n'
+            to_say += '\n'
+        
+        return to_say
+        
+    
+# if __name__ == '__main__':
+#     DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../rasa_ros/database.db"
+#     r = Reminder(DB_PATH, 'francesco')
+#     # print(r.check_deadline())
+#     print(r.remind_me())

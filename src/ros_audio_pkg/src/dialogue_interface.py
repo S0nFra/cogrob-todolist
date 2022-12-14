@@ -7,6 +7,7 @@ from std_msgs.msg import Int16MultiArray, String
 from pepper_nodes.srv import Text2Speech, Text2SpeechRequest, Text2SpeechResponse
 
 from config import * 
+from reminder import Reminder
 
 class T2SInterface():
     
@@ -31,6 +32,7 @@ def main():
     pub_current_user = rospy.Publisher('current_user', String, queue_size=3)
     pub_reset_user = rospy.Publisher('reset_user', String, queue_size=3)
     t2s = T2SInterface()
+    reminder = Reminder(DB_PATH)
     
     # rospy.Subscriber("voice_txt", String, terminal.callback)
     # terminal = S2TInterface()
@@ -47,12 +49,17 @@ def main():
             bot_answer = dialogue_service('Hi')
             t2s.speech(bot_answer.answer)
             user = rospy.wait_for_message("voice_txt", String)
-            print('0>>',user)
+            # print('0>>',user)
             user = user.data.split(' ')[-1]
-            print('1>>',user)
+            # print('1>>',user)
             pub_current_user.publish(user)
             bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
+            
+        reminder.set_username(user)
+        rem = reminder.remind_me()
+        if rem is not None:
+            t2s.speech(rem)
               
         session = True
         while session:
@@ -63,58 +70,21 @@ def main():
                 bot_answer = dialogue_service(message.data)
                 t2s.speech(bot_answer.answer)
             except rospy.ServiceException as e:
-                print("Service call failed: %s"%e)
+                print("[CHATBOT] Service call failed: %s"%e)
             if 'bye' in message.data:
                 session = False
                 id = ''
                 user = None
                 pub_reset_user.publish('reset')
-                print('reset')
+                print('[CHATBOT] reset')
                 rospy.wait_for_message("predicted_identity", String)
+                
+            rem = reminder.remind_me()
+            if rem is not None:
+                t2s.speech(rem)
                 
 if __name__ == '__main__':
     try: 
         main()
     except rospy.ROSInterruptException:
-
-    ## Servizi per re-identification
-    # rospy.wait_for_service('get_predicted_identity')
-    # get_predicted_identity = rospy.ServiceProxy('get_predicted_identity', Dialogue)
-    
-    # rospy.wait_for_service('set_current_user')
-    # set_current_user = rospy.ServiceProxy('set_current_user', Dialogue)
-    
-    # rospy.wait_for_service('reset_user')
-    # reset_user = rospy.ServiceProxy('reset_user', Dialogue)
-    
-    
-    # bot_answer = dialogue_service(f"I'm {id}")
-        
-    # while not rospy.is_shutdown():
-    #     if terminal.changed:
-    #         message = terminal.get_text()            
-    #         if message == 'exit': 
-    #             break            
-    #         try:
-    #             bot_answer = dialogue_service(message)
-    #             terminal.set_text(bot_answer.answer)
-    #         except rospy.ServiceException as e:
-    #             print("Service call failed: %s"%e)
-
-# class S2TInterface():
-    
-#     def __init__(self):
-#         self.changed = False
-    
-#     def callback(self, data:String):
-#         self.message = data.data
-#         self.changed = True
-    
-#     def get_text(self):
-#         print("[IN]:", self.message)
-#         self.changed = False
-#         return self.message
-
-#     def set_text(self,text):
-#         print("[OUT]:",text)
         pass

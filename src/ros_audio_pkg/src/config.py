@@ -1,7 +1,8 @@
 import os
+import pathlib
 
 PEPPER = True
-LANGUAGE = 'en-GB' # it-IT
+LANGUAGE = 'en-US' # en-GB # it-IT
 
 ## Speaker identification variables
 REF_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -11,3 +12,5 @@ RATE = 16000
 TH = 0.75
 
 QUEUE_MAX = 5 # 10
+
+DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../rasa_ros/database.db"
