@@ -30,6 +30,9 @@ slots:
   activity:
     type: text
     influence_conversation: false
+  # new_activity:
+  #   type: text
+  #   influence_conversation: false
   category:
     type: text
     influence_conversation: false
@@ -74,8 +77,10 @@ responses:
   - text: Please, tell me the category
   utter_ask_activity:
   - text: Which is the activity?
-  - text: Please, tell me which activity you want to add
   - text: Please, tell me the activity
+  utter_ask_new_activity:
+  - text: Which is the new activity?
+  - text: Please, tell me the new activity
   utter_help:
   - text: |-
       I can help you insert, look and remove activities from a to-do list. 
@@ -108,6 +113,8 @@ actions:
 - utter_ask_category
 - utter_ask_deadline
 - utter_ask_username
+- utter_ask_activity
+- utter_ask_new_activity
 - utter_ask_whatelse
 - utter_goodbye
 - utter_greet
@@ -126,6 +133,11 @@ forms:
       category:
       - type: from_entity
         entity: category
+  activity_form:
+    required_slots:
+      activity:
+      - type: from_entity
+        entity: activity
   items_form:
     required_slots:
       activity:

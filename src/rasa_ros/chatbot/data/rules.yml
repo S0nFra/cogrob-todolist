@@ -63,12 +63,6 @@ rules:
   - active_loop: null
   - action: action_remove
 
-# ## Update
-# - rule: Update
-#   steps:
-#   - intent: update
-#   - action: action_update
-
 ## Show
 - rule: Show_activity
   steps:
@@ -82,3 +76,15 @@ rules:
   steps:
   - intent: show_categories
   - action: action_show
+
+## Update
+- rule: Update
+  steps:
+  - intent: update
+  # - action: activity_form
+  # - active_loop: activity_form
+  # - active_loop: null
+  - action: items_form
+  - active_loop: items_form
+  - active_loop: null
+  - action: action_update
