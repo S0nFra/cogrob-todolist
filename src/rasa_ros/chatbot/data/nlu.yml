@@ -168,6 +168,7 @@ nlu:
     - My name is [Antonio](username)
     - Yes, I'm [Andrea](username)
     - i'm [francesco](username)
+    - i'm [francesco](username)
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -744,4 +745,3 @@ nlu:
     - [saturday plans](category)
     - [buy mario](activity)
     - [shopping list](category)
-    - [reminder](category)

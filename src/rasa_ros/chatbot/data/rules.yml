@@ -51,6 +51,8 @@ rules:
   steps:
   - intent: remove_category
   - action: category_form
+  - active_loop: category_form
+  - active_loop: null
   - action: action_remove
 
 - rule: remove_activity
@@ -67,8 +69,16 @@ rules:
 #   - intent: update
 #   - action: action_update
 
-# ## Show
-# - rule: Show
-#   steps:
-#   - intent: show
-#   - action: action_show
+## Show
+- rule: Show_activity
+  steps:
+  - intent: show_activities
+  - action: category_form
+  - active_loop: category_form
+  - active_loop: null
+  - action: action_show
+
+- rule: Show_categories
+  steps:
+  - intent: show_categories
+  - action: action_show

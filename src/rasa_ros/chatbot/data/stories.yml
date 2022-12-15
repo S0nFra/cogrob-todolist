@@ -78,3 +78,59 @@ stories:
   - action: action_remove
   - slot_was_set:
     - category: null
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: show_categories
+  - action: action_show
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - intent: show_activities
+  - action: category_form
+  - active_loop: category_form
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_show
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
