@@ -10,11 +10,13 @@ intents:
   - deny
   - insert
   - update
-  - remove
-  - show
-  - empty
+  - remove_activity
+  - remove_category
+  - show_categories
+  - show_activities
+  - inform
   - bot_help
-  - set_deadline
+
 
 entities:
   - activity

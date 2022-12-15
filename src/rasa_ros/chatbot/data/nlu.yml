@@ -269,7 +269,7 @@ nlu:
     - bot add
     - can you insert
 
-- intent: remove activity
+- intent: remove_activity
   examples: |
     - i want to remove an activity
     - i want to delete an activity
@@ -286,7 +286,7 @@ nlu:
     - can you delete an activity?
     - Please, I want to delete an acitivity
 
-- intent: remove category
+- intent: remove_category
   examples: |
     - i want to remove a category
     - i want to delete a category
@@ -305,7 +305,7 @@ nlu:
     - empty a category
     - can you empty a category?
 
-- intent: show categories
+- intent: show_categories
   examples: |
     - can you show me the categories?
     - show me categories
@@ -324,7 +324,7 @@ nlu:
     - show categories
     - show category
 
-- intent: show activities
+- intent: show_activities
   examples: |
     - can you show me the activities?
     - show me activities

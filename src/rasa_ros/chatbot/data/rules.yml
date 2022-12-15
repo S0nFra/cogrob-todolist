@@ -46,20 +46,20 @@ rules:
   - action: deadline_form
   - action: action_insert
 
-## Delete
-- rule: Delete
-  steps:
-  - intent: remove
-  - action: action_remove
+# ## Delete
+# - rule: Delete
+#   steps:
+#   - intent: remove
+#   - action: action_remove
 
-## Update
-- rule: Update
-  steps:
-  - intent: update
-  - action: action_update
+# ## Update
+# - rule: Update
+#   steps:
+#   - intent: update
+#   - action: action_update
 
-## Update
-- rule: Show
-  steps:
-  - intent: show
-  - action: action_show
+# ## Show
+# - rule: Show
+#   steps:
+#   - intent: show
+#   - action: action_show
