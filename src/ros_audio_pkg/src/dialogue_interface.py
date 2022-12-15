@@ -39,11 +39,13 @@ def main():
     print('[CHATBOT] READY')
     
     while not rospy.is_shutdown():
+        print('[CHATBOT] Wait for user')
         id = rospy.wait_for_message("predicted_identity", String)
-        print('>>>',id.data)
+        # print('>>>',id.data)
         if id.data != '':
+            user = id.data
             dialogue_service('Hi')
-            bot_answer = dialogue_service(f"I'm {id.data}")
+            bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
         else:
             bot_answer = dialogue_service('Hi')
@@ -55,7 +57,8 @@ def main():
             pub_current_user.publish(user)
             bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
-            
+        
+        print('[CHATBOT] Current user:',user)
         reminder.set_username(user)
         rem = reminder.remind_me()
         if rem is not None:
@@ -64,6 +67,7 @@ def main():
         session = True
         while session:
             message = rospy.wait_for_message("voice_txt", String)
+            print('[IN]:',message)
             if message.data == 'exit':
                 break
             try:

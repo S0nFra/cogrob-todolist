@@ -18,26 +18,26 @@ CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 
 class Reminder():
     
-    def __init__(self, db_path, username = None):
+    def __init__(self, db_path, username:str = None, verbose:int = 0):
         self.db_path = db_path
-        self.username = username        
+        self.username = username if username is None else username.lower()
+        self.verbose = verbose 
 
-    def get_username(self):
+    def get_username(self) -> str:
         if self.username is None:
             raise RuntimeError
         return self.username
     
-    def set_username(self, username):
-        self.username = username
+    def set_username(self, username:str):
+        self.username = username.lower()
 
     def _get_connetion(self):
         con = sql.connect(self.db_path)
         cur = con.cursor()
-
         try:
             cur.execute("SELECT * FROM todolist")
         except sql.OperationalError as e:
-            print("Table creation...")
+            print("[REMINDER] Table creation...")
             cur.execute(CREATE_TABLE_QUERY)
 
         return con, cur
@@ -46,15 +46,15 @@ class Reminder():
         con, cur = self._get_connetion()
         expiring = dict()
         query = f"select tag,category,activity,deadline from todolist where reminder=true and user=?"
-        # print('>>',query)
+        if self.verbose > 1: print('[REMINDER] query',query)
         res = cur.execute(query,(self.get_username(),))
         tmp = res.fetchall()
-        # print('>>',tmp)
+        if self.verbose > 1: print('[REMINDER] query rsp:',tmp)
         if len(tmp) == 0:
             return None
         for el in tmp:
             deadline = datetime.fromisoformat(el[3])
-            print("d>>",deadline,',',el)
+            if self.verbose > 0: print("[REMINDER] dealine:",deadline,',',el)
             if (deadline.replace(tzinfo=None) - timedelta(hours=1) < datetime.now()):
                 if el[1] in expiring:
                     expiring[el[1]] += [el[2]]

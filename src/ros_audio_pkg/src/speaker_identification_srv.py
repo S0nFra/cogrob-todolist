@@ -87,7 +87,7 @@ class SpeakerIdentification():
                     self.data['X'].append(self.queue.pop(0))
                     self.data['y'].append(self.current_user)
                 
-                if self.data['y'].count(self.current_user) >= QUEUE_MAX:
+                if self.data['y'].count(self.current_user) < QUEUE_MAX:
                     print('[RE-IDENTIFICATION] Time to save')
                     self._save_data()
                 

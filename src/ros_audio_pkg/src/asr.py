@@ -25,7 +25,7 @@ def callback(audio):
 
     try:
         spoken_text= r.recognize_google(audio_data, language=LANGUAGE) 
-        print("Google Speech Recognition pensa tu abbia detto: " + spoken_text)
+        print("[Google Speech Recognition] think you said: " + spoken_text)
         pub1.publish(audio) # Publish audio only if it contains words
         pub2.publish(spoken_text)
         # data = stt()
@@ -33,7 +33,7 @@ def callback(audio):
         # data.voice_txt = spoken_text
         # pub.publish(data)
     except sr.UnknownValueError:
-        print("Google Speech Recognition non riesce a capire da questo file audio")
+        print("[Google Speech Recognition] can't understand from this audio file")
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
