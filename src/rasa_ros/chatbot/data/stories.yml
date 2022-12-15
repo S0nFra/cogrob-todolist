@@ -134,3 +134,177 @@ stories:
     - logical: null
   - slot_was_set:
     - time: null
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: show_categories
+  - action: action_show
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - intent: insert
+  - action: insert_form
+  - active_loop: insert_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: buy banana
+  - slot_was_set:
+    - activity: buy banana
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - requested_slot: logical
+  - intent: affirm
+  - action: deadline_form
+  - active_loop: deadline_form
+  - slot_was_set:
+    - requested_slot: deadline
+  - slot_was_set:
+    - time: '2022-12-16T00:00:00.000+01:00'
+  - slot_was_set:
+    - deadline: '2022-12-16T00:00:00.000+01:00'
+  - slot_was_set:
+    - requested_slot: reminder
+  - slot_was_set:
+    - reminder: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - intent: insert
+  - action: insert_form
+  - active_loop: insert_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: buy tomato
+  - slot_was_set:
+    - activity: buy tomato
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - requested_slot: logical
+  - intent: affirm
+  - action: deadline_form
+  - active_loop: deadline_form
+  - slot_was_set:
+    - requested_slot: deadline
+  - slot_was_set:
+    - time: '2022-12-16T00:00:00.000+01:00'
+  - slot_was_set:
+    - deadline: '2022-12-16T00:00:00.000+01:00'
+  - slot_was_set:
+    - requested_slot: reminder
+  - slot_was_set:
+    - reminder: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: mario
+  - slot_was_set:
+    - username: mario
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: insert
+  - action: insert_form
+  - active_loop: insert_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: go to karate
+  - slot_was_set:
+    - activity: go to karate
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: workout
+  - slot_was_set:
+    - category: workout
+  - slot_was_set:
+    - requested_slot: logical
+  - intent: affirm
+  - action: deadline_form
+  - active_loop: deadline_form
+  - slot_was_set:
+    - requested_slot: deadline
+  - slot_was_set:
+    - time: '2022-12-16T00:00:00.000+01:00'
+  - slot_was_set:
+    - deadline: '2022-12-16T00:00:00.000+01:00'
+  - slot_was_set:
+    - requested_slot: reminder
+  - slot_was_set:
+    - reminder: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert

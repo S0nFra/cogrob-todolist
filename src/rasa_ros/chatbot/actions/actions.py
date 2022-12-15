@@ -300,3 +300,13 @@ class ActionUpdate(Action):
         con.close()
         dispatcher.utter_message(text = msg)
         return reset_slots()
+    
+class ActionCustomReset(Action):
+    
+    def name(self) -> Text:
+        return "action_creset"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return reset_slots()

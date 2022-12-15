@@ -168,7 +168,7 @@ nlu:
     - My name is [Antonio](username)
     - Yes, I'm [Andrea](username)
     - i'm [francesco](username)
-    - i'm [francesco](username)
+    - i'm [mario](username)
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -248,6 +248,7 @@ nlu:
     - can you insert something
     - Please, insert
     - bot add
+    - i want insert an activity
 - intent: remove_activity
   examples: |
     - i want to remove an activity
@@ -744,4 +745,7 @@ nlu:
     - [ideas](category)
     - [saturday plans](category)
     - [buy mario](activity)
-    - [shopping list](category)
+    - tomorrow
+    - [buy tomato](activity)
+    - [go to karate](activity)
+    - [workout](category)

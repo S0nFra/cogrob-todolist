@@ -3,19 +3,19 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- affirm
 - inform
-- show_categories
-- greet
-- show_activities
+- insert
 - identification
+- deny
+- greet
+- show_categories
+- show_activities
 - remove_activity
 - remove_category
 - goodbye
 - thankyou
 - bot_challenge
-- affirm
-- deny
-- insert
 - update
 - bot_help
 entities:
@@ -30,9 +30,6 @@ slots:
   activity:
     type: text
     influence_conversation: false
-  # new_activity:
-  #   type: text
-  #   influence_conversation: false
   category:
     type: text
     influence_conversation: false
@@ -106,15 +103,16 @@ responses:
   utter_ask_reminder:
   - text: Do you want a reminder?
 actions:
+- action_creset
 - action_insert
 - action_remove
 - action_show
 - action_update
+- utter_ask_activity
 - utter_ask_category
 - utter_ask_deadline
-- utter_ask_username
-- utter_ask_activity
 - utter_ask_new_activity
+- utter_ask_username
 - utter_ask_whatelse
 - utter_goodbye
 - utter_greet

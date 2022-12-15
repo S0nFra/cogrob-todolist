@@ -22,6 +22,7 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
+  - action: action_creset
 
 - rule: Be gentle
   steps:
