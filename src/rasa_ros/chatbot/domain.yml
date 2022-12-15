@@ -92,7 +92,6 @@ forms:
         intent: deny
         value: False
       
-
 responses:
   utter_ask_username:
   - text: "Who am I talking to?"
@@ -118,11 +117,12 @@ responses:
   - text: "What is the deadline for your activity?"
   - text: "What is the deadline?"
   utter_ask_category:
-  - text: "Which category do you want to add?"
+  - text: "Which is the category?"
+  - text: "Please, tell me the category"
   utter_ask_activity:
-  - text: "Which is the activity for this category?"
+  - text: "Which is the activity?"
   - text: "Please, tell me which activity you want to add"
-  - text: "Please, insert the activity"
+  - text: "Please, tell me the activity"
   utter_help:
   - text: "I can help you insert, look and remove activities from a to-do list. \nYou can ask me things like: \n- Add a new activity\n- Add a new category \n- Add a new category with activity \n- Delete activity from category \n- Show me all my categories \n- Show me category"
   utter_iamabot:

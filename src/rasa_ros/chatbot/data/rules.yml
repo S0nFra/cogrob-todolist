@@ -8,10 +8,10 @@ rules:
   - action: utter_goodbye
   - action: action_restart
 
-- rule: Answer bot help
-  steps:
-  - intent: bot_help
-  - action: utter_help
+# - rule: Answer bot help
+#   steps:
+#   - intent: bot_help
+#   - action: utter_help
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
@@ -28,6 +28,7 @@ rules:
   - intent: thankyou
   - action: utter_noworries
 
+## Insert
 - rule: Insert 
   steps:
   - intent: insert
@@ -35,7 +36,6 @@ rules:
   - active_loop: items_form
   - active_loop: null
   - action: action_insert
-
 
 - rule: Insert deadline
   condition:
@@ -45,19 +45,20 @@ rules:
   - intent: affirm
   - action: deadline_form
   - action: action_insert
-  
 
+## Delete
 - rule: Delete
   steps:
   - intent: remove
   - action: action_remove
- 
 
+## Update
 - rule: Update
   steps:
   - intent: update
   - action: action_update
 
+## Update
 - rule: Show
   steps:
   - intent: show

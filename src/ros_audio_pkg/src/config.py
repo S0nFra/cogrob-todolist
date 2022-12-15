@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-PEPPER = True
+PEPPER = False
 LANGUAGE = 'en-US' # en-GB # it-IT
 
 ## Speaker identification variables

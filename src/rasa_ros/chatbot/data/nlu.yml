@@ -18,8 +18,6 @@ nlu:
     - Hi'
     - Hi,
     - Hi, bot
-    - Hieee
-    - Hieeeeeeeeeeeee
     - Hola
     - What is up?
     - Whats up
@@ -28,7 +26,6 @@ nlu:
     - ayyyy whaddup
     - bonjour
     - ey boss
-    - I said, helllllloooooo!!!!
     - Well hello there ;)
     - Hey
     - Hi bot
@@ -144,43 +141,7 @@ nlu:
     - thanks for your information
     - thanks f
     - thank you Bot!
-- intent: bot_help
-  examples: |
-    - I need help
-    - what can you help me with
-    - can you help me
-    - what can you do
-    - I need some help
-    - help me
-    - can you please help me
-    - problem
-    - big problem
-    - How can you help me
-    - How you help me?
-    - I need some help
-    - What are my options
-    - What are you able to do?
-    - What can I ask you?
-    - What can I do?
-    - What can you demo
-    - What can you do for me?
-    - What can you do?
-    - What can you tell me?
-    - What do you do
-    - anything els
-    - are there any other options?
-    - can I ask you anything else?
-    - can you do anything else?
-    - can you help me?
-    - come back
-    - cool! can I do something else here?
-    - hello what can you do for me
-    - help
-    - help me
-    - help please
-    - help pls
-    - help?
-    - hep me
+
 - intent: identification   
   examples: |
     - I'm [Sara](username)
@@ -290,975 +251,534 @@ nlu:
 
 - intent: insert
   examples: |
-    - add [go to gym](activity) in [sport](category) category
-    - add [play football](activity) in [sport](category) category
-    - add [go running](activity) in [sport](category) 
-    - add [swimming pool](activity) in [sport](category) 
-    - add [take the gym bag](activity) in [sport](category) 
-    - add [book at the restaurant](activity) in reminder](category) 
-    - add [go to the dentist](activity) in reminder](category) [monday 15th](deadline)
-    - add [call Angela](activity) activity in reminder](category) category
-    - add [go shopping](activity) activity in reminder](category) 
-    - add [Mario's birthday](activity) item in reminder](category) 
-    - add [ice cream](activity) element in [shopping](category) 
-    - add [pizza](activity) in [shoppinh(category) category
-    - can you add [chips and fish](activity) in [shopping](category) 
-    - can you add [spaghetti](activity) in [shopping](category) category
-    - add to [the spore category]{"entity":"category"} [nuoto]{"entity":"activity"}
-    - add to [shopping](category) [vegetables](activity)
-    - Perfect, now i have decided to add [apples](activity) in [shopping list](category)
-    - Perfect, now i have decided to add [metting](activity) in [work](category)
-    - Perfect, now i have decided to add [dancing shoes](activity) in [shopping list](category)
-    - add
-    - I want to add a new activity called [Sara's birthday](activity) in [reminder](category)
-    - Please add [dance lesson](activity) in [dessert](category)
-    - The deadline is in 3 hours
-    - insert   
-    - insert [submit cogrob midterm]{"entity":"activity"} in the category [commitment]{"entity":"category"}
-    - insert [read last Marc's article]{"entity":"activity"} in the category [afternoon]{"entity":"category"}
-    - insert [Michi's birthday]{"entity":"activity"} in [holidays to remember]{"entity":"category"} category 
-    - insert [accompany Angela to the dentist]{"entity":"activity"} in [to do]{"entity":"category"}
-    - insert in [wishlist]{"entity":"category"} [Ipad]{"entity":"activity"} 
-    - insert [fly Napoli-Milano]{"entity":"activity"} in [departures]{"entity":"category"} 
-    - insert [fix bugs]{"entity":"activity"} in [cogrob midterm]{"entity":"category"} 
-    - insert in [homework]{"entity":"category"} [modal verbs]{"entity":"activity"} 
-    - insert [Theater course]{"entity":"activity"}
-    - insert [book hotels for Rome]{"entity":"activity"}
-    - insert [dentist]{"entity":"activity"} in [appointments]{"entity":"category"}
-    - insert [dog]{"entity":"activity"} in [classification animals]{"entity":"category"}
-    - in [top five singers]{"entity":"category"} insert [Mengoni]{"entity":"activity"}
-    - in [songs to listen to]{"entity":"category"} insert [Sky]{"entity":"activity"}
-    - in [allert]{"entity":"category"} insert [midterm]{"entity":"activity"}
-    - in reminder]{"entity":"category"} insert [buy Christrmas presents]{"entity":"activity"} 
-    - in [english course]{"entity":"category"} insert [Present and past perfect]{"entity":"activity"}
-    - I wanna add
     - i want to add
-    - i want to add [play piano]{"entity":"activity"} in reminder]{"entity":"category"}
-    - i want add a [banana]{"entity":"activity"} in [shopping list]{"entity":"category"} ? 
-    - can you insert [The gone girl]{"entity":"activity"} in the [movies to see]{"entity":"category"} category ?
-    - can you insert [call Giulia](activity) in [what i have to do]{"entity":"category"}?
-    - ehi bot! add [buy present for parents](activity) in [christmas]{"entity":"category"}
-    - add [go to NY](activity) activity  in [trips](category) category
-    - add [visit the theater](activity) activity  in [trips](category) category
-    - add [visit the castle](activity) in [trips](category) category  
-    - add [go to greet Luca in Naples](activity) activity in [trips](category) category
-    - add [go to Amsterdam](activity) activity in [trips](category)
-    - add [leave for Milan](activity) activity in [trips](category) category
-    - insert [take the train](activity) in [trips](category) category
-    - remind me of [book the plane](activity) in [trips](category) category
-    - remind me of [book the hotel](activity) and add it in [trips](category) category
-    - add [bring umbrella](activity) in [trips](category)
-    - add [book your seat in the library](activity) in [study](category) category
-    - add [book the classroom](activity) in [study](category)
-    - insert [charge your computer](activity) activity in [to do](category) category
-    - insert [buy the DAA book](activity) in [study](category) category
-    - ok, add [study CR](activity) activity in [study](category) category
-    - add [meeting](activity) activity in [study](category) category
-    - add [reception from the professor](activity) activity in [study](category) category
-    - add [buy the pen](activity) activity in [study](category) category
-    - add [go to the secretariat](activity) activity in [study](category) category
-    - well, add [take the book](activity) activity in [study](category) category
-    - add [call Lucrezia](activity) activity  in [free time](category) category
-    - add [get off the dog](activity) activity  in [free time](category) category
-    - add [reply to emails](activity) activity  in [free time](category) category
-    - add [finish reading the book](activity) activity  in [free time](category) category
-    - add [meets Francesca](activity) activity  in [free time](category) category
-    - add [go out with your friends](activity) activity  in [free time](category) category
-    - add [cook a cake](activity) activity  in [free time](category) category
-    - add [go to the beautician](activity) activity  in [free time](category) category
-    - add [book at the hairdresser](activity) activity  in [free time](category) category
-    - add [see a movie](activity) activity  in [free time](category) category
-    - add [buy pasta](activity) activity
-    - add [work on FC article](activity) activity
-    - add [make dinner reservation](activity) activity
-    - add [take the kids to the park](activity) activity
-    - add [check email](activity) activity
-    - add [phone mum](activity) activity
-    - add [freez meet](activity) activity
-    - add [History study group](activity) activity
-    - add [need new parking sticke](activity) activity
-    - add [math 9-10- then do problems](activity) activity
-    - add [go to the gymo workout](activity) activity
-    - add [buy pasta](activity) activity
-    - add [write intents for mideterm cogrob](activity) activity
-    - add [answer Dad's e-mail](activity) activity
-    - add [to pay taxes](activity) element 
-    - add [buy Jhon's present](activity) element 
-    - add [banana bread](activity) item 
-    - add [Atm cash](activity) as activity
-    - add [meeting with Mario](activity) as activity
-    - add [conference on deep neaural network](activity) as activity
-    - add [reunion on job orientation](activity) as activity
-    - add [study the ereditariety on chapter 3](activity) as activity
-    - Please, add [call Pat](activity) activity
-    - Please, add [read chapter 4 of math book](activity) activity
-    - I want to add [piano lesson](activity) activity
-    - Please, insert [book in the library](activity) as activity 
-    - Please, insert [](activity) as activity 
-    - Please, insert [book flight to Sydney](activity) as activity 
-    - Please, insert [book Birthday's restaurant](activity) as activity 
-    - Please, insert [pick up prescription](activity) as activity 
-    - Please, insert [design ad campaign graphics](activity) as activity 
-    - Please, insert [clean living room](activity) as activity 
-    - Please, insert [correcting homework](activity) as activity 
-    - Insert [do the mending](activity) as activity 
-    - Insert [do a load of washing](activity) as activity 
-    - Insert [read 1 chapther of book](activity) as activity 
-    - Insert [declutter Top Drawer of bedroom](activity) as activity 
-    - Insert [make muffin](activity) as activity 
-    - Insert [library study time](activity) as activity 
-    - Insert new activity [take off lights](activity)
-    - Insert new activity [go shopping](activity) 
-    - Insert new activity [listen new James Arthur song](activity) 
-    - Insert new activity [shere photo](activity) 
-    - Insert new activity [buy wedding dress](activity) 
-    - Insert new activity [call Antonio](activity) 
-    - Insert new activity [ask information on New York](activity) 
-    - Insert new activity [buy tickets for Padova travel](activity) 
-    - Insert new activity [go to the dentist]](activity) 
-    - Insert new activity [rent a boat](activity) 
-    - Can you insert [social media scheduling](activity) element? 
-    - Can you insert [pack Jake's lunch](activity) element? 
-    - Can you insert [social media scheduling](activity) element? 
-    - Can you insert [rent a boat](activity) element? 
-    - Can you insert [send in more inventory](activity) element? 
-    - Can you insert [edit pictures](activity) element? 
-    - I want to add [apples](activity) item
-    - I want to add [rent an apartment](activity) item 
-    - I want to add [expiry coupon](activity) item
-    - I want to add [create model for cogrob](activity) item 
-    - I want to add [pay off a debt](activity) item
-    - add a list named [sport](category)
-    - add a category with name [football matches](category)
-    - add new category [shopping list](category)
-    - add [supermarket list](category) category
-    - add category named [butcher list](category) 
-    - add reminder](category) category
-    - add [doctors appointment](category) list 
-    - add category called [playstation games](category)
-    - add a category with name [math homework](category) 
-    - add [italian homework](category) category
-    - create a new [grocery list](category) category
-    - create a new [appointment](category) folder
-    - create a new category named [chemist list](category) 
-    - create a new [pharmacy list](category) category
-    - create a new category with name [bakery list](category) 
-    - create a new category named [toy shop list](category)  
-    - create a new category [newsagent list](category)
-    - create a new category [greengrocer list](category)
-    - bot Add [class schedule](category) category
-    - insert category [commitment](category) 
-    - insert folder [afternoon]{"entity":"category"}
-    - insert holidays to remember]{"entity":"category"} category
-    - insert category [to do]{"entity":"category"}
-    - insert list named [movies to see]{"entity":"category"}
-    - insert the category [wishlist]{"entity":"category"} 
-    - insert [departures]{"entity":"category"} category
-    - insert category [cogrob midterm]{"entity":"category"} 
-    - insert a new [homeowrk]{"entity":"category"} category
-    - insert [english course]{"entity":"category"} category
-    - insert category [italian course]{"entity":"category"}
-    - insert a folder named [science homework]{"entity":"category"} 
-    - insert the category [appointments]{"entity":"category"}
-    - insert a list [classification animals]{"entity":"category"}
-    - insert a foldet named [top five singers]{"entity":"category"}
-    - insert the category [songs to listen to]{"entity":"category"}
-    - ehi bot!, insert an [allert]{"entity":"category"} list
-    - ehi bot!, insert a new category called [holidays]{"entity":"category"}
-    - ehi bot!, can you insert a new category called [secret list]{"entity":"category"}
-    - ehi bot!, i need a new folder with name [best places to visit] {"entity":"category"}
-    - i want to add a new category called [personal]{"entity":"category"}
-    - i want to add a new list called [books to return]{"entity":"category"}
-    - i need a new category called [best places to visit] {"entity":"category"}
-    - i need a new category called [discount offer] {"entity":"category"}
-    - i need a new category called [clothes I want] {"entity":"category"}
-    - I want add [shopping](category) category
-    - Please add [Buy a dress](activity) activity
-    - Please, can you add a new category?
-    - I want to add [sport](category) category
-    - I want to add [crossfit class](activity) to this category
+    - can you insert for me 
+    - can you add for me
+    - Perfect, now i have decided to add
+    - add
+    - Please, can you add
+    - insert   
+    - i want to insert
+    - i want insert
+    - i want add
+    - I wanna add
+    - can you insert
+    - can you add
+    - can you insert something 
+    - Please, insert 
+    - bot add
+    - can you insert
 
-- intent: remove
+- intent: remove activity
   examples: |
-    - remove the activity named [egg](activity) in the category [kitchen](category)
-    - remove [hammer] (activity) from [items] (category)
-    - remove from [friends] (category) the [Lucia] (activity) activity
-    - remove [call Gianluca](activity) from [things to be done](category)
-    - remove [gym reminder](category) category
-    - remove [computer shopping list](category) 
-    - remove all the activity from [work engagements](category)
-    - remove from the list [books](category) [Pirandello](activity)
-    - remove [go to Francesco's home](activity) from [daily reminder]
-    - delete [work](activity) in [tasks to do](category)
-    - now remove [videogames to play](category)
-    - delete from [books](category) the activity [Metro reading](activity) activity
-    - delete [Econ 202 lecture](activity) from [daily to do](category) category
-    - delete from [for Alex](category) category the [edit pictures](activity) activity
-    - delete [barbecue sauce](activity) from [shopping list](category)
-    - delete from [jobs offers](category) category [Ubisoft interview](activity) 
-    - delete [Van Gogh show](activity) from [exhibitions](category) category
-    - delete from [hamburger shopping list](category) [paprika sauce](activity) 
-    - delete [buy cover](activity) in [things to buy](category)
-    - delete [math homework](activity) from [daily homeworks](category) category
-    - delete [edit code](activity) from [new project](category) category
-    - delete [mayonaisse sauce](activity) from [shopping list](category)
-    - eliminate [Emily's birthday](category) category
-    - eliminate [replay to Jhon's mail](activity) from [important](category) category
-    - eliminate [linear regression](activity) form [Data analysis lessons](category)
-    - take out [load dishwasher](activity) form [after lunch](category)
-    - take out [brainstorming](activity) from [saturday](category) category
-    - take out [answer Dad's e-mail](activity) in [persona reminder](category)
-    - take out [pizza](activity) in [saturday plans](category)
-    - remove [bookstor - printer cartridge](activity) from [Friday things to do](category)
-    - eliminate [blue raspberry](activity) from [shopping list] (category)
-    - can you eliminate [banana](activity) in [things to eat today] (category)?
-    - can you delete [chocolate](activity) in [cake preparation](category)?
-    - can you eliminate [to sleep](activity) in [things to do today] (category)?
-    - can you delete [Lucia](activity) in [group for the birthday gift](category)?
-    - can you delete [Marco](activity) in [group for the birthday gift](category)?
-    - can you eliminate [Maria Rosaria](activity) in [group for the birthday gift](category)?
-    - remove [update project plans](activity) in [in progress](category)
-    - i don't want [apples](activity) into [dinner](category). Can you eliminate that?
-    - i don't want [send out meeting request](activity) into [medium priority](category). Can you eliminate that?
-    - i don't want [email teams for update](activity) into [high priority](category). Can you eliminate that?
-    - i don't want [book conference room](activity) into [low priority](category). Can you eliminate that?
-    - i don't need [humburger](activity) anymore. Can you eliminate in the [list of the supermarket](category) category?
-    - i don't need [create a meeting agenda](activity) anymore. Can you eliminate in the [in progress](category) category?
-    - i don't need [contact service center](activity) anymore. Can you eliminate in the [in progress](category) category?
-    - i don't want [go to the gym](activity) this evening. Can you delete it from [thing to do today](category)?
-    - delete [verify project budget](activity) in [team project](category) category
-    - delete [answer teach team queries](activity) in [in progress](category) category
-    - delete [book for SPA](activity) in [birthday's presents](category) category
-    - eliminate [sweet cherry](activity) in [food](category)
-    - eliminate [ice cream](activity) in [shopping list](category)
-    - eliminate [cake](activity) in [dinner date](category)
-    - eliminate [fish and chips](activity) in [lanch with Meg](category)
-    - Can you delete [pumpkin](activity) in [halloween dinner](category)?
-    - Can you delete [tennis](activity) activity in [sport](category)?
-    - delete [apples](activity) in [shopping list](category)
-    - Please, I want to delete the item [guerra e pace](activity) in [best books 2022](category)
-    - Please, I want to delete the item [call me by your name](activity) in [reading book](category)
-    - Please, I want to delete the item [la solitudine dei numeri primi](activity) in [reading book](category)
-    - Please, I want to delete the item [list the new maneskin song](activity) in [reminder](category)
-    - Please, I want to delete the item [try risotto](activity) in [recipes](category)
-    - ok bot, now empty the [to take on the snow](category) category
-    - can you empty [math](category) category?
-    - if possible I would like to empty the category [shopping list](category)
-    - empty [useless things to mark](category)
-    - empty [moving house](category) section
-    - empty [preparation for the party](category)
-    - empty all the [things to fix](category) list
-    - empty [plants to water](category) section
-    - empty [recipes to try](category)
-    - can you empty the [books to read](category) category?
-    - can you eliminate [party](category) category?
-    - throws the whole section [cooked](category)
-    - remove [christmas gifts](category) category from the database
-    - remove [shopping list](category) category
-    - remove [people to thank](category) class
-    - remove [things to do](category) category
-    - remove [place to visit](category) category
-    - remove [things to buy](category) section
-    - if possible, I would like to remove [music to listen to](category) section
-    - delete [movies](category)
-    - delete [veterinary](category)
-    - delete [books to print](category) class
-    - I would like to delete [fruit to buy] class from the database
-    - please, can you delete the category [study](category)?
-    - delete all the activity from [things to buy](category)
-    - delete all the activity from [pizzeria management](category) 
-    - delete whatever is in [Netflix list](category)
-    - delete whatever is in the [university](category) list
-    - delete everything from [appointments](category)
-    - delete everything contained in [sport](category)
-    - well, now can you delete all from [shopping list](category)?
-    - remove all the activity in the [tasks](category) class
-    - remove all the activity in [school](category)
-    - remove whatever is in the [meeting](category) section
-    - remove whatever is in [shopping list](category)
-    - remove everything in [stocks](category)
+    - i want to remove an activity
+    - i want to delete an activity
+    - i want delete an activity
+    - i want remove an activity
+    - can you remove an activity 
+    - remove an activity
+    - remove activity
+    - delete activity
+    - delete an activity
+    - now remove an activity
+    - eliminate activity
+    - can you eliminate an activity?
+    - can you delete an activity?
+    - Please, I want to delete an acitivity
 
-- intent: show
+- intent: remove category
   examples: |
-    - can you show me the activities in the category [daily housework](category)?
-    - can you show me [dentist appointment](activity) in the category [dail reminder](category)?
-    - can you show me the deadline of [go to gym](activity) in the [dail reminder](category) category?
-    - can you show me the deadline of [midterm cogrob](activity) in the [monthly deadlines](category)?
-    - can you show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
-    - can you show me [blind date](activity) in [monday](category)?
-    - can you show me [world Cup](activity) in [sport](category)?
-    - can you show me [Volley Cup](activity) in [sport](category)?
-    - can you show me reminder](category) with [call granfather](activity) deadline?
-    - can you show me [for Alex](category) with [call granfather](activity) deadline?
-    - Please, show me [to remaind](category) category with [doctors appointment](activity) deadline?
-    - Please, show me reminder](category) with [call granfather](activity) deadline?
-    - Please, show me [Marco and Anna wedding](activity) in [monthly expenses](category)?
-    - show me [apples](activity) into [dinner](category)
-    - show me [Maria Rosaria](activity) in [group for the birthday gift](category)
-    - show me the activities in the category [daily housework](category)
-    - show 
-    - show all the activities in [to do](category) category
+    - i want to remove a category
+    - i want to delete a category
+    - i want delete an category
+    - i want remove an category
+    - can you remove a category
+    - remove a category
+    - delete a category
+    - remove category
+    - delete category
+    - now remove a category
+    - eliminate category
+    - can you eliminate a category?
+    - can you delete a category?
+    - Please, I want to delete a category
+    - empty a category
+    - can you empty a category?
+
+- intent: show categories
+  examples: |
+    - can you show me the categories?
+    - show me categories
+    - Please, show me categories
     - show me all categories
-    - Please, show me [shopping list](category) category
-    - Please, show me [clean hause](category) category
-    - Please, show me [to do](category)
-    - Please, show me reminder](category)
-    - show me 
-    - see
-    - view
-    - show my [list](category)
-    - see list 
-    - What's on the [food](category) category?
-    - What's on the [appointments](category) list?
-    - what is present in the [sales](category) list?
-    - what's present in the list of [lessons](category)?
-    - what i have in [shopping cart](category)?
-    - see [shopping list](category)
-    - what inside [work plain](category)?
-    - what i have [holiday plain](category)?
-    - ok, now show me [the plain](activity)
-    - can i see my [house things](category)?
-    - can you show reminder](category)?
+    - view categories
+    - i want to view categories
+    - i wanna view categories
+    - show my categories
+    - see categories
+    - i want see categories
+    - ok, now show me categories
+    - can i see my categories?
     - i want to see all categories
-    - I want to see all categories, can yuo show me that?
-    - Can you display [things to buy](category)?
-    - i want to see [party](category) list. Can you show that?
-    - i want to see [things to buy](category). show me that
-    - show [place to visit](category) please
-    - i want to see [movies](category)
-    - i want to see my [shopping list](category)
-    - what's on the [meeting](category) list?
-    - please, read me the [shopping](category) list
-    - show list
-    - can i see [places to see](category), please?
-    - Show my [dreams](category) list please
-    - Please can you show to me my [wish list](category)
-    - Very well now show my [friends list](category)
-    - Let see [to contatc] list
-    - Let me see [my music](category) list with [Rihanna](activity) item
-    - Let me see [top five singers](category) list 
-    - display [deadline](deadline) of [midterm design][activity] in [exam](category) set
-    - Please display [ideas](category)
-    - now show [bug to fix](category) list please
-    - plese bot show [user stories](category)
-    - Please bot, show me my categoies
-    - Can you show me [sport](category) category with his activities?
+    - Can you display the categories
+    - show categories
+    - show category
+
+- intent: show activities
+  examples: |
+    - can you show me the activities?
+    - show me activities
+    - Please, show me activities
+    - show me all activities
+    - show me all activities
+    - view activities
+    - show my activities
+    - see activities 
+    - ok, now show me activities
+    - can i see my activities?
+    - i want to see all activities
+    - Can you display the activities
+    - show activities
+    - show activity
 
 - intent: update
   examples: |
-    - change the activity [go to gym](activity) in [sport](category) category to [football match](activity)
-    - change the activity [play football](activity) in [sport](category) category to [buy protein](activity)
-    - change the activity [go running](activity) in [sport](category) to [bring creatine](activity)
-    - change the activity [swimming pool](activity) in [sport](category) to [golf club](activity)
-    - change [take the gym bag](activity) in [sport](category) in [bring the headphone](activity)
-    - change the activity [call Angela](activity) activity in reminder](category) category to [call father](activity)
-    - change the activity [Mario's birthday](activity) item in reminder](category) with [take the present](activity)
-    - change the activity [ice cream](activity) element in [shopping](category) with [piadina](activity)
-    - can you change the activity [chips and fish](activity) in [shopping](category) with [burrito](activity)
-    - Perfect, now i have decided to change the activity [apples](activity) in [shopping list](category) with [cake](activity)
-    - Perfect, now i have decided to replace the activity [dancing shoes](activity) in [shopping list](category) with [crossfit shoes](activity)
-    - change [submit data analysis](activity) in [commitment](category) with [submit Cybersecurity](activity) activity
-    - update [submit cogrob midterm]{"entity":"activity"} in the category [commitment](category) with [submit DSS](activity)
-    - update [read last Marc's article]{"entity":"activity"} in the category [afternoon](category) with [correct last Giovanni's article] activity
-    - update [Michi's birthday]{"entity":"activity"} in [holidays to remember](activity) category with [Michi's party](activity)
-    - update [accompany Angela to the dentist]{"entity":"activity"} in [to do](category) with [book an apointment for Angela to the dentist](activity) activity
-    - update in [wishlist](category) the activity [Ipad]{"entity":"activity"} with the activity [Iphone](activity)
-    - update [fly Napoli-Milano]{"entity":"activity"} with [fly Roma-Milano](activity) in [departure](category) 
-    - update [fix bugs]{"entity":"activity"} with [cogrob midterm](category) with [add a new class](activity)
-    - update [Theater course]{"entity":"activity"} with [Cinema course](activity) in [hobby](category)
-    - update [book hotels for Rome]{"entity":"activity"} to [book hotel for Milano](activity) in category [reservations](category)    
-    - I wanna change
-    - i want to change
-    - i want to change [play piano]{"entity":"activity"} in reminder](activity) with [clean the room](activity)
-    - i want change a [banana]{"entity":"activity"} in [shopping list](category) with [apple](activity)
-    - change a activity named [rent a boat](activity) in [reminder](category) with [talk with seller](activity)    
-    - update in [top five singers](category) the [Imagine Dragon](activity) activity with [One Republic](activity)
-    - ehi bot!, update the [allert](activity) activity in [Wake Up](category) with [music](activity)
-    - ehi bot!, update the activity 3 with the activity [holidays](activity)
-    - ehi bot!, can you update the activity called [visit to the museum](activity) in the category [things to do today](category) with the activity called [visit to the theater](activity)
-    - ehi bot!, i need to update in [best places to visit](category) the activity [Miami's beach] with [New York](activity)
-    - i want to change activity number ten in [retrieve personal access token](category) with [github password](activity)
-    - i want to change the activity called [return books to library](activity) in [library reminder](category) with [take a new book](activity)
-    - i need to update activity number 6 with [buy some sweets](activity)
-    - i need to change [bring boxs to new house](activity) in the category [moving house](category) with [bring bed](activity)
-    - i need to replace activity number twenty with [make coffe for friends](activity)
-    - Please change [Buy a dress](activity) activity in category [telegram offers](category) to [buy new notebook](activity)
-    - Please, can you change activity 15 to [buy taxes](activity)
-    - I want to change [crossfit class](activity) in [gym](category) to [karate class](activity)
-    - update [dentist]{"entity":"activity"} in [appointments](category) with [therapist](activity)
-    - update [dog]{"entity":"activity"} in [classification animals](category) with [cat](activity)
-    - in [top five singers](category) update [Mengoni]{"entity":"activity"} with [Celentano](activity)
-    - in [songs to listen to](category) update [Sky]{"entity":"activity"} with [buy a recorder](activity)
-    - in [allert](category) update [midterm]{"entity":"activity"} with [final exam](activity)
-    - change the activity [charge your computer](activity) in [work session](category) category to [burrito](activity)
-    - change the activity [buy the pen](activity) in [special called emergency meeting](category) category to [buy new notebook](activity)
-    - change the activity [go to gym](activity) in [special called emergency meeting](category) category to [egg](activity)
-    - change the activity [dentist appointment](activity) in [budget work session](category) category to [apples](activity)
-    - change the activity [submit data analysis](activity) in [daily to do](category) category to [buy a computer](activity)
-    - change the activity [buy new notebook](activity) in [daily housework](category) category to [banana bread](activity)
-    - change the activity [buy some sweets](activity) in [sales](category) category to [to pay taxes](activity)
-    - change the activity [appointments](activity) in [cogrob midterm](category) category to [visit to the museum](activity)
-    - change the activity [mayonaisse sauce](activity) in [daily remainder](category) category to [go running](activity)
-    - change the activity [social media scheduling](activity) in [cogrob midterm](category) category to [banana bread](activity)
-    - change the activity [buy present for parents](activity) in [christmas](category) category to [cake](activity)
-    - change the activity [departures](activity) in [daily to do](category) category to [talk with seller](activity)
-    - change the activity [book the plane](activity) in [to do](category) category to [finish reading the book](activity)
-    - change the activity [book your seat in the library](activity) in [monthly deadlines](category) category to [to go to the gym](activity)
-    - change the activity [talk with seller](activity) in [list of the supermarket](category) category to [create model for cogrob](activity)
-    - change the activity [conference on deep neaural network](activity) in [list of the supermarket](category) category to [ice cream](activity)
-    - change the activity [make dinner reservation](activity) in [best places to visit](category) category to [karate class](activity)
-    - change the activity [dancing shoes](activity) in [remainder](category) category to [correcting homework](activity)
-    - change the activity [take the gym bag](activity) in [grocery list](category) category to [do the mending](activity)
-    - can you change the activity [do the mending](activity) in [special called meeting (evening)](category) with [holidays to remember](activity)
-    - can you change the activity [departures](activity) in [policy retreat work session](category) with [therapist](activity)
-    - can you change the activity [midterm cogrob](activity) in [special called meeting (morning)](category) with [shere photo](activity)
-    - can you change the activity [the plain](activity) in [meeting](category) with [spaghetti](activity)
-    - can you change the activity [write intents for mideterm cogrob](activity) in [appointments](category) with [bring the headphone](activity)
-    - can you change the activity [freez meet](activity) in [important](category) with [crossfit shoes](activity)
-    - can you change the activity [play football](activity) in [saturday plans](category) with [buy pasta](activity)
-    - can you change the activity [dancing shoes](activity) in [gym](category) with [buy some sweets](activity)
-    - can you change the activity [clean living room](activity) in [thing to do today](category) with [metting](activity)
-    - can you change the activity [italian course](activity) in [afternoon](category) with [conference on deep neaural network](activity)
-    - can you change the activity [book in the library](activity) in [things to be done](category) with [library study time](activity)
-    - can you change the activity [github password](activity) in [things to be done](category) with [buy present for parents](activity)
-    - can you change the activity [visit the theater](activity) in [things to do today](category) with [rent an apartment](activity)
-    - can you change the activity [buy protein](activity) in [free time](category) with [holidays to remember](activity)
-    - can you change the activity [add a new class](activity) in [list](category) with [see a movie](activity)
-    - can you change the activity [phone mum](activity) in [bakery list](category) with [reply to emails](activity)
-    - can you change the activity [metting](activity) in [place to visit](category) with [call granfather](activity)
-    - can you change the activity [do a load of washing](activity) in [tasks](category) with [make dinner reservation](activity)
-    - can you change the activity [buy pasta](activity) in [retrieve personal access token](category) with [take the present](activity)
-    - update in [special called work session](category) the activity [do the mending](activity) with the activity [banana bread](activity)
-    - update in [budget work session (1:00pm)](category) the activity [cake](activity) with the activity [classification animals](activity)
-    - update in [austin energy rates work session](category) the activity [talk with seller](activity) with the activity [rent an apartment](activity)
-    - update in [budget meeting](category) the activity [vegetables](activity) with the activity [visit to the museum](activity)
-    - update in [dinner](category) the activity [holidays](activity) with the activity [appointments](activity)
-    - update in [chemist list](category) the activity [go shopping](activity) with the activity [banana](activity)
-    - update in [wish list](category) the activity [sweet cherry](activity) with the activity [buy wedding dress](activity)
-    - update in [my music](category) the activity [chips and fish](activity) with the activity [see a movie](activity)
-    - update in [wish list](category) the activity [to do](activity) with the activity [rent a boat](activity)
-    - update in [my music](category) the activity [visit the castle](activity) with the activity [visit the castle](activity)
-    - update in [things to be done](category) the activity [bring bed](activity) with the activity [to pay taxes](activity)
-    - update in [work plain](category) the activity [book the hotel](activity) with the activity [bring boxs to new house](activity)
-    - update in [shopping list](category) the activity [chocolate](activity) with the activity [buy pasta](activity)
-    - update in [things to buy](category) the activity [reply to emails](activity) with the activity [need new parking sticke](activity)
-    - update in [things to do today](category) the activity [buy new notebook](activity) with the activity [library study time](activity)
-    - update in [football matches](category) the activity [visit to the museum](activity) with the activity [add a new class](activity)
-    - update in [butcher list](category) the activity [book at the hairdresser](activity) with the activity [reunion on job orientation](activity)
-    - update in [bug to fix](category) the activity [go to the gymo workout](activity) with the activity [expiry coupon](activity)
-    - update in [work plain](category) the activity [shere photo](activity) with the activity [chocolate](activity)
-    - update [take the kids to the park](activity) with [golf club](activity) in [regular meeting (budget reading)](category)
-    - update [rent an apartment](activity) with [clean the room](activity) in [special called budget meeting](category)
-    - update [clean living room](activity) with [cat](activity) in [ahfc meeting](category)
-    - update [call father](activity) with [barbecue sauce](activity) in [mlgc meeting](category)
-    - update [wishlist](activity) with [allert](activity) in [grocery list](category)
-    - update [social media scheduling](activity) with [cook a cake](activity) in [songs to listen to](category)
-    - update [therapist](activity) with [visit to the theater](activity) in [songs to listen to](category)
-    - update [do the mending](activity) with [take the train](activity) in [cogrob midterm](category)
-    - update [appointments](activity) with [afternoon](activity) in [wishlist](category)
-    - update [to go to the gym](activity) with [ice cream](activity) in [lessons](category)
-    - update [github password](activity) with [take the train](activity) in [clean hause](category)
-    - update [add a new class](activity) with [bring boxs to new house](activity) in [free time](category)
-    - update [book your seat in the library](activity) with [movies to see](activity) in [user stories](category)
-    - update [sign the check](activity) with [clean living room](activity) in [places to see](category)
-    - update [expiry coupon](activity) with [book the classroom](activity) in [bug to fix](category)
-    - update [edit code](activity) with [meeting](activity) in [movies to see](category)
-    - update [go out with your friends](activity) with [karate class](activity) in [trips](category)
-    - update [rent an apartment](activity) with [take off lights](activity) in [chemist list](category)
-    - update [wishlist](activity) with [go to the dentist](activity) in [lessons](category)
-    - update [to do](activity) in [policy retreat work session](category) with [shere photo](activity)
-    - update [reunion on job orientation](activity) in [budget work session (09:00am)](category) with [apples](activity)
-    - update [book at the restaurant](activity) in [budget work session](category) with [buy new notebook](activity)
-    - update [crossfit shoes](activity) in [ahfc meeting](category) with [buy pasta](activity)
-    - update [study](activity) in [toy shop list](category) with [remainder](activity)
-    - update [take a new book](activity) in [moving house](category) with [call father](activity)
-    - update [library study time](activity) in [songs to listen to](category) with [go out with your friends](activity)
-    - update [piadina](activity) in [shopping list](category) with [book the plane](activity)
-    - update [to go to the gym](activity) in [movies to see](category) with [buy new notebook](activity)
-    - update [read chapter 4 of math book](activity) in [newsagent list](category) with [tennis](activity)
-    - update [buy new notebook](activity) in [place to visit](category) with [therapist](activity)
-    - update [chocolate](activity) in [movies](category) with [visit the theater](activity)
-    - update [take off lights](activity) in [what i have to do](category) with [computer](activity)
-    - update [return books to library](activity) in [ideas](category) with [bring umbrella](activity)
-    - update [cat](activity) in [important](category) with [the plain](activity)
-    - update [do a load of washing](activity) in [christmas](category) with [swimming pool](activity)
-    - update [science homework](activity) in [user stories](category) with [bring the headphone](activity)
-    - update [clean living room](activity) in [cake preparation](category) with [dancing shoes](activity)
-    - update [remainder](activity) in [top five singers](category) with [therapist](activity)
-    - change deadline for [rent a boat](activity) activity in [special called meeting (oaths of office)](category) to 06/30/2023 11:15 AM
-    - change deadline for [reception from the professor](activity) activity in [special called meeting](category) to 10/16/2014 10:26 PM
-    - change deadline for [book the classroom](activity) in [austin energy rates work session](category) category to 11/09/2016 03:16 PM
-    - change deadline for [cake](activity) activity in [budget meeting](category) category to 07/17/2020 08:30 PM
-    - change deadline for [reunion on job orientation](activity) in [special called meeting - 9:00 am](category) to 10/29/2011 04:24 AM
-    - change deadline for [golf club](activity) in [things to be done](category) to 03/22/2017 11:36 PM
-    - change deadline for [send in more inventory](activity) in [playstation games](category) category to 09/09/2023 12:31 AM
-    - change deadline for [linear regression](activity) in [work plain](category) category to 08/13/2010 04:33 AM
-    - change deadline for [swimming pool](activity) in [list](category) category to 03/17/2013 06:35 PM
-    - change deadline for [banana bread](activity) in [after lunch](category) category to 01/01/2019 01:16 PM
-    - change deadline for [to sleep](activity) in [chemist list](category) category to 01/19/2015 03:45 AM
-    - change deadline for [english course](activity) in [appointment](category) to 07/11/2014 10:14 AM
-    - change deadline for [chips and fish](activity) in reminder](category) to 12/26/2019 02:13 AM
-    - change deadline for [football match](activity) in [supermarket list](category) to 12/29/2020 11:06 PM
-    - update deadline for [buy protein](activity) activity in [chemist list](category) category to 10/21/2019 10:36 AM
-    - update deadline for [piano lesson](activity) in [clean hause](category) to 06/16/2009 03:57 PM
-    - update deadline for [read 1 chapther of book](activity) activity in [homework](category) to 11/08/2009 08:39 PM
-    - update deadline for [see a movie](activity) in [group for the birthday gift](category) to 02/08/2022 06:25 PM
-    - update deadline for [take the book](activity) activity in [wish list](category) category to 11/03/2008 01:35 PM
-    - update deadline for [design ad campaign graphics](activity) activity in [shopping](category) to 08/01/2010 06:21 AM
-    - update deadline for [piano lesson](activity) in [cogrob midterm](category) category to 07/03/2019 08:22 PM
-    - update deadline for [bring boxs to new house](activity) activity in [monthly expenses](category) category to 08/15/2009 03:41 AM
-    - update deadline for [banana](activity) activity in [group for the birthday gift](category) to 05/03/2017 11:17 PM
-    - update deadline for [add a new class](activity) activity in [departure](category) category to 08/25/2015 11:37 PM
-    - modify deadline for [call father](activity) activity in [daily housework](category) to 03/26/2014 05:59 PM
-    - modify deadline for [buy toys for kids](activity) activity in [supermarket list](category) category to 02/17/2011 05:35 AM
-    - modify deadline for [read 1 chapther of book](activity) in [friends list](category) to 11/17/2010 01:03 PM
-    - modify deadline for [sign the check](activity) in [moving house](category) category to 08/07/2021 09:53 AM
-    - modify deadline for [blind date](activity) activity in [things to do today](category) category to 09/27/2014 02:07 PM
-    - modify deadline for [movies to see](activity) in [food](category) to 11/10/2019 06:25 AM
-    - modify deadline for [talk with seller](activity) in [place to visit](category) to 09/17/2018 02:46 PM
-    - modify deadline for [write intents for mideterm cogrob](activity) activity in [retrieve personal access token](category) category to 11/01/2014 10:15 AM
-    - modify deadline for [cat](activity) activity in [work](category) category to 03/02/2014 01:39 PM
-    - modify deadline for [crossfit class](activity) activity in [afternoon](category) to 10/30/2019 03:04 PM
-    - modify deadline for [charge your computer](activity) activity in [things to be done](category) category to 11/15/2010 06:56 AM
-    - modify deadline for [crossfit shoes](activity) in [trips](category) category to 12/30/2012 08:07 AM
-    - modify deadline for [mayonaisse sauce](activity) activity in [appointments](category) to 03/12/2008 08:35 AM
-    - modify deadline for [edit pictures](activity) activity in [doctors appointment](category) category to 12/10/2010 03:52 PM
-    - modify deadline for [make coffe for friends](activity) in [ideas](category) to 02/19/2012 02:09 PM
-    - modify deadline for [talk with seller](activity) activity in [thing to do today](category) to 12/24/2016 11:48 AM
-    - modify deadline for [movies to see](activity) in [shopping](category) category to 02/24/2017 12:13 AM
-    - reset deadline for [football match](activity) activity in [reminder](category) category to 09/14/2014 10:19 PM
-    - reset deadline for [return books to library](activity) in [christmas](category) to 08/15/2016 11:50 PM
-    - reset deadline for [need new parking sticke](activity) in [dreams](category) category to 03/21/2009 04:32 PM
-    - reset deadline for [study](activity) in [places to see](category) category to 09/27/2011 10:23 PM
-    - reset deadline for [load dishwasher](activity) in reminder](category) category to 06/14/2012 10:22 AM
-    - reset deadline for [buy protein](activity) activity in [christmas gifts](category) category to 11/07/2009 11:51 AM
-    - reset deadline for [make muffin](activity) in [places to see](category) to 09/04/2023 05:02 AM
-    - reset deadline for [dentist appointment](activity) in [work plain](category) to 10/11/2023 05:53 AM
-    - reset deadline for [italian course](activity) activity in [christmas](category) to 02/04/2008 03:34 AM
-    - reset deadline in [budget work session](category) category for [do a load of washing](activity) to 03/23/2023 08:18 AM
-    - reset deadline in [ahfc meeting](category) for [the plain](activity) to 03/12/2012 12:57 PM
-    - reset deadline in [special called budget meeting](category) category for [to sleep](activity) activity to 03/16/2011 08:32 AM
-    - reset deadline in [special called budget meeting](category) category for [study](activity) to 02/01/2016 09:33 PM
-    - reset deadline in [special called meeting (morning)](category) for [check email](activity) activity to 02/27/2008 08:02 AM
-    - reset deadline in [things to buy](category) category for [create model for cogrob](activity) to 09/16/2012 11:11 AM
-    - reset deadline in [reminder](category) for [computer](activity) to 06/05/2017 07:27 PM
-    - reset deadline in [daily to do](category) for [go shopping](activity) to 08/21/2016 11:11 PM
-    - reset deadline in [cogrob midterm](category) category for [burrito](activity) activity to 05/22/2010 12:46 AM
-    - reset deadline in [shopping](category) category for [crossfit shoes](activity) activity to 10/09/2011 02:07 PM
-    - reset deadline in [greengrocer list](category) for [correcting homework](activity) activity to 12/24/2021 01:42 AM
-    - reset deadline in [cogrob midterm](category) for [study the ereditariety on chapter 3](activity) activity to 02/18/2008 06:26 PM
-    - reset deadline in [my music](category) for [dancing shoes](activity) activity to 02/07/2019 11:57 AM
-    - reset deadline in [top five singers](category) for [see a movie](activity) activity to 01/06/2016 11:06 PM
-    - reset deadline in reminder](category) for [brainstorm](activity) activity to 03/10/2009 05:59 AM
-    - reset deadline in [bakery list](category) category for [meeting](activity) activity to 01/12/2012 05:10 PM
-    - reset deadline in [best places to visit](category) category for [swimming pool](activity) activity to 02/10/2021 09:19 AM
-    - reset deadline in [monday](category) for [sign the check](activity) to 11/09/2013 12:19 AM
-    - reset deadline in [commitment](category) for [to do](activity) activity to 11/17/2018 11:56 AM
-    - reset deadline in [list of the supermarket](category) for [make muffin](activity) to 04/11/2012 09:52 AM
-    - reset deadline in [christmas gifts](category) for [book at the hairdresser](activity) activity to 05/09/2020 09:25 PM
-    - reset deadline in [what i have to do](category) for [music](activity) activity to 03/24/2016 05:48 PM
-    - reset deadline in [cogrob midterm](category) for [play football](activity) to 12/22/2021 05:26 AM
-    - reset deadline in [kiwi](category) for [go to the beautician](activity) to 04/04/2013 08:55 PM
-    - change deadline in [appointment](category) for [call granfather](activity) to 04/29/2015 04:03 PM
-    - change deadline in [reminder](category) for [pumpkin](activity) to 01/23/2016 10:24 AM
-    - change deadline in [math homework](category) for [buy taxes](activity) activity to 01/23/2021 03:25 AM
-    - change deadline in [monthly expenses](category) category for [submit data analysis](activity) to 09/08/2017 09:57 PM
-    - change deadline in [cake preparation](category) category for [buy a recorder](activity) to 06/27/2018 09:07 PM
-    - change deadline in [playstation games](category) for [egg](activity) activity to 02/17/2020 05:34 AM
-    - change deadline in [appointments](category) category for [wishlist](activity) activity to 01/14/2022 06:36 AM
-    - change deadline in [cogrob midterm](category) category for [allert](activity) activity to 01/20/2008 10:54 PM
-    - change deadline in [clean hause](category) category for [see a movie](activity) to 04/24/2008 03:02 PM
-    - change deadline in [cake preparation](category) category for [buy toys for kids](activity) activity to 07/25/2018 10:31 AM
-    - set a reminder for [apples](activity) activity in [special called canvassing meeting](category) category 
-    - set a reminder for [go out with your friends](activity) activity in [special called meeting (oaths of office)](category) 
-    - set a reminder for [phone mum](activity) activity in [top five singers](category) 
-    - set a reminder for [github password](activity) in [retrieve personal access token](category) 
-    - set a reminder for [take the gym bag](activity) activity in [new project](category) 
-    - set a reminder for [go to the secretariat](activity) in [bug to fix](category) 
-    - set a reminder for [final exam](activity) in [trips](category) category 
-    - set a reminder for [buy a computer](activity) in [grocery list](category) 
-    - set a reminder for [return books to library](activity) in [shopping](category) category 
-    - set a reminder for [take a new book](activity) in [wishlist](category) 
-    - set a reminder for [swimming pool](activity) in [appointment](category) category 
-    - set a reminder for [clean the room](activity) in [appointments](category) 
-    - set a reminder for [holidays](activity) in [my music](category) 
-    - set a reminder for [apples](activity) in [ideas](category) category 
-    - set a reminder for [piano lesson](activity) in [grocery list](category) category 
-    - set a reminder for [buy taxes](activity) activity in [friends list](category) category 
-    - set a reminder for [go to the beautician](activity) activity in [friends list](category) category 
-    - set a reminder for [get off the dog](activity) in [tasks](category) category 
-    - set a reminder for [meeting](activity) activity in [things to be done](category) category 
-    - set a reminder for [afternoon](activity) in [football matches](category) category 
-    - set a reminder for [go to the beautician](activity) in [songs to listen to](category) category 
-    - set a reminder for [chips and fish](activity) activity in [things to be done](category) category 
-    - set a reminder for [check email](activity) activity in [list](category) category 
-    - set a reminder for reminder](activity) activity in [things to do](category) 
-    - for [holidays to remember](activity) in [regular meeting](category) set a reminder
-    - for [design ad campaign graphics](activity) in [regular meeting (budget reading)](category) category set a reminder
-    - for [buy toys for kids](activity) in [new project](category) category set a reminder
-    - for [buy toys for kids](activity) activity in [reservations](category) set a reminder
-    - for [visit the theater](activity) in [telegram offers](category) set a reminder
-    - for reminder](activity) activity in [daily homeworks](category) category set a reminder
-    - for [social media scheduling](activity) in [class schedule](category) set a reminder
-    - for [shere photo](activity) activity in [grocery list](category) category set a reminder
-    - for [sign the check](activity) in [cogrob midterm](category) category set a reminder
-    - for [music](activity) activity in [pharmacy list](category) set a reminder
-    - for [sign the check](activity) in [shopping list](category) set a reminder
-    - for [take the book](activity) in [list of the supermarket](category) set a reminder
-    - for [rent a boat](activity) activity in [class schedule](category) set a reminder
-    - for [submit data analysis](activity) activity in [thing to do today](category) set a reminder
-    - for [crossfit class](activity) in [saturday plans](category) category set a reminder
-    - for [go to the beautician](activity) activity in reminder](category) category set a reminder
-    - for [rent a boat](activity) activity in [library reminder](category) category set a reminder
-    - for [appointments](activity) in [work plain](category) set a reminder
-    - for [buy a recorder](activity) in [cogrob midterm](category) category set a reminder
-    - for [humburger](activity) in [to do](category) category set a reminder
-    - for [metting](activity) in [shopping cart](category) category set a reminder
-    - for [banana bread](activity) in [sport](category) category set a reminder
-    - for [get off the dog](activity) in [cogrob midterm](category) set a reminder
-    - for [meeting](activity) activity in [homework](category) set a reminder
+    - change an activity 
+    - can you change an activity 
+    - can you update an activity
+    - Perfect, now i have decided to change an activity
+    - update an activity   
+    - i want to update an activity
+    - i want update
+    - i want to update
+    - update
+    - I wanna change an activity
+    - i want to change an activity
+    - ehi bot!, update an activity
+    - i need to update an activity
+    - change activity 
+    - modify activity
+    - modify an activity
 
-- intent: set_deadline
+- intent: inform
   examples: |
-    - Set the deadline for Thusday 19
-    - Set the deadline for Sunday 26
-    - Set the deadline for Sunday 3
-    - Set the deadline for Wednesday 4
-    - Set the deadline for Thursday 25
-    - Set the deadline for Thursday 16
-    - Set the deadline for Saturday 13
-    - Set the deadline for Sunday 7
-    - Set the deadline for Monday 16
-    - Set the deadline for Monday 29
-    - Set the deadline for Sunday 13
-    - Set the deadline for Thursday 20
-    - Set the deadline for Sunday 25
-    - Set the deadline for Monday 23
-    - Set the deadline for Thursday 9
-    - Set the deadline for Saturday 26
-    - Set the deadline for Thusday 19
-    - Set the deadline for Monday 29
-    - Set the deadline for Wednesday 1
-    - Set the deadline for Monday 1
-    - Set the deadline for Saturday 18
-    - Set the deadline for Monday 31
-    - Set the deadline for Thursday 22
-    - Set the deadline for Thusday 14
-    - Set the deadline for Saturday 1
-    - Set the deadline for Friday 8
-    - Set the deadline for Sunday 15
-    - Set the deadline for Thursday 18
-    - Set the deadline for Thusday 12
-    - Set the deadline for Thusday 22
-    - Set the deadline for 19 March 2020
-    - Set the deadline for 4 May 2023
-    - Set the deadline for 16 August 2023
-    - Set the deadline for 4 April 2023
-    - Set the deadline for 29 January 2023
-    - Set the deadline for 20 July 2020
-    - Set the deadline for 15 December 2022
-    - Set the deadline for 26 December 2021
-    - Set the deadline for 31 October 2020
-    - Set the deadline for 1 June 2020
-    - Set the deadline for 21 January 2020
-    - Set the deadline for 22 July 2021
-    - Set the deadline for 24 July 2020
-    - Set the deadline for 8 September 2023
-    - Set the deadline for 18 August 2021
-    - Set the deadline for 8 June 2021
-    - Set the deadline for 31 August 2022
-    - Set the deadline for 14 January 2020
-    - Set the deadline for 21 March 2022
-    - Set the deadline for 24 February 2022
-    - Set the deadline for 23 December 2023
-    - Set the deadline for 27 September 2021
-    - Set the deadline for 10 May 2023
-    - Set the deadline for 13 September 2020
-    - Set the deadline for 8 August 2023
-    - Set the deadline for 22 July 2021
-    - Set the deadline for 18 June 2022
-    - Set the deadline for 15 February 2020
-    - Set the deadline for 17 March 2023
-    - Set the deadline for 16 June 2020
-    - Set the deadline for 2 August 2022
-    - Set the deadline for 28 December 2023
-    - Set the deadline for 6 November 2021
-    - Set the deadline for 8 September 2020
-    - Set the deadline for 18 April 2021
-    - Set the deadline for 17 July 2022
-    - Set the deadline for 12 October 2023
-    - Set the deadline for 22 May 2020
-    - Set the deadline for 26 July 2021
-    - Set the deadline for 25 September 2021
-    - Please,set the deadline for 19/3/2020
-    - Please,set the deadline for 4/5/2023
-    - Please,set the deadline for 16/8/2023
-    - Please,set the deadline for 4/4/2023
-    - Please,set the deadline for 29/1/2023
-    - Please,set the deadline for 20/7/2020
-    - Please,set the deadline for 15/12/2022
-    - Please,set the deadline for 26/12/2021
-    - Please,set the deadline for 31/10/2020
-    - Please,set the deadline for 1/6/2020
-    - Please,set the deadline for 21/1/2020
-    - Please,set the deadline for 22/7/2021
-    - Please,set the deadline for 24/7/2020
-    - Please,set the deadline for 8/9/2023
-    - Please,set the deadline for 18/8/2021
-    - Please,set the deadline for 8/6/2021
-    - Please,set the deadline for 31/8/2022
-    - Please,set the deadline for 14/1/2020
-    - Please,set the deadline for 21/3/2022
-    - Please,set the deadline for 24/2/2022
-    - Please,set the deadline for 23/12/2023
-    - Please,set the deadline for 27/9/2021
-    - Please,set the deadline for 10/5/2023
-    - Please,set the deadline for 13/9/2020
-    - Please,set the deadline for 8/8/2023
-    - Please,set the deadline for 22/7/2021
-    - Please,set the deadline for 18/6/2022
-    - Please,set the deadline for 15/2/2020
-    - Please,set the deadline for 17/3/2023
-    - Please,set the deadline for 16/6/2020
-    - Please,set the deadline for 2/8/2022
-    - Please,set the deadline for 28/12/2023
-    - Please,set the deadline for 6/11/2021
-    - Please,set the deadline for 8/9/2020
-    - Please,set the deadline for 18/4/2021
-    - Please,set the deadline for 17/7/2022
-    - Please,set the deadline for 12/10/2023
-    - Please,set the deadline for 22/5/2020
-    - Please,set the deadline for 26/7/2021
-    - Please,set the deadline for 25/9/2021
-    - Please,set the deadline for 19-3-2020
-    - Please,set the deadline for 4-5-2023
-    - Please,set the deadline for 16-8-2023
-    - Please,set the deadline for 4-4-2023
-    - Please,set the deadline for 29-1-2023
-    - Please,set the deadline for 20-7-2020
-    - Please,set the deadline for 15-12-2022
-    - Please,set the deadline for 26-12-2021
-    - Please,set the deadline for 31-10-2020
-    - Please,set the deadline for 1-6-2020
-    - Please,set the deadline for 21-1-2020
-    - Please,set the deadline for 22-7-2021
-    - Please,set the deadline for 24-7-2020
-    - Please,set the deadline for 8-9-2023
-    - Please,set the deadline for 18-8-2021
-    - Please,set the deadline for 8-6-2021
-    - Please,set the deadline for 31-8-2022
-    - Please,set the deadline for 14-1-2020
-    - Please,set the deadline for 21-3-2022
-    - Please,set the deadline for 24-2-2022
-    - Please,set the deadline for 23-12-2023
-    - Please,set the deadline for 27-9-2021
-    - Please,set the deadline for 10-5-2023
-    - Please,set the deadline for 13-9-2020
-    - Please,set the deadline for 8-8-2023
-    - Please,set the deadline for 22-7-2021
-    - Please,set the deadline for 18-6-2022
-    - Please,set the deadline for 15-2-2020
-    - Please,set the deadline for 17-3-2023
-    - Please,set the deadline for 16-6-2020
-    - Please,set the deadline for 2-8-2022
-    - Please,set the deadline for 28-12-2023
-    - Please,set the deadline for 6-11-2021
-    - Please,set the deadline for 8-9-2020
-    - Please,set the deadline for 18-4-2021
-    - Please,set the deadline for 17-7-2022
-    - Please,set the deadline for 12-10-2023
-    - Please,set the deadline for 22-5-2020
-    - Please,set the deadline for 26-7-2021
-    - Please,set the deadline for 25-9-2021
-    - Please,set the deadline for 19.3.2020
-    - Please,set the deadline for 4.5.2023
-    - Please,set the deadline for 16.8.2023
-    - Please,set the deadline for 4.4.2023
-    - Please,set the deadline for 29.1.2023
-    - Please,set the deadline for 20.7.2020
-    - Please,set the deadline for 15.12.2022
-    - Please,set the deadline for 26.12.2021
-    - Please,set the deadline for 31.10.2020
-    - Please,set the deadline for 1.6.2020
-    - Please,set the deadline for 21.1.2020
-    - Please,set the deadline for 22.7.2021
-    - Please,set the deadline for 24.7.2020
-    - Please,set the deadline for 8.9.2023
-    - Please,set the deadline for 18.8.2021
-    - Please,set the deadline for 8.6.2021
-    - Please,set the deadline for 31.8.2022
-    - Please,set the deadline for 14.1.2020
-    - Please,set the deadline for 21.3.2022
-    - Please,set the deadline for 24.2.2022
-    - Please,set the deadline for 23.12.2023
-    - Please,set the deadline for 27.9.2021
-    - Please,set the deadline for 10.5.2023
-    - Please,set the deadline for 13.9.2020
-    - Please,set the deadline for 8.8.2023
-    - Please,set the deadline for 22.7.2021
-    - Please,set the deadline for 18.6.2022
-    - Please,set the deadline for 15.2.2020
-    - Please,set the deadline for 17.3.2023
-    - Please,set the deadline for 16.6.2020
-    - Please,set the deadline for 2.8.2022
-    - Please,set the deadline for 28.12.2023
-    - Please,set the deadline for 6.11.2021
-    - Please,set the deadline for 8.9.2020
-    - Please,set the deadline for 18.4.2021
-    - Please,set the deadline for 17.7.2022
-    - Please,set the deadline for 12.10.2023
-    - Please,set the deadline for 22.5.2020
-    - Please,set the deadline for 26.7.2021
-    - Please,set the deadline for 25.9.2021
-    - the deadline is 19 3 2020
-    - the deadline is 4 5 2023
-    - the deadline is 16 8 2023
-    - the deadline is 4 4 2023
-    - the deadline is 29 1 2023
-    - the deadline is 20 7 2020
-    - the deadline is 15 12 2022
-    - the deadline is 26 12 2021
-    - the deadline is 31 10 2020
-    - the deadline is 1 6 2020
-    - the deadline is 21 1 2020
-    - the deadline is 22 7 2021
-    - the deadline is 24 7 2020
-    - the deadline is 8 9 2023
-    - the deadline is 18 8 2021
-    - the deadline is 8 6 2021
-    - the deadline is 31 8 2022
-    - the deadline is 14 1 2020
-    - the deadline is 21 3 2022
-    - the deadline is 24 2 2022
-    - the deadline is 19-3-2020
-    - the deadline is 4-5-2023
-    - the deadline is 16-8-2023
-    - the deadline is 4-4-2023
-    - the deadline is 29-1-2023
-    - the deadline is 20-7-2020
-    - the deadline is 15-12-2022
-    - the deadline is 26-12-2021
-    - the deadline is 31-10-2020
-    - the deadline is 1-6-2020
-    - the deadline is 21-1-2020
-    - the deadline is 22-7-2021
-    - the deadline is 24-7-2020
-    - the deadline is 8-9-2023
-    - the deadline is 18-8-2021
-    - the deadline is 8-6-2021
-    - the deadline is 31-8-2022
-    - the deadline is 14-1-2020
-    - the deadline is 21-3-2022
-    - the deadline is 24-2-2022
-    - bot, the deadline is 19/3/2020
-    - bot, the deadline is 4/5/2023
-    - bot, the deadline is 16/8/2023
-    - bot, the deadline is 4/4/2023
-    - bot, the deadline is 29/1/2023
-    - bot, the deadline is 20/7/2020
-    - bot, the deadline is 15/12/2022
-    - bot, the deadline is 26/12/2021
-    - bot, the deadline is 31/10/2020
-    - bot, the deadline is 1/6/2020
-    - bot, the deadline is 21/1/2020
-    - bot, the deadline is 22/7/2021
-    - bot, the deadline is 24/7/2020
-    - bot, the deadline is 8/9/2023
-    - bot, the deadline is 18/8/2021
-    - bot, the deadline is 8/6/2021
-    - bot, the deadline is 31/8/2022
-    - bot, the deadline is 14/1/2020
-    - bot, the deadline is 21/3/2022
-    - bot, the deadline is 24/2/2022
-    - for 3/19/2020
-    - for 5/4/2023
-    - for 8/16/2023
-    - for 4/4/2023
-    - for 1/29/2023
-    - for 7/20/2020
-    - for 12/15/2022
-    - for 12/26/2021
-    - for 10/31/2020
-    - for 6/1/2020
-    - for 1/21/2020
-    - for 7/22/2021
-    - for 7/24/2020
-    - for 9/8/2023
-    - for 8/18/2021
-    - for 6/8/2021
-    - for 8/31/2022
-    - for 1/14/2020
-    - for 3/21/2022
-    - for 2/24/2022
-    - for 3-19-2020
-    - for 5-4-2023
-    - for 8-16-2023
-    - for 4-4-2023
-    - for 1-29-2023
-    - for 7-20-2020
-    - for 12-15-2022
-    - for 12-26-2021
-    - for 10-31-2020
-    - for 6-1-2020
-    - for 1-21-2020
-    - for 7-22-2021
-    - for 7-24-2020
-    - for 9-8-2023
-    - for 8-18-2021
-    - for 6-8-2021
-    - for 8-31-2022
-    - for 1-14-2020
-    - for 3-21-2022
-    - for 2-24-2022
-    - for 6-5-2020 at 19:32:48
-    - for 3-4-2020 at 12:24:30
-    - for 2-31-2020 at 16:30:00
-    - for 10-25-2020 at 14:08:48
-    - for 5-14-2020 at 08:14:18
-    - for 2-2-2021 at 00:43:52
-    - for 10-12-2022 at 03:40:04
-    - for 8-22-2022 at 19:26:59
-    - for 8-14-2022 at 13:59:24
-    - for 11-11-2021 at 05:51:25
-    - for 4-18-2022 at 04:51:35
-    - for 10-5-2020 at 12:39:33
-    - for 2-12-2022 at 17:41:00
-    - for 5-9-2020 at 19:10:03
-    - for 11-4-2022 at 18:35:15
-    - for 4-30-2021 at 21:40:08
-    - for 4-29-2022 at 11:39:11
-    - for 11-24-2023 at 03:04:49
-    - for 2-18-2020 at 06:57:35
-    - for 6-18-2021 at 13:20:05
-    - for 10-30-2023 at 19:32:44
-    - for 4-2-2020 at 13:42:09
-    - for 3-16-2022 at 19:21:31
-    - for 4-2-2022 at 13:09:03
-    - for 6-19-2021 at 00:49:53
-    - for 5-2-2022 at 00:52:55
-    - for 11-15-2022 at 06:53:05
-    - for 6-15-2022 at 09:21:53
-    - for 10-23-2020 at 18:36:24
-    - for 2-18-2023 at 14:41:15
-    - for 4-16-2021 at 15:07:54
-    - for 3-20-2021 at 14:30:46
-    - for 1-4-2021 at 02:34:20
-    - for 4-18-2022 at 18:06:17
-    - for 8-25-2020 at 22:44:56
-    - for 4-12-2022 at 05:36:23
-    - for 11-15-2021 at 13:33:38
-    - for 7-31-2020 at 08:32:59
-    - for 5-18-2020 at 22:32:42
-    - for 3-11-2022 at 03:17:24
+    - [call Lucrezia](activity)
+    - [shere photo](activity)
+    - [History study group](activity)
+    - [study CR](activity)
+    - [buy the DAA book](activity)
+    - [Sky](activity)
+    - [meeting with Mario](activity)
+    - [reunion on job orientation](activity)
+    - [buy some sweets](activity)
+    - [take the train](activity)
+    - [barbecue sauce](activity)
+    - [library study time](activity)
+    - [karate class](activity)
+    - [Atm cash](activity)
+    - [crossfit class](activity)
+    - [book hotel for Milano](activity)
+    - [meeting with engineers](activity)
+    - [egg](activity)
+    - [chips and fish](activity)
+    - [Theater course](activity)
+    - [go to gym](activity)
+    - [banana bread](activity)
+    - [email teams for update](activity)
+    - [Rihanna](activity)
+    - [dance lesson](activity)
+    - [accompany Angela to the dentist](activity)
+    - [talk with seller](activity)
+    - [pick up prescription](activity)
+    - [final exam](activity)
+    - [crossfit shoes](activity)
+    - [modal verbs](activity)
+    - [math homework](activity)
+    - [music](activity)
+    - [Present and past perfect](activity)
+    - [work on FC article](activity)
+    - [design ad campaign graphics](activity)
+    - [go to Amsterdam](activity)
+    - [buy a computer](activity)
+    - [the plain](activity)
+    - [meet Marco](activity)
+    - [tennis](activity)
+    - [buy toys for kids](activity)
+    - [cake](activity)
+    - [take the kids to school](activity)
+    - [book conference room](activity)
+    - [go to the secretariat](activity)
+    - [clean living room](activity)
+    - [try risotto](activity)
+    - [pizza](activity)
+    - [call father](activity)
+    - [make muffin](activity)
+    - [book an apointment for Angela to the dentist](activity)
+    - [Mengoni](activity)
+    - [buy birthday present](activity)
+    - [study](activity)
+    - [do the mending](activity)
+    - [drink coffee](activity)
+    - [computer](activity)
+    - [buy banana](activity)
+    - [buy present for parents](activity)
+    - [go running](activity)
+    - [take the kids to the park](activity)
+    - [bring creatine](activity)
+    - [New York](activity)
+    - [send in more inventory](activity)
+    - [dog](activity)
+    - [book in the library](activity)
+    - [blind date](activity)
+    - [therapist](activity)
+    - [go to the gymo workout](activity)
+    - [buy taxes](activity)
+    - [ask information on New York](activity)
+    - [create a meeting agenda](activity)
+    - [go to NY](activity)
+    - [piadina](activity)
+    - [rent a boat](activity)
+    - [take the gym bag](activity)
+    - [bring umbrella](activity)
+    - [buy ananas](activity)
+    - [Avatar The Way of Water](activity)
+    - [buy presents](activity)
+    - [ice cream](activity)
+    - [buy new notebook](activity)
+    - [call Giulia](activity)
+    - [submit data analysis](activity)
+    - [golf club](activity)
+    - [midterm](activity)
+    - [Marco and Anna wedding](activity)
+    - [fish and chips](activity)
+    - [take the present](activity)
+    - [humburger](activity)
+    - [meet the team](activity)
+    - [dancing shoes](activity)
+    - [get off the dog](activity)
+    - [book your seat in the library](activity)
+    - [make a sandwich](activity)
+    - [take off lights](activity)
+    - [book flight to Sydney](activity)
+    - [book for SPA](activity)
+    - [clean the room](activity)
+    - [solve exercise](activity)
+    - [study the ereditariety on chapter 3](activity)
+    - [buy pasta](activity)
+    - [Metro reading](activity)
+    - [bring bed](activity)
+    - [go to Paris](activity)
+    - [linear regression](activity)
+    - [social media scheduling](activity)
+    - [meets Francesca](activity)
+    - [Pirandello](activity)
+    - [to pay taxes](activity)
+    - [banana](activity)
+    - [go to greet Luca in Naples](activity)
+    - [go out with your friends](activity)
+    - [go to english course](activity)
+    - [read chapter 4 of math book](activity)
+    - [go to the beautician](activity)
+    - [vegetables](activity)
+    - [leave for Milan](activity)
+    - [rent an apartment](activity)
+    - [Volley Cup](activity)
+    - [book the plane](activity)
+    - [nuoto](activity)
+    - [apples](activity)
+    - [to go to the gym](activity)
+    - [birthday](activity)
+    - [take the book](activity)
+    - [fix bugs](activity)
+    - [contact service center](activity)
+    - [sign the check](activity)
+    - [book the hotel](activity)
+    - [send out meeting request](activity)
+    - [declutter Top Drawer of bedroom](activity)
+    - [football match](activity)
+    - [get the dog out](activity)
+    - [shrek movie](activity)
+    - [Van Gogh show](activity)
+    - [read 1 chapther of book](activity)
+    - [midterm cogrob](activity)
+    - [list the new maneskin song](activity)
+    - [swimming pool](activity)
+    - [Maria Rosaria](activity)
+    - [listen new James Arthur song](activity)
+    - [need new parking sticke](activity)
+    - [mayonaisse sauce](activity)
+    - [check email](activity)
+    - [to go to Rome](activity)
+    - [go shopping](activity)
+    - [call Pat](activity)
+    - [buy cover](activity)
+    - [Iphone](activity)
+    - [reply to emails](activity)
+    - [buy wedding dress](activity)
+    - [piano lesson](activity)
+    - [visit to the museum](activity)
+    - [phone mum](activity)
+    - [do a load of washing](activity)
+    - [reception from the professor](activity)
+    - [book at the hairdresser](activity)
+    - [edit code](activity)
+    - [paprika sauce](activity)
+    - [Ubisoft interview](activity)
+    - [Marco](activity)
+    - [bring boxs to new house](activity)
+    - [add a new class](activity)
+    - [blue raspberry](activity)
+    - [brainstorm](activity)
+    - [pay off a debt](activity)
+    - [chocolate](activity)
+    - [make coffe for friends](activity)
+    - [pumpkin](activity)
+    - [edit pictures](activity)
+    - [update project plans](activity)
+    - [cat](activity)
+    - [return to amazon](activity)
+    - [Cinema course](activity)
+    - [Buy a dress](activity)
+    - [call granfather](activity)
+    - [go to the dentist](activity)
+    - [expiry coupon](activity)
+    - [work to project](activity)
+    - [call me by your name](activity)
+    - [doctors appointment](activity)
+    - [charge your computer](activity)
+    - [visit the castle](activity)
+    - [conference on deep neaural network](activity)
+    - [going out with friends](activity)
+    - [load dishwasher](activity)
+    - [take a new book](activity)
+    - [submit Cybersecurity](activity)
+    - [verify project budget](activity)
+    - [la solitudine dei numeri primi](activity)
+    - [dentist appointment](activity)
+    - [buy a recorder](activity)
+    - [cook a cake](activity)
+    - [create model for cogrob](activity)
+    - [visit to the theater](activity)
+    - [finish reading the book](activity)
+    - [write intents for mideterm cogrob](activity)
+    - [submit DSS](activity)
+    - [visit the theater](activity)
+    - [buy the pen](activity)
+    - [call Angela](activity)
+    - [dentist](activity)
+    - [see a movie](activity)
+    - [Lucia](activity)
+    - [call Gianluca](activity)
+    - [metting](activity)
+    - [meeting with dev team](activity)
+    - [brainstorming](activity)
+    - [guerra e pace](activity)
+    - [The gone girl](activity)
+    - [play piano](activity)
+    - [go to the gym](activity)
+    - [buy protein](activity)
+    - [Celentano](activity)
+    - [submit cogrob midterm](activity)
+    - [One Republic](activity)
+    - [world Cup](activity)
+    - [book hotels for Rome](activity)
+    - [meet francesco](activity)
+    - [call Antonio](activity)
+    - [burrito](activity)
+    - [answer teach team queries](activity)
+    - [Econ 202 lecture](activity)
+    - [play football](activity)
+    - [call wedding planner](activity)
+    - [book at the restaurant](activity)
+    - [to sleep](activity)
+    - [Ipad](activity)
+    - [make dinner reservation](activity)
+    - [sweet cherry](activity)
+    - [freez meet](activity)
+    - [apple](activity)
+    - [buy Christrmas presents](activity)
+    - [meet friends](activity)
+    - [return books to library](activity)
+    - [bring the headphone](activity)
+    - [correcting homework](activity)
+    - [github password](activity)
+    - [buy tickets for Padova travel](activity)
+    - [book the classroom](activity)
+    - [Imagine Dragon](activity)
+    - [spaghetti](activity)
+    - [special called emergency meeting](category)
+    - [special called meeting](category)
+    - [shopping](category)
+    - [free time](category)
+    - [cake preparation](category)
+    - [appointment](category)
+    - [chemist list](category)
+    - [Christmas Gifts](category)
+    - [holiday plain](category)
+    - [food](category)
+    - [movies](category)
+    - [toy shop list](category)
+    - [budget work session](category)
+    - [budget meeting](category)
+    - [kiwi](category)
+    - [special called budget meeting](category)
+    - [shopping cart](category)
+    - [butcher list](category)
+    - [work](category)
+    - [saturday](category)
+    - [holidays](category)
+    - [jobs offers](category)
+    - [telegram offers](category)
+    - [bakery list](category)
+    - [place to visit](category)
+    - [special called canvassing meeting](category)
+    - [list](category)
+    - [homeworks](category)
+    - [meeting](category)
+    - [plants to water](category)
+    - [italian course](category)
+    - [Data analysis lessons](category)
+    - [recipes](category)
+    - [books to print](category)
+    - [party](category)
+    - [mlgc meeting](category)
+    - [people to thank](category)
+    - [movies to see](category)
+    - [supermarket list](category)
+    - [class schedule](category)
+    - [high priority](category)
+    - [newsagent list](category)
+    - [what i have to do](category)
+    - [football matches](category)
+    - [hamburger shopping list](category)
+    - [playstation games](category)
+    - [remainder](category)
+    - [library reminder](category)
+    - [daily remainder](category)
+    - [christmas gifts](category)
+    - [grocery list](category)
+    - [bug to fix](category)
+    - [regular meeting](category)
+    - [moving house](category)
+    - [in progress](category)
+    - [pizzeria management](category)
+    - [music to listen to](category)
+    - [to do](category)
+    - [list of the supermarket](category)
+    - [hobby](category)
+    - [dessert](category)
+    - [house things](category)
+    - [pharmacy list](category)
+    - [exam](category)
+    - [sales](category)
+    - [trips](category)
+    - [important](category)
+    - [Friday things to do](category)
+    - [university](category)
+    - [best books 2022](category)
+    - [daily homeworks](category)
+    - [team project](category)
+    - [appointments](category)
+    - [thing to do today](category)
+    - [group for the birthday gift](category)
+    - [italian homework](category)
+    - [low priority](category)
+    - [clean hause](category)
+    - [greengrocer list](category)
+    - [computer shopping list](category)
+    - [dreams](category)
+    - [Wake Up](category)
+    - [math](category)
+    - [homework](category)
+    - [reading book](category)
+    - [monday](category)
+    - [departures](category)
+    - [shopping list](category)
+    - [things to do today](category)
+    - [cogrob midterm](category)
+    - [gala](category)
+    - [kitchen](category)
+    - [dail reminder](category)
+    - [for Alex](category)
+    - [ahfc meeting](category)
+    - [daily to do](category)
+    - [monthly deadlines](category)
+    - [tasks to do](category)
+    - [useless things to mark](category)
+    - [preparation for the party](category)
+    - [to take on the snow](category)
+    - [dinner date](category)
+    - [lanch with Meg](category)
+    - [special called work session](category)
+    - [departure](category)
+    - [veterinary](category)
+    - [work session](category)
+    - [policy retreat work session](category)
+    - [secret list](category)
+    - [wish list](category)
+    - [commitment](category)
+    - [Netflix list](category)
+    - [new project](category)
+    - [places to see](category)
+    - [top five singers](category)
+    - [homeowrk](category)
+    - [videogames to play](category)
+    - [reservations](category)
+    - [personal](category)
+    - [gym reminder](category)
+    - [work engagements](category)
+    - [user stories](category)
+    - [persona reminder](category)
+    - [things to fix](category)
+    - [daily housework](category)
+    - [birthday gifts](category)
+    - [dinner](category)
+    - [friends list](category)
+    - [austin energy rates work session](category)
+    - [medium priority](category)
+    - [work plain](category)
+    - [christmas](category)
+    - [to remaind](category)
+    - [books](category)
+    - [lessons](category)
+    - [tasks](category)
+    - [exhibitions](category)
+    - [best places to visit](category)
+    - [english course](category)
+    - [classification animals](category)
+    - [sport](category)
+    - [retrieve personal access token](category)
+    - [holidays to remember](category)
+    - [after lunch](category)
+    - [books to return](category)
+    - [cooked](category)
+    - [the spore category](category)
+    - [songs to listen to](category)
+    - [halloween dinner](category)
+    - [science homework](category)
+    - [monthly expenses](category)
+    - [books to read](category)
+    - [things to be done](category)
+    - [my music](category)
+    - [things to buy](category)
+    - [stocks](category)
+    - [school](category)
+    - [recipes to try](category)
+    - [reminder](category)
+    - [wishlist](category)
+    - [things to do](category)
+    - [gym](category)
+    - [ideas](category)
+    - [saturday plans](category)
 
-- synonym: activity
-  examples: |
-    - element
-    - item
+# - synonym: activity
+#   examples: |
+#     - element
+#     - item
 
-- synonym: category
-  examples: |
-    - set
-    - folder
-    - class
-    - section
+# - synonym: category
+#   examples: |
+#     - set
+#     - folder
+#     - class
+#     - section
