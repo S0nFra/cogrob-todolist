@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -31,17 +30,14 @@ nlu:
     - Hi bot
     - Hey bot
     - Hello
-    - good morning
     - hi again
     - hi folks
     - hi Mister
     - hi pal!
-    - greetings
     - hello everybody
     - hello is anybody there
     - hello robot
     - Hello bot!
-
 - intent: goodbye
   examples: |
     - bye
@@ -78,7 +74,6 @@ nlu:
     - ok, bye
     - ok.bye
     - see u later
-    - see ya
     - see you
     - see you . bye
     - take care
@@ -91,16 +86,11 @@ nlu:
     - See you later
     - Bye bot
     - Goodbye friend
-    - bye for now
-    - catch you later
-    - gotta go
     - See you
-    - goodnight
     - have a nice day
     - i'm off
     - see you later alligator
     - we'll speak soon
-
 - intent: thankyou
   examples: |
     - thanks!
@@ -120,20 +110,15 @@ nlu:
     - cool thank you
     - cool, thanks
     - danke
-    - great thanks
-    - ok thanks
     - ok thanks
     - ok thanks!
     - perfect thank you
     - thank u
-    - thank you
     - thank you anyways
     - thanks
     - thanks a bunch for everything
-    - thanks a lot
     - thanks for the help
     - thanks you
-    - thanks!
     - thankyou
     - thnks
     - thx
@@ -141,8 +126,7 @@ nlu:
     - thanks for your information
     - thanks f
     - thank you Bot!
-
-- intent: identification   
+- intent: identification
   examples: |
     - I'm [Sara](username)
     - I'm [Beatrice](username)
@@ -183,7 +167,7 @@ nlu:
     - My name is [Lory](username)
     - My name is [Antonio](username)
     - Yes, I'm [Andrea](username)
-
+    - i'm [francesco](username)
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -194,7 +178,6 @@ nlu:
     - aren't you a bot
     - Are you a bot?
     - are you a BOT
-    - are you a bot?
     - are you a chatbot
     - are you a rasa bot?
     - are you a real bot?
@@ -223,7 +206,6 @@ nlu:
     - you robo
     - real bot then?
     - are you really a bbot?
-
 - intent: affirm
   examples: |
     - yes
@@ -236,7 +218,6 @@ nlu:
     - si
     - ok
     - okay
-
 - intent: deny
   examples: |
     - no
@@ -248,34 +229,31 @@ nlu:
     - do you have something else
     - no this does not work for me
     - nope
-
 - intent: insert
   examples: |
     - i want to add
-    - can you insert for me 
+    - can you insert for me
     - can you add for me
     - Perfect, now i have decided to add
     - add
     - Please, can you add
-    - insert   
+    - insert
     - i want to insert
     - i want insert
     - i want add
     - I wanna add
     - can you insert
     - can you add
-    - can you insert something 
-    - Please, insert 
+    - can you insert something
+    - Please, insert
     - bot add
-    - can you insert
-
 - intent: remove_activity
   examples: |
     - i want to remove an activity
     - i want to delete an activity
     - i want delete an activity
     - i want remove an activity
-    - can you remove an activity 
+    - can you remove an activity
     - remove an activity
     - remove activity
     - delete activity
@@ -285,7 +263,6 @@ nlu:
     - can you eliminate an activity?
     - can you delete an activity?
     - Please, I want to delete an acitivity
-
 - intent: remove_category
   examples: |
     - i want to remove a category
@@ -304,7 +281,6 @@ nlu:
     - Please, I want to delete a category
     - empty a category
     - can you empty a category?
-
 - intent: show_categories
   examples: |
     - can you show me the categories?
@@ -323,31 +299,28 @@ nlu:
     - Can you display the categories
     - show categories
     - show category
-
 - intent: show_activities
   examples: |
     - can you show me the activities?
     - show me activities
     - Please, show me activities
     - show me all activities
-    - show me all activities
     - view activities
     - show my activities
-    - see activities 
+    - see activities
     - ok, now show me activities
     - can i see my activities?
     - i want to see all activities
     - Can you display the activities
     - show activities
     - show activity
-
 - intent: update
   examples: |
-    - change an activity 
-    - can you change an activity 
+    - change an activity
+    - can you change an activity
     - can you update an activity
     - Perfect, now i have decided to change an activity
-    - update an activity   
+    - update an activity
     - i want to update an activity
     - i want update
     - i want to update
@@ -356,10 +329,9 @@ nlu:
     - i want to change an activity
     - ehi bot!, update an activity
     - i need to update an activity
-    - change activity 
+    - change activity
     - modify activity
     - modify an activity
-
 - intent: inform
   examples: |
     - [call Lucrezia](activity)
@@ -770,15 +742,6 @@ nlu:
     - [gym](category)
     - [ideas](category)
     - [saturday plans](category)
-
-# - synonym: activity
-#   examples: |
-#     - element
-#     - item
-
-# - synonym: category
-#   examples: |
-#     - set
-#     - folder
-#     - class
-#     - section
+    - [buy mario](activity)
+    - [shopping list](category)
+    - [reminder](category)

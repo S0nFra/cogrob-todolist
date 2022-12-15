@@ -32,8 +32,8 @@ rules:
 - rule: Insert 
   steps:
   - intent: insert
-  - action: items_form
-  - active_loop: items_form
+  - action: insert_form
+  - active_loop: insert_form
   - active_loop: null
   - action: action_insert
 
@@ -46,11 +46,20 @@ rules:
   - action: deadline_form
   - action: action_insert
 
-# ## Delete
-# - rule: Delete
-#   steps:
-#   - intent: remove
-#   - action: action_remove
+## Delete
+- rule: remove_category
+  steps:
+  - intent: remove_category
+  - action: category_form
+  - action: action_remove
+
+- rule: remove_activity
+  steps:
+  - intent: remove_activity
+  - action: items_form
+  - active_loop: items_form
+  - active_loop: null
+  - action: action_remove
 
 # ## Update
 # - rule: Update
