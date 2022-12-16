@@ -30,9 +30,9 @@ def callback(data):
     url = ""
 
     if category != "":
-        url = r"http://193.205.162.71:5000/show?user=()&category=()".format(user, category)
+        url = "http://193.205.162.71:5000/show?user={}&category={}".format(user, category)
     else:
-        url = r"http://193.205.162.71:5000/show?user=()".format(user)
+        url = "http://193.205.162.71:5000/show?user={}".format(user)
 
     handler.load_url(url)
     print(url)

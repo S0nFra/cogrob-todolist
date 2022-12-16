@@ -11,7 +11,7 @@ DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/src/rasa_ros/database.
 LANGUAGE = 'en-US' # en-GB # it-IT
 
 ## Speaker identification variables
-REF_PATH = os.path.dirname(os.path.abspath(__file__)) + "/src/ros_audio_pkg"
+REF_PATH = os.path.dirname(os.path.abspath(__file__)) + "/src/ros_audio_pkg/src"
 MODEL_PATH = os.path.join(REF_PATH,'deep_speaker.h5')
 EMBEDDING_FILENAME = os.path.join(REF_PATH,'embedding.pk')
 RATE = 16000
