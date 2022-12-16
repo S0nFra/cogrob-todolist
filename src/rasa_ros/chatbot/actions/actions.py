@@ -10,9 +10,10 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, ReminderScheduled
 import pathlib
 import sqlite3 as sql
+import datetime
 
 DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
 
@@ -229,8 +230,8 @@ class ActionUpdate(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category")
-        activities = list(tracker.get_latest_entity_values("activity"))
+        category = tracker.get_slot("category")        
+        activities = [tracker.get_slot("tmp"), tracker.get_slot("activity")] # list(tracker.get_latest_entity_values("activity"))
         deadline = tracker.get_slot("time")
         con, cur = get_connetion()
 
@@ -257,44 +258,9 @@ class ActionUpdate(Action):
             msg = f"The \"{old_activity}\" activity has been replaced successfully with \"{new_activity}\" activity"
             res = cur.execute(query, (new_activity,username,category,old_activity))
         
-        elif deadline is not None:
-            # update deadline
-            activity = tracker.get_slot("activity")
-            if not check_exists_activity(cur, username, category, activity):
-                dispatcher.utter_message(text = "No activity with this deadline")
-                return reset_slots()
-            query = f"update todolist set deadline= ? where user= ? and category = ? and activity = ?"
-            msg = f"Previus deadline has been replaced with {deadline}"
-            res = cur.execute(query, (deadline, username, category, activity))
-        
-        else:
-            # update reminder
-            activity = tracker.get_slot("activity")
-            if not check_exists_activity(cur, username, category, activity):
-                dispatcher.utter_message(text = "Ops, activity does not exists")
-                return reset_slots()
-            query = f"select reminder from todolist where user= ? and category = ? and activity = ? and deadline != \'NULL\'"
-            res = cur.execute(query, (username, category, activity))
-            tmp = res.fetchall()
-            if len(tmp) == 0:
-                dispatcher.utter_message(text = "Something wrong, maybe no deadline to remind")
-                return reset_slots()
-            
-            # tmp is something like this [(0,)]
-            # print(tmp)
-            query = f"update todolist set reminder= ? where user= ? and category = ? and activity = ?"
-            if tmp[0][0]:      
-                tmp = False
-                msg = f"Reminder disabled"
-            else:
-                tmp = True
-                msg = f"Reminder enabled"
-                
-            res = cur.execute(query, (tmp, username, category, activity))
-        
         print(query)
         if query is None:
-            dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
+            dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations")
 
         con.commit()
         con.close()
@@ -310,3 +276,15 @@ class ActionCustomReset(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         return reset_slots()
+    
+class ActionStoreActivity(Action):
+    
+    def name(self) -> Text:
+        return "action_store_activity"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        activity_to_store = tracker.get_slot("activity")
+        return [SlotSet("tmp", activity_to_store), SlotSet("activity", None)]
+    

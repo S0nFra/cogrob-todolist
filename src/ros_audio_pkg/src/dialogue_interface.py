@@ -67,7 +67,7 @@ def main():
         session = True
         while session:
             message = rospy.wait_for_message("voice_txt", String)
-            print('[IN]:',message)
+            print('[IN]:',message.data)
             if message.data == 'exit':
                 break
             try:

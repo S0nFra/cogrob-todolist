@@ -82,10 +82,11 @@ rules:
 - rule: Update
   steps:
   - intent: update
-  # - action: activity_form
-  # - active_loop: activity_form
-  # - active_loop: null
   - action: items_form
   - active_loop: items_form
+  - active_loop: null
+  - action: action_store_activity
+  - action: activity_form
+  - active_loop: activity_form
   - active_loop: null
   - action: action_update

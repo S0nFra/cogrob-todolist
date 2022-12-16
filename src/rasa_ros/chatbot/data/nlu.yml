@@ -167,7 +167,6 @@ nlu:
     - My name is [Lory](username)
     - My name is [Antonio](username)
     - Yes, I'm [Andrea](username)
-    - i'm [francesco](username)
     - i'm [mario](username)
 - intent: bot_challenge
   examples: |
@@ -334,6 +333,7 @@ nlu:
     - change activity
     - modify activity
     - modify an activity
+    - i want update an activity
 - intent: inform
   examples: |
     - [call Lucrezia](activity)
@@ -744,7 +744,6 @@ nlu:
     - [gym](category)
     - [ideas](category)
     - [saturday plans](category)
-    - [buy mario](activity)
     - tomorrow
     - [buy tomato](activity)
     - [go to karate](activity)

@@ -3,12 +3,13 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- affirm
-- inform
-- insert
 - identification
-- deny
+- update
+- inform
 - greet
+- affirm
+- insert
+- deny
 - show_categories
 - show_activities
 - remove_activity
@@ -16,7 +17,6 @@ intents:
 - goodbye
 - thankyou
 - bot_challenge
-- update
 - bot_help
 entities:
 - activity
@@ -38,6 +38,9 @@ slots:
     influence_conversation: false
   reminder:
     type: bool
+    influence_conversation: false
+  tmp:
+    type: text
     influence_conversation: false
   logical:
     type: bool
@@ -75,19 +78,9 @@ responses:
   utter_ask_activity:
   - text: Which is the activity?
   - text: Please, tell me the activity
-  utter_ask_new_activity:
+  utter_ask_activity_form_activity:
   - text: Which is the new activity?
-  - text: Please, tell me the new activity
-  utter_help:
-  - text: |-
-      I can help you insert, look and remove activities from a to-do list. 
-      You can ask me things like: 
-      - Add a new activity
-      - Add a new category 
-      - Add a new category with activity 
-      - Delete activity from category 
-      - Show me all my categories 
-      - Show me category
+  - text: To replace with?
   utter_iamabot:
   - text: Hello, my name is Retrieval Bot.
   - text: I am called Retrieval Bot!
@@ -104,20 +97,20 @@ responses:
   - text: Do you want a reminder?
 actions:
 - action_creset
+- action_crest
 - action_insert
 - action_remove
 - action_show
+- action_store_activity
 - action_update
 - utter_ask_activity
 - utter_ask_category
 - utter_ask_deadline
-- utter_ask_new_activity
 - utter_ask_username
 - utter_ask_whatelse
 - utter_goodbye
 - utter_greet
 - utter_greet_user
-- utter_help
 - utter_noworries
 - utter_please_rephrase
 forms:

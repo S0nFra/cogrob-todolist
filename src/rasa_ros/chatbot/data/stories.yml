@@ -308,3 +308,131 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_insert
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: update
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: buy mario
+  - slot_was_set:
+    - activity: buy mario
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_store_activity
+  - slot_was_set:
+    - tmp: buy mario
+  - slot_was_set:
+    - activity: null
+  - action: activity_form
+  - active_loop: activity_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: buy ananas
+  - slot_was_set:
+    - activity: buy ananas
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_update
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: update
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: buy ananas
+  - slot_was_set:
+    - activity: buy ananas
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - category: shopping list
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_store_activity
+  - slot_was_set:
+    - tmp: buy ananas
+  - slot_was_set:
+    - activity: null
+  - action: activity_form
+  - active_loop: activity_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: buy mario
+  - slot_was_set:
+    - activity: buy mario
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_update
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
