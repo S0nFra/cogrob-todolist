@@ -1,0 +1,2 @@
+string user
+string category

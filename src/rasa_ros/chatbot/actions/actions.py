@@ -15,7 +15,8 @@ import pathlib
 import sqlite3 as sql
 import datetime
 
-DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
+# DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
+from config import *
 
 CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 	tag INTEGER PRIMARY KEY AUTOINCREMENT,
