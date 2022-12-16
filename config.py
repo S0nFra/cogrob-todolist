@@ -1,6 +1,8 @@
 import os
 import pathlib
 
+print(os.getcwd())
+
 PEPPER = False
 
 DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/src/rasa_ros/database.db"

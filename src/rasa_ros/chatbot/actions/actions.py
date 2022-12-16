@@ -13,6 +13,9 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, ReminderScheduled
 import pathlib
 import sqlite3 as sql
+
+import roslibpy
+# import time
 import datetime
 
 # DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
@@ -64,12 +67,14 @@ class ActionInsert(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         # take current user
+        
         username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
         # load needed slots
         category = tracker.get_slot("category").lower()
         activity = tracker.get_slot("activity").lower()
+        
         deadline = tracker.get_slot("deadline")
         logical = tracker.get_slot("logical")
         reminder = tracker.get_slot("reminder")
@@ -150,6 +155,7 @@ class ActionRemove(Action):
         elif category is None and activity is not None:
             dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please rewrite the phrase specifying the category.")
             return reset_slots()
+        
         # Remove an activity
         query = f"delete from todolist where user= ? and category = ? and activity = ?"
         print(query)
@@ -197,22 +203,20 @@ class ActionShow(Action):
             dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             for col in tmp:
                 dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
+          
+        else:
+            # show me all categories for the current user
+            query = f"select category from todolist where user= ?"
+            print(query)
+            res = cur.execute(query,(username,))
+            tmp = set(res.fetchall())
+            if len(tmp) == 0:
+                dispatcher.utter_message(text = "Something wrong, maybe no categories")
+                return reset_slots()
 
-            con.close()
-            return reset_slots()           
-
-        # show me all categories for the current user
-        query = f"select category from todolist where user= ?"
-        print(query)
-        res = cur.execute(query,(username,))
-        tmp = set(res.fetchall())
-        if len(tmp) == 0:
-            dispatcher.utter_message(text = "Something wrong, maybe no categories")
-            return reset_slots()
-        
-        dispatcher.utter_message(text = f"Ok {username}, showing your categories")
-        for i,col in enumerate(tmp):
-              dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
+            dispatcher.utter_message(text = f"Ok {username}, showing your categories")
+            for i,col in enumerate(tmp):
+                  dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
         
         con.close()
         return reset_slots()

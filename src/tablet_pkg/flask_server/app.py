@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 import sqlite3
 import os
 
+import sys
+sys.path.append('config')
+
 from config import *
 
 app = Flask(__name__)
