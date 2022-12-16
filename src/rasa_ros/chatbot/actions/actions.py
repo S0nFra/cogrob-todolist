@@ -189,36 +189,53 @@ class ActionShow(Action):
         con, cur = get_connetion()
 
         # given the category show me all the activities contained in it
-        if category is not None:
-            category = category.lower()
-            query = f"select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
-            print(query)
+        if PEPPER:
+            if category is not None:
+                category = category.lower()
+                query = f"select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
+                print(query)
 
-            res = cur.execute(query,(username,category))
-            tmp = res.fetchall()
-            if len(tmp) == 0:
-                dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
-                return reset_slots()
+                res = cur.execute(query,(username,category))
+                tmp = res.fetchall()
+                if len(tmp) == 0:
+                    dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
+                    return reset_slots()
+
+                dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
+                for col in tmp:
+                    dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
+
+            else:
+                # show me all categories for the current user
+                query = f"select category from todolist where user= ?"
+                print(query)
+                res = cur.execute(query,(username,))
+                tmp = set(res.fetchall())
+                if len(tmp) == 0:
+                    dispatcher.utter_message(text = "Something wrong, maybe no categories")
+                    return reset_slots()
+
+                dispatcher.utter_message(text = f"Ok {username}, showing your categories")
+                for i,col in enumerate(tmp):
+                      dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
+                      
+            con.close()
             
-            dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
-            for col in tmp:
-                dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
-          
         else:
-            # show me all categories for the current user
-            query = f"select category from todolist where user= ?"
-            print(query)
-            res = cur.execute(query,(username,))
-            tmp = set(res.fetchall())
-            if len(tmp) == 0:
-                dispatcher.utter_message(text = "Something wrong, maybe no categories")
-                return reset_slots()
+            if category is not None:
+                rest_req = {'user': str(tracker.sender_id), 'category': category.lower()}
+                dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
+            else:
+                rest_req = {'user': str(tracker.sender_id), 'category': "all"}
+                
+            # Istance talker (publisher) with the web server
+            talker = roslibpy.Topic(client, '/show_data', 'pepper_nodes/ShowData')
 
-            dispatcher.utter_message(text = f"Ok {username}, showing your categories")
-            for i,col in enumerate(tmp):
-                  dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
-        
-        con.close()
+            if client.is_connected:
+                talker.publish(roslibpy.Message(rest_req))
+                print('Sending message...')
+                dispatcher.utter_message("WebServer connected: Displaying on tablet!")
+            
         return reset_slots()
 
 class ActionUpdate(Action):
@@ -292,4 +309,8 @@ class ActionStoreActivity(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         activity_to_store = tracker.get_slot("activity")
         return [SlotSet("tmp", activity_to_store), SlotSet("activity", None)]
+    
+if __name__ == '__main__':
+    client = roslibpy.Ros(host='localhost', port=9090)
+    client.run()
     
