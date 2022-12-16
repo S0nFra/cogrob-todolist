@@ -209,7 +209,7 @@ class ActionShow(Action):
             dispatcher.utter_message(text = "Something wrong, maybe no categories")
             return reset_slots()
         
-        dispatcher.utter_message(text = f"Ok {username}, showing your category")
+        dispatcher.utter_message(text = f"Ok {username}, showing your categories")
         for i,col in enumerate(tmp):
               dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
         
