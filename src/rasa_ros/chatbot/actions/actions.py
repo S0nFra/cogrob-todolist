@@ -21,6 +21,10 @@ import datetime
 # DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
 from config import *
 
+if PEPPER:
+    client = roslibpy.Ros(host='localhost', port=9090)
+    client.run()
+
 CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 	tag INTEGER PRIMARY KEY AUTOINCREMENT,
   	user varchar(255) NOT NULL,
@@ -189,7 +193,7 @@ class ActionShow(Action):
         con, cur = get_connetion()
 
         # given the category show me all the activities contained in it
-        if PEPPER:
+        if not PEPPER:
             if category is not None:
                 category = category.lower()
                 query = f"select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
@@ -223,16 +227,16 @@ class ActionShow(Action):
             
         else:
             if category is not None:
-                rest_req = {'user': str(tracker.sender_id), 'category': category.lower()}
+                rest_req = {'data': f'{username}#{category}'} #{'user': str(username), 'category': category.lower()}
                 dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             else:
-                rest_req = {'user': str(tracker.sender_id), 'category': "all"}
+                rest_req = {'data': f'{username}#all'}#{'user': str(username), 'category': "all"}
                 
             # Istance talker (publisher) with the web server
-            talker = roslibpy.Topic(client, '/show_data', 'pepper_nodes/ShowData')
+            talker = roslibpy.Topic(client, '/show_data', 'std_msgs/String') #tablet_pkg/ShowData 
 
             if client.is_connected:
-                talker.publish(roslibpy.Message(rest_req))
+                talker.publish(roslibpy.Message(rest_req)) #{'data': 'Hello World!'}
                 print('Sending message...')
                 dispatcher.utter_message("WebServer connected: Displaying on tablet!")
             
@@ -310,7 +314,5 @@ class ActionStoreActivity(Action):
         activity_to_store = tracker.get_slot("activity")
         return [SlotSet("tmp", activity_to_store), SlotSet("activity", None)]
     
-if __name__ == '__main__':
-    client = roslibpy.Ros(host='localhost', port=9090)
-    client.run()
+
     

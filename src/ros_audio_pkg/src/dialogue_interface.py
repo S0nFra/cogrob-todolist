@@ -19,7 +19,8 @@ class T2SInterface():
             msg = Text2SpeechRequest()
             msg.speech = text
             resp = self.tts(text)
-            rospy.loginfo(resp.ack)
+            rospy.sleep(len(text)*CHAR_SPEED)
+            # rospy.loginfo(resp.ack)
         print("[OUT]:",text)
 
 def main():

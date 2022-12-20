@@ -3,6 +3,7 @@
 import rospy
 from pepper_nodes.srv import LoadUrl, LoadUrlRequest, LoadUrlResponse
 from tablet_pkg.msg import ShowData
+from std_msgs.msg import String
 
 from config import * 
 
@@ -25,21 +26,22 @@ class Handler:
 handler = Handler()
 
 def callback(data):
-    user = data.user
-    category = data.category
+    user, category = data.data.split('#')
+    # user = data.user
+    # category = data.category
     url = ""
 
     if category != "":
-        url = "http://193.205.162.71:5000/show?user={}&category={}".format(user, category)
+        url = "http://10.0.1.215:5000/show?user={}&category={}".format(user, category)
     else:
-        url = "http://193.205.162.71:5000/show?user={}".format(user)
+        url = "http://10.0.1.215:5000/show?user={}&category=all".format(user)
 
     handler.load_url(url)
     print(url)
 
 if __name__ == "__main__":
     NODE_NAME = "tablet_manager_node"
+    print(NODE_NAME)
     rospy.init_node(NODE_NAME)
-    rospy.Subscriber('show_data', ShowData, callback=callback)
+    rospy.Subscriber('show_data', String, callback=callback)
     rospy.spin()
-
