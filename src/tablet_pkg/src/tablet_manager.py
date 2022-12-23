@@ -2,7 +2,7 @@
 
 import rospy
 from pepper_nodes.srv import LoadUrl, LoadUrlRequest, LoadUrlResponse
-from tablet_pkg.msg import ShowData
+from optparse import OptionParser
 from std_msgs.msg import String
 
 from config import * 
@@ -23,25 +23,45 @@ class Handler:
         resp = self.tablet_service(msg)
         rospy.loginfo(resp.ack)
 
-handler = Handler()
+class TabletManager():
+    
+    def __init__(self, ip, port, handler_pepper):
+        self.ip = ip
+        self.port = port
+        self.handler_pepper = handler_pepper
+        
+    def start(self):
+        rospy.init_node(NODE_NAME)
+        rospy.Subscriber('show_data', String, callback=self._callback)
+        
+        print(NODE_NAME, f"RUNNING on http://{self.ip}:{self.port}")
+        rospy.spin()
+        
+    def _callback(self, data):
+        user, category = data.data.split('#')
+        # user = data.user
+        # category = data.category
+        url = ""
 
-def callback(data):
-    user, category = data.data.split('#')
-    # user = data.user
-    # category = data.category
-    url = ""
+        if category != "":
+            url = "http://{}:{}/show?user={}&category={}".format(self.ip, self.port, user, category)
+        else:
+            url = "http://{}:{}/show?user={}&category=all".format(self.ip, self.port, user)
 
-    if category != "":
-        url = "http://10.0.1.215:5000/show?user={}&category={}".format(user, category)
-    else:
-        url = "http://10.0.1.215:5000/show?user={}&category=all".format(user)
-
-    handler.load_url(url)
-    print(url)
+        handler.load_url(url)
+        print(url)
 
 if __name__ == "__main__":
-    NODE_NAME = "tablet_manager_node"
-    print(NODE_NAME)
-    rospy.init_node(NODE_NAME)
-    rospy.Subscriber('show_data', String, callback=callback)
-    rospy.spin()
+    NODE_NAME = "[TABLET MANAGER]"
+    
+    parser = OptionParser()
+    parser.add_option("--ip", dest="ip", default="10.0.1.215")
+    parser.add_option("--port", dest="port", default=5000)
+    (options, args) = parser.parse_args()
+    
+    try:
+        handler = Handler()
+        tbm = TabletManager(options.ip, options.port, handler)
+        tbm.start()
+    except rospy.ROSInterruptException:
+        pass
