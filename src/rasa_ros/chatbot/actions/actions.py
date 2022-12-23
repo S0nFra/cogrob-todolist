@@ -15,10 +15,8 @@ import pathlib
 import sqlite3 as sql
 
 import roslibpy
-# import time
-import datetime
+import time
 
-# DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
 from config import *
 
 if PEPPER:
@@ -238,7 +236,8 @@ class ActionShow(Action):
             if client.is_connected:
                 talker.publish(roslibpy.Message(rest_req)) #{'data': 'Hello World!'}
                 print('Sending message...')
-                dispatcher.utter_message("WebServer connected: Displaying on tablet!")
+                time.sleep(1)
+                dispatcher.utter_message("Displaying on tablet!")
             
         return reset_slots()
 

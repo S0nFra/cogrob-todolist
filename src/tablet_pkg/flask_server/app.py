@@ -22,16 +22,16 @@ def show():
     if category != "all": 
         sqlite_search_query = "select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
         cursor.execute(sqlite_search_query, (user, category, ))
+        page = "index1.html"
     else: 
         sqlite_search_query = "select category from todolist where user= ? "
         cursor.execute(sqlite_search_query, (user, ))
+        page = "index2.html"
         
     data = cursor.fetchall()
     con.close()
     
-    #return render_template('index.html', data =project_home)
-
-    return render_template('index.html', data=set(data))
+    return render_template(page, data=set(data))
 
 if __name__=="__main__": 
     app.run(host="0.0.0.0")
