@@ -25,7 +25,7 @@ class Handler:
 
 class TabletManager():
     
-    def __init__(self, ip, port, handler_pepper):
+    def __init__(self, ip, port, handler_pepper:Handler):
         self.ip = ip
         self.port = port
         self.handler_pepper = handler_pepper
@@ -48,7 +48,7 @@ class TabletManager():
         else:
             url = "http://{}:{}/show?user={}&category=all".format(self.ip, self.port, user)
 
-        handler.load_url(url)
+        self.handler_pepper.load_url(url) # handler.load_url(url)
         print(url)
 
 if __name__ == "__main__":
