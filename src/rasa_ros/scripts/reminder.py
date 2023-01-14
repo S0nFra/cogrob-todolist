@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import pathlib
-import rospy
 from datetime import datetime,timedelta
 from std_msgs.msg import String
 import sqlite3 as sql
@@ -80,9 +78,10 @@ class Reminder():
             to_say += '\n'
         
         return to_say
-        
-    
+
 # if __name__ == '__main__':
+#     import pathlib
+#     import rospy
 #     DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../rasa_ros/database.db"
 #     r = Reminder(DB_PATH, 'francesco')
 #     # print(r.check_deadline())
