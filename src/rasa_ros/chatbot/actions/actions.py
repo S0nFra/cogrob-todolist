@@ -133,8 +133,8 @@ class ActionRemove(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category").lower()
-        activity = tracker.get_slot("activity").lower()
+        category = tracker.get_slot("category")
+        activity = tracker.get_slot("activity")
         con, cur = get_connetion()
 
         # Remove category
@@ -162,7 +162,7 @@ class ActionRemove(Action):
         query = f"delete from todolist where user= ? and category = ? and activity = ?"
         print(query)
 
-        res = cur.execute(query,(username,category,activity))
+        res = cur.execute(query,(username,category.lower(),activity.lower()))
 
         if cur.rowcount == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no activity")
@@ -187,7 +187,7 @@ class ActionShow(Action):
         username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        category = tracker.get_slot("category").lower()
+        category = tracker.get_slot("category")
         con, cur = get_connetion()
 
         # given the category show me all the activities contained in it
@@ -255,8 +255,8 @@ class ActionUpdate(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category").lower()    
-        activities = [tracker.get_slot("tmp").lower(), tracker.get_slot("activity").lower()]
+        category = tracker.get_slot("category").lower()
+        activities = [tracker.get_slot("tmp"), tracker.get_slot("activity")]
         deadline = tracker.get_slot("time")
         con, cur = get_connetion()
 
