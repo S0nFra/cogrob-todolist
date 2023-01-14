@@ -96,7 +96,6 @@ responses:
   - text: Do you want a reminder?
 actions:
 - action_creset
-- action_creset_all
 - action_insert
 - action_remove
 - action_show

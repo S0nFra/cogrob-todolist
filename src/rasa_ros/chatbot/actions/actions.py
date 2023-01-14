@@ -115,7 +115,9 @@ class ActionInsert(Action):
             con.commit()
             con.close()
             
-            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\" and reminder setted to \"" +str(reminder) + "\"")
+            data = str(deadline).split('T')[0]
+            hours = str(deadline).split('T')[1].split('.')[0]
+            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" + data + ' at ' + hours + "\" and reminder setted to \"" +str(reminder) + "\"")
             
             return reset_slots()
 
@@ -205,7 +207,9 @@ class ActionShow(Action):
 
                 dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
                 for col in tmp:
-                    dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3])+'\n')
+                    data = str(col[2]).split('T')[0]
+                    hours = str(col[2]).split('T')[1].split('.')[0]
+                    dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + data + ' at ' + hours + "\treminder: " + str(col[3])+'\n')
 
             else:
                 # show me all categories for the current user
@@ -301,16 +305,6 @@ class ActionCustomReset(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         return reset_slots()
-    
-class ActionCustomReset(Action):
-    
-    def name(self) -> Text:
-        return "action_creset_all"
-    
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        return reset_slots(["username","category","activity","deadline","reminder","logical","time"])
     
 class ActionStoreActivity(Action):
     

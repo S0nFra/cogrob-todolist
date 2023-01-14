@@ -501,25 +501,7 @@ stories:
     - time: null
   - intent: goodbye
   - action: utter_goodbye
-  - action: action_creset_all
-  - slot_was_set:
-    - username: null
-  - slot_was_set:
-    - category: null
-  - slot_was_set:
-    - activity: null
-  - slot_was_set:
-    - deadline: null
-  - slot_was_set:
-    - reminder: null
-  - slot_was_set:
-    - logical: null
-  - slot_was_set:
-    - time: null
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
+  - action: action_restart
 
 - story: interactive_story_8
   steps:
@@ -570,22 +552,4 @@ stories:
     - time: null
   - intent: goodbye
   - action: utter_goodbye
-  - action: action_creset_all
-  - slot_was_set:
-    - username: null
-  - slot_was_set:
-    - category: null
-  - slot_was_set:
-    - activity: null
-  - slot_was_set:
-    - deadline: null
-  - slot_was_set:
-    - reminder: null
-  - slot_was_set:
-    - logical: null
-  - slot_was_set:
-    - time: null
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
+  - action: action_restart
