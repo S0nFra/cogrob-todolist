@@ -35,12 +35,11 @@ class TabletManager():
         rospy.Subscriber('show_data', String, callback=self._callback)
         
         print(NODE_NAME, f"RUNNING on http://{self.ip}:{self.port}")
+        self.handler_pepper('{}:{}'.format(self.ip, self.port)) # Open Home page
         rospy.spin()
         
     def _callback(self, data):
         user, category = data.data.split('#')
-        # user = data.user
-        # category = data.category
         url = ""
 
         if category != "":
@@ -55,7 +54,7 @@ if __name__ == "__main__":
     NODE_NAME = "[TABLET MANAGER]"
     
     parser = OptionParser()
-    parser.add_option("--ip", dest="ip", default="10.0.1.215")
+    parser.add_option("--ip", dest="ip", default="0.0.0.0")
     parser.add_option("--port", dest="port", default=5000)
     (options, args) = parser.parse_args()
     
