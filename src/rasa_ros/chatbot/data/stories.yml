@@ -79,7 +79,7 @@ stories:
   - slot_was_set:
     - category: null
 
-- story: interactive_story_1
+- story: interactive_story_2
   steps:
   - intent: greet
   - action: utter_greet
@@ -135,7 +135,7 @@ stories:
   - slot_was_set:
     - time: null
 
-- story: interactive_story_1
+- story: interactive_story_3
   steps:
   - intent: greet
   - action: utter_greet
@@ -258,7 +258,7 @@ stories:
   - slot_was_set:
     - time: null
 
-- story: interactive_story_1
+- story: interactive_story_4
   steps:
   - intent: greet
   - action: utter_greet
@@ -309,7 +309,7 @@ stories:
   - active_loop: null
   - action: action_insert
 
-- story: interactive_story_1
+- story: interactive_story_5
   steps:
   - intent: greet
   - action: utter_greet
@@ -373,7 +373,7 @@ stories:
   - slot_was_set:
     - time: null
 
-- story: interactive_story_1
+- story: interactive_story_6
   steps:
   - intent: greet
   - action: utter_greet
@@ -436,3 +436,156 @@ stories:
     - logical: null
   - slot_was_set:
     - time: null
+
+- story: interactive_story_7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - username: francesco
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: insert
+  - action: insert_form
+  - active_loop: insert_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: have fun with friends
+  - slot_was_set:
+    - activity: have fun with friends
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: agenda
+  - slot_was_set:
+    - category: agenda
+  - slot_was_set:
+    - requested_slot: logical
+  - intent: affirm
+  - action: deadline_form
+  - active_loop: deadline_form
+  - slot_was_set:
+    - requested_slot: deadline
+  - slot_was_set:
+    - time: '2023-01-14T15:50:54.000+01:00'
+  - slot_was_set:
+    - deadline: '2023-01-14T15:50:54.000+01:00'
+  - slot_was_set:
+    - requested_slot: reminder
+  - slot_was_set:
+    - reminder: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_insert
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_creset_all
+  - slot_was_set:
+    - username: null
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+
+- story: interactive_story_8
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: username_form
+  - active_loop: username_form
+  - slot_was_set:
+    - requested_slot: username
+  - slot_was_set:
+    - username: mario
+  - slot_was_set:
+    - username: mario
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_greet_user
+  - intent: remove_activity
+  - action: items_form
+  - active_loop: items_form
+  - slot_was_set:
+    - requested_slot: activity
+  - slot_was_set:
+    - activity: eat pasta
+  - slot_was_set:
+    - activity: eat pasta
+  - slot_was_set:
+    - requested_slot: category
+  - slot_was_set:
+    - category: to do
+  - slot_was_set:
+    - category: to do
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_remove
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_creset_all
+  - slot_was_set:
+    - username: null
+  - slot_was_set:
+    - category: null
+  - slot_was_set:
+    - activity: null
+  - slot_was_set:
+    - deadline: null
+  - slot_was_set:
+    - reminder: null
+  - slot_was_set:
+    - logical: null
+  - slot_was_set:
+    - time: null
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null

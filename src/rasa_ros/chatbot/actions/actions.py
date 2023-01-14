@@ -302,6 +302,16 @@ class ActionCustomReset(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         return reset_slots()
     
+class ActionCustomReset(Action):
+    
+    def name(self) -> Text:
+        return "action_creset_all"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return reset_slots(["username","category","activity","deadline","reminder","logical","time"])
+    
 class ActionStoreActivity(Action):
     
     def name(self) -> Text:

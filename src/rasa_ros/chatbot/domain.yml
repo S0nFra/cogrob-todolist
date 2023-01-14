@@ -3,21 +3,20 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- identification
-- update
-- inform
 - greet
-- affirm
-- insert
-- deny
-- show_categories
-- show_activities
-- remove_activity
-- remove_category
 - goodbye
 - thankyou
+- identification
 - bot_challenge
-- bot_help
+- affirm
+- deny
+- insert
+- remove_activity
+- remove_category
+- show_categories
+- show_activities
+- update
+- inform
 entities:
 - activity
 - category
@@ -97,7 +96,7 @@ responses:
   - text: Do you want a reminder?
 actions:
 - action_creset
-- action_crest
+- action_creset_all
 - action_insert
 - action_remove
 - action_show

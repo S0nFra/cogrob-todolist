@@ -6,7 +6,8 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
-  - action: action_restart
+  - action: action_creset_all
+  - action: action_deactivate_loop 
 
 # - rule: Answer bot help
 #   steps:
