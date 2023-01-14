@@ -58,6 +58,8 @@ add_service_files(
   FILES
   ListenStart.srv
   ListenStop.srv
+  Identify.srv
+  SaveIdentity.srv
 )
 
 ## Generate actions in the 'action' folder

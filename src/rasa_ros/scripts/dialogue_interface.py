@@ -17,18 +17,20 @@ from reminder import Reminder
 class T2SInterface():
     
     def __init__(self):
-        self.tts = rospy.ServiceProxy("/tts", Text2Speech)
+        if PEPPER:
+            rospy.wait_for_service('/tts')
+            self._tts = rospy.ServiceProxy("/tts", Text2Speech)
         rospy.wait_for_service('listen_start')
-        self.mic_on = rospy.ServiceProxy('listen_start', ListenStart)    
+        self._mic_on = rospy.ServiceProxy('listen_start', ListenStart)    
         rospy.wait_for_service('listen_stop')
-        self.mic_off = rospy.ServiceProxy('listen_stop', ListenStop)
+        self._mic_off = rospy.ServiceProxy('listen_stop', ListenStop)
 
     def speech(self, text: str):
-        self.mic_off()
+        self._mic_off()
         if PEPPER:
             msg = Text2SpeechRequest()
             msg.speech = text
-            resp = self.tts(text)
+            resp = self._tts(text)
             rospy.sleep(len(text)*CHAR_SPEED)
         else:
             try:
@@ -40,34 +42,47 @@ class T2SInterface():
                 pass
         print("[OUT]:",text)
         time.sleep(1.5)
-        self.mic_on()
+        self._mic_on()
+        
+class ReIdentificationInterface():
+    def __init__(self):
+        rospy.wait_for_service('identify')
+        self._identify_srv = rospy.ServiceProxy('identify',Identify)
+        rospy.wait_for_service('save_id')
+        self._save_id_srv = rospy.ServiceProxy('save_id',SaveIdentity)
+    
+    def identify(self, audio_track):
+        req = IdentifyRequest(audio_track)
+        resp_identify = self._identify_srv(req)
+        return resp_identify.id, resp_identify.emb
+    
+    def save_id(self, id, emb=None, audio_track=None):
+        req = SaveIdentityRequest(audio_track,emb,id)
+        rsp = self._save_id_srv(req)
 
 def main():
     rospy.init_node('dialog_interface')
     
+    # print('[CHATBOT] Waiting for services')
     ## Servizi per conversazione con il chatbot
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
-    print('[CHATBOT] RASA server online')
+    print('[CHATBOT] RASA services ready')
     
-    ## Topic
-    pub_current_user = rospy.Publisher('current_user', String, queue_size=3)
-    pub_reset_user = rospy.Publisher('reset_user', String, queue_size=3)
-    print('[CHATBOT] Topics OK')
+    rid = ReIdentificationInterface()
+    print('[CHATBOT] Re-identification services ready')
     
     ## Classi per integrazione
+    reminder = Reminder(DB_PATH)    
     t2s = T2SInterface()
-    reminder = Reminder(DB_PATH)
-    print('[CHATBOT] Classes for integration OK')
-    
     print('[CHATBOT] READY')
     
     while not rospy.is_shutdown():
         print('[CHATBOT] Wait for user')
-        id = rospy.wait_for_message("predicted_identity", String)
+        audio_track = rospy.wait_for_message("voice_data", Int16MultiArray)
+        user,emb = rid.identify(audio_track)
         
-        if id.data != '':
-            user = id.data
+        if user != '':
             dialogue_service('Hi')
             bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
@@ -76,7 +91,7 @@ def main():
             t2s.speech(bot_answer.answer)
             user = rospy.wait_for_message("voice_txt", String)
             user = user.data.split(' ')[-1]
-            pub_current_user.publish(user)
+            rid.save_id(user,emb)
             bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
         
@@ -90,20 +105,18 @@ def main():
         while session:
             message = rospy.wait_for_message("voice_txt", String)
             print('[IN]:',message.data)
-            if message.data == 'exit':
-                break
+            
             try:
                 bot_answer = dialogue_service(message.data)
                 t2s.speech(bot_answer.answer)
             except rospy.ServiceException as e:
                 print("[CHATBOT] Service call failed: %s"%e)
+                
             if 'bye' in message.data:
                 session = False
                 id = ''
                 user = None
-                pub_reset_user.publish('reset')
                 print('[CHATBOT] reset')
-                rospy.wait_for_message("predicted_identity", String)
                 
             rem = reminder.remind_me()
             if rem is not None:
