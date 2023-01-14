@@ -133,8 +133,8 @@ class ActionRemove(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category")
-        activity = tracker.get_slot("activity")
+        category = tracker.get_slot("category").lower()
+        activity = tracker.get_slot("activity").lower()
         con, cur = get_connetion()
 
         # Remove category
@@ -187,7 +187,7 @@ class ActionShow(Action):
         username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
-        category = tracker.get_slot("category")
+        category = tracker.get_slot("category").lower()
         con, cur = get_connetion()
 
         # given the category show me all the activities contained in it
@@ -205,7 +205,7 @@ class ActionShow(Action):
 
                 dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
                 for col in tmp:
-                    dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
+                    dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3])+'\n')
 
             else:
                 # show me all categories for the current user
@@ -219,22 +219,22 @@ class ActionShow(Action):
 
                 dispatcher.utter_message(text = f"Ok {username}, showing your categories")
                 for i,col in enumerate(tmp):
-                      dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
+                      dispatcher.utter_message(text = str(i+1) + " " + str(col[0])+'\n')
                       
             con.close()
             
         else:
             if category is not None:
-                rest_req = {'data': f'{username}#{category}'} #{'user': str(username), 'category': category.lower()}
-                dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
+                rest_req = {'data': f'{username}#{category}'}
+                # dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             else:
-                rest_req = {'data': f'{username}#all'}#{'user': str(username), 'category': "all"}
+                rest_req = {'data': f'{username}#all'}
                 
             # Istance talker (publisher) with the web server
-            talker = roslibpy.Topic(client, '/show_data', 'std_msgs/String') #tablet_pkg/ShowData 
+            talker = roslibpy.Topic(client, '/show_data', 'std_msgs/String')
 
             if client.is_connected:
-                talker.publish(roslibpy.Message(rest_req)) #{'data': 'Hello World!'}
+                talker.publish(roslibpy.Message(rest_req))
                 print('Sending message...')
                 time.sleep(1)
                 dispatcher.utter_message("Displaying on tablet!")
@@ -255,8 +255,8 @@ class ActionUpdate(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category")        
-        activities = [tracker.get_slot("tmp"), tracker.get_slot("activity")] # list(tracker.get_latest_entity_values("activity"))
+        category = tracker.get_slot("category").lower()    
+        activities = [tracker.get_slot("tmp").lower(), tracker.get_slot("activity").lower()]
         deadline = tracker.get_slot("time")
         con, cur = get_connetion()
 
@@ -320,7 +320,7 @@ class ActionStoreActivity(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        activity_to_store = tracker.get_slot("activity")
+        activity_to_store = tracker.get_slot("activity").lower()
         return [SlotSet("tmp", activity_to_store), SlotSet("activity", None)]
     
 
