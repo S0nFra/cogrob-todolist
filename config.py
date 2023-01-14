@@ -25,4 +25,4 @@ EMBEDDING_FILENAME = os.path.join(REF_PATH,'embedding.pk')
 RATE = 16000
 TH = 0.75
 
-QUEUE_MAX = 5 # 10
+QUEUE_MAX = 7

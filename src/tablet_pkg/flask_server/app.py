@@ -37,5 +37,10 @@ def show():
     
     return render_template(page, data=set(data))
 
-if __name__=="__main__": 
-    app.run(host="0.0.0.0")
+if __name__=="__main__":
+    from optparse import OptionParser
+    parser = OptionParser()
+    parser.add_option("--debug", "-d", dest="debug_mode", action = "store_true", default=False)
+    (options, args) = parser.parse_args()
+    
+    app.run(host="0.0.0.0",debug=options.debug_mode)
