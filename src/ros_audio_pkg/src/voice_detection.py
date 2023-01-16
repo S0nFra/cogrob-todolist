@@ -45,7 +45,7 @@ class VoiceDetection():
         print("[VOICE DETECTION] Calibration finished")
         
         if normaly_open:
-            self.listen_start()
+            self.listen_start() # Mic activate at the beginning as default
         
         rospy.spin()
         
@@ -64,7 +64,6 @@ class VoiceDetection():
 if __name__ == "__main__":
     try:
         node = VoiceDetection()
-        node.start() # Mic activate at the beginning as default
     except rospy.ROSInterruptException:
         pass
         

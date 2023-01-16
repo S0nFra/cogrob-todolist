@@ -63,8 +63,9 @@ class ReIdentificationInterface():
 def main():
     rospy.init_node('dialog_interface')
     
-    # print('[CHATBOT] Waiting for services')
-    ## Servizi per conversazione con il chatbot
+    print('[CHATBOT] Waiting for services')
+    
+    ## Services for conversation with the chatbot
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
     print('[CHATBOT] RASA services ready')
@@ -72,7 +73,7 @@ def main():
     rid = ReIdentificationInterface()
     print('[CHATBOT] Re-identification services ready')
     
-    ## Classi per integrazione
+    ## Classes for integration
     reminder = Reminder(DB_PATH)    
     t2s = T2SInterface()
     print('[CHATBOT] READY')

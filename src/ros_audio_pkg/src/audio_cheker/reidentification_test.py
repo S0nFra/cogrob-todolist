@@ -49,7 +49,7 @@ if __name__ == '__main__':
     print('OK')
     
     test = TestReIdentification('Francesco')
-    rospy.Subscriber("voice_data", Int16MultiArray, test.handle)
+    rospy.Subscriber("voice_data", Int16MultiArray, test.handle) # need speech2text.launch
     rospy.spin()
     
 

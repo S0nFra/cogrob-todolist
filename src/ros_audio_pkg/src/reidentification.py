@@ -12,7 +12,7 @@ from identification.utils import batch_cosine_similarity, dist2id
 from ros_audio_pkg.srv import *
 from config import *
 
-class SpeakerIdentification():
+class SpeakerReIdentification():
 
     def __init__(self):
         # Load model
@@ -103,7 +103,7 @@ class SpeakerIdentification():
 
 if __name__ == '__main__':
     try:
-        identifcator = SpeakerIdentification()
+        identifcator = SpeakerReIdentification()
         print('[RE-IDENTIFICATION] Start')
         identifcator.start()
     except rospy.ROSInterruptException:

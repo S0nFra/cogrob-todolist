@@ -4,8 +4,6 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 
-
-# This is a simple example for a custom action which utters "Hello World!"
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
@@ -33,6 +31,7 @@ CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 	unique(user,activity,category)
 );
 """
+
 def get_connetion(path = DB_PATH):
     con = sql.connect(path)
     cur = con.cursor()
@@ -68,8 +67,7 @@ class ActionInsert(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # take current user
-        
+        # take current user        
         username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
@@ -157,7 +155,7 @@ class ActionRemove(Action):
             dispatcher.utter_message(text = "Perfect "+ username + "! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
         elif category is None and activity is not None:
-            dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please rewrite the phrase specifying the category.")
+            dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please specify the category.")
             return reset_slots()
         
         # Remove an activity
@@ -209,7 +207,7 @@ class ActionShow(Action):
                 for col in tmp:
                     data = str(col[2]).split('T')[0]
                     hours = str(col[2]).split('T')[1].split('.')[0]
-                    dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + data + ' at ' + hours + "\treminder: " + str(col[3])+'\n')
+                    dispatcher.utter_message(text = "Activity: " + str(col[1]) + "\tdeadline: " + data + ' at ' + hours + "\treminder: " + str(col[3])+'\n')
 
             else:
                 # show me all categories for the current user
@@ -230,7 +228,7 @@ class ActionShow(Action):
         else:
             if category is not None:
                 rest_req = {'data': f'{username}#{category}'}
-                # dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
+                dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
             else:
                 rest_req = {'data': f'{username}#all'}
                 
