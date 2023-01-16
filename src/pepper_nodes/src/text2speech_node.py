@@ -24,7 +24,8 @@ class Text2SpeechNode:
     The robot will play the text of the message
     '''
     def say(self, msg):
-        # self.tts.setVolume(0.5)
+        
+        self.tts.setVolume(1)
         try:
             self.tts.say(msg.speech, "English")
         except:

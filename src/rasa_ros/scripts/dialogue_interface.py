@@ -40,8 +40,8 @@ class T2SInterface():
                 os.remove("temp.wav")
             except AssertionError:
                 pass
+        # time.sleep(1)
         print("[OUT]:",text)
-        time.sleep(1.5)
         self._mic_on()
         
 class ReIdentificationInterface():
@@ -114,7 +114,6 @@ def main():
                 
             if 'bye' in message.data:
                 session = False
-                id = ''
                 user = None
                 print('[CHATBOT] reset')
                 
