@@ -205,9 +205,13 @@ class ActionShow(Action):
 
                 dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
                 for col in tmp:
-                    data = str(col[2]).split('T')[0]
-                    hours = str(col[2]).split('T')[1].split('.')[0]
-                    dispatcher.utter_message(text = "Activity: " + str(col[1]) + "\tdeadline: " + data + ' at ' + hours + "\treminder: " + str(col[3])+'\n')
+                    if col[2] is not None:
+                        data = str(col[2]).split('T')[0]
+                        hours = str(col[2]).split('T')[1].split('.')[0]
+                        dispatcher.utter_message(text = "Activity: " + str(col[1]) + "\tdeadline: " + data + ' at ' + hours + "\treminder: " + str(col[3])+'\n')
+                    else:
+                        dispatcher.utter_message(text = "Activity: " + str(col[1]) + "\t no deadline\n")
+                    
 
             else:
                 # show me all categories for the current user
