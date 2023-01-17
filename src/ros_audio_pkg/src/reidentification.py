@@ -91,13 +91,13 @@ class SpeakerReIdentification():
             emb = self._get_embedding(audio)
             emb = emb[0]
                
-        if self.data['y'].count(id) < QUEUE_MAX:
+        if self.data['y'].count(id) < MAX_EMBEDDING:
             self.data['X'].append(emb)
             self.data['y'].append(id)
             self._save_data()
             print('[RE-IDENTIFICATION] Saving {}'.format(id))
         else:
-            print('[RE-IDENTIFICATION] Almost {} embedding for {}'.format(QUEUE_MAX, id))
+            print('[RE-IDENTIFICATION] Almost {} embedding for {}'.format(MAX_EMBEDDING, id))
         
         return SaveIdentityResponse('[ACK]')
 
