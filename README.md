@@ -103,7 +103,7 @@ pip3 install --user pyaudio speechrecognition librosa sounddevice python_speech_
 
 # Run project
 
-Rendere gli script di lancio eseguibili se non dovessero esserlo
+Rendere gli script di lancio eseguibili se non dovessero esserlo e montare la workspace ROS
 
 ```bash
 chmod u+x cogrob-todolist/src/*
