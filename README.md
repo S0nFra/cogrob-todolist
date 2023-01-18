@@ -104,8 +104,36 @@ A questo punto il setup è completo. Per lanciare il progetto dalla workspace RO
 
 ```bash
 cd cogrob-todolist # workspace ROS
-source devel/setup.bash
+source setup.sh
 roslaunch rasa_ros chatbot.launch
+```
+
+In un altro terminale eseguire i seguenti comandi: 
+
+```bash
+source setup.sh
+roslaunch ros_audio_pkg audio.launch
+```
+
+In un altro terminale: 
+
+```bash
+source setup.sh
+roslaunch tablet_pkg tablet.launch
+```
+
+In un altro terminale: 
+
+```bash
+source setup.sh
+roslaunch pepper_nodes pepper_bringup.launch
+```
+
+Se si vuole visualizzare quello che viene identificato dallo Speeker Recognition, eseguire i seguenti comandi in un altro terminale: 
+
+```bash
+source setup.sh
+roslaunch ros_audio_pkg speech2text.launch
 ```
 
 
