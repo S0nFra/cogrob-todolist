@@ -14,6 +14,8 @@ from playsound import playsound
 from config import * 
 from reminder import Reminder
 
+reidenntification_script = ["Again \'Hi Pepper\'", "Please, again \'Hi Pepper\'", "Ok, now please say \'Hello Pepper\'","Another time \'Hello Pepper\'","Just another \'Hello Pepper\'","In the end, please say \'Hello\'"]
+
 class T2SInterface():
     
     def __init__(self):
@@ -88,11 +90,18 @@ def main():
             bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
         else:
-            bot_answer = dialogue_service('Hi')
-            t2s.speech(bot_answer.answer)
+            t2s.speech("Hi, I don't know you, what is your name?")
             user = rospy.wait_for_message("voice_txt", String)
             user = user.data.split(' ')[-1]
             rid.save_id(user,emb)
+            t2s.speech(f"Hi {user}, repeat \'Hi Pepper\'")
+            
+            for i in range(MAX_EMBEDDING-1):
+                audio_track = rospy.wait_for_message("voice_data", Int16MultiArray)
+                rid.save_id(user,audio_track=audio_track)
+                t2s.speech(reidenntification_script[i])
+            
+            dialogue_service('Hi')
             bot_answer = dialogue_service(f"I'm {user}")
             t2s.speech(bot_answer.answer)
         
