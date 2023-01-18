@@ -107,6 +107,7 @@ Rendere gli script di lancio eseguibili se non dovessero esserlo
 
 ```bash
 chmod u+x cogrob-todolist/src/*
+catkin build
 ```
 
 Lanciare il server Flask, assicurandosi che sia visibile nella rete locale.
