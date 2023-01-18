@@ -70,6 +70,28 @@ stack build
 
 
 
+### Flask Server
+Flask è un Web Server in esecuzione sulla rete locale utilizzato per la visualizzazione di attività e categorie di un utente su una pagina HTML. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](https://flask.palletsprojects.com/en/2.2.x/).
+
+Istallazione di falsk
+
+```
+pip install flask
+```
+
+
+
+### Rosbridge 
+Rosbridge fornisce un'API JSON alla funzionalità ROS per i programmi non ROS. Utilizziamo questo 'nodo fittizio' per far interagire un programma python con l'ambiente ROS. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](http://wiki.ros.org/rosbridge_suite).
+
+Istallazione di Rosbridge
+
+```
+sudo apt-get install ros-noetic-rosbridge-server
+```
+
+
+
 ## Run project
 
 Rendere gli script di lancio eseguibili se non dovessero esserlo
