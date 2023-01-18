@@ -35,20 +35,25 @@ class TabletManager():
         rospy.Subscriber('show_data', String, callback=self._callback)
         
         print(NODE_NAME, f"RUNNING on http://{self.ip}:{self.port}")
-        self.handler_pepper('{}:{}'.format(self.ip, self.port)) # Open Home page
+        self.home = 'http://{}:{}/'.format(self.ip, self.port)
+        print('Home:',self.home)
+        handler.load_url(self.home) # Open Home page
         rospy.spin()
         
     def _callback(self, data):
         user, category = data.data.split('#')
         url = ""
-
-        if category != "":
+        
+        if user == 'home':
+            url = self.home
+        elif category != "":
             url = "http://{}:{}/show?user={}&category={}".format(self.ip, self.port, user, category)
         else:
             url = "http://{}:{}/show?user={}&category=all".format(self.ip, self.port, user)
 
-        self.handler_pepper.load_url(url) # handler.load_url(url)
         print(url)
+        # print(self.handler_pepper.load_url(url))
+        print(handler.load_url(url))
 
 if __name__ == "__main__":
     NODE_NAME = "[TABLET MANAGER]"
