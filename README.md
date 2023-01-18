@@ -70,10 +70,11 @@ stack build
 
 
 
-### Flask Server
-Flask è un Web Server in esecuzione sulla rete locale utilizzato per la visualizzazione di attività e categorie di un utente su una pagina HTML. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](https://flask.palletsprojects.com/en/2.2.x/).
+## Tablet Setup
 
-Istallazione di falsk
+### Flask Server
+
+Flask è un Web Server in esecuzione sulla rete locale utilizzato per la visualizzazione di attività e categorie di un utente su una pagina HTML. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](https://flask.palletsprojects.com/en/2.2.x/).
 
 ```
 pip install flask
@@ -82,9 +83,8 @@ pip install flask
 
 
 ### Rosbridge 
-Rosbridge fornisce un'API JSON alla funzionalità ROS per i programmi non ROS. Utilizziamo questo 'nodo fittizio' per far interagire un programma python con l'ambiente ROS. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](http://wiki.ros.org/rosbridge_suite).
 
-Istallazione di Rosbridge
+Rosbridge fornisce un'API JSON alla funzionalità ROS per i programmi non ROS. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](http://wiki.ros.org/rosbridge_suite).
 
 ```
 sudo apt-get install ros-noetic-rosbridge-server
@@ -92,15 +92,60 @@ sudo apt-get install ros-noetic-rosbridge-server
 
 
 
-## Run project
+## Audio Setup
+
+```bash
+sudo apt-get install libasound-dev ffmpeg portaudio19-dev libportaudio2 libportaudiocpp0
+pip3 install --user pyaudio speechrecognition librosa sounddevice python_speech_features scipy
+```
+
+
+
+# Run project
 
 Rendere gli script di lancio eseguibili se non dovessero esserlo
 
 ```bash
-chmod u+x cogrob-todolist/src/rasa_ros/scripts/*
+chmod u+x cogrob-todolist/src/*
 ```
 
-A questo punto il setup è completo. Per lanciare il progetto dalla workspace ROS eseguire i seguenti comandi:
+Lanciare il server Flask, assicurandosi che sia visibile nella rete locale.
+
+```bash
+python3 cogrob-todolist/src/tablet_pkg/flask_server/app.py
+```
+
+Prima di eseguire controlla il file `config.py`, impostando l'indice corretto del microfono con `MIC_INDEX` (`None` per usare il microfono di default). Se esegui con Pepper, assicurati che la variabile`PEPPER` sia a `True`.
+
+A questo punto il setup è completo. Per lanciare il progetto, dalla workspace ROS eseguire i seguenti comandi:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+roslaunch rasa_ros pepper.launch flask_ip:= #your ip
+```
+
+
+
+## Run in debug mode
+
+Se si hanno problemi è possibile seguire i file launch separatamente come segue. In un nuovo terminale eseguire i seguenti comandi: 
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+roslaunch pepper_nodes pepper_bringup.launch
+```
+
+Con il server Flask in esecuzione, In un altro terminale eseguire:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+roslaunch tablet_pkg tablet.launch flask_ip:= #your ip
+```
+
+In un altro terminale: 
 
 ```bash
 cd cogrob-todolist # workspace ROS
@@ -108,33 +153,25 @@ source setup.sh
 roslaunch rasa_ros chatbot.launch
 ```
 
-In un altro terminale eseguire i seguenti comandi: 
+A questo punto tutti i servizi necessari sono in esecuzione.
+
+In un nuovo terminale eseguire il codice seguente per avviare l'integrazione dei servizi:
 
 ```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+rosrun rasa_ros dialog_interface.py
+```
+
+Infine, in un nuovo terminale, il seguente codice per avviare microfono e servizi audio:
+
+```bash
+cd cogrob-todolist # workspace ROS
 source setup.sh
 roslaunch ros_audio_pkg audio.launch
 ```
 
-In un altro terminale: 
-
-```bash
-source setup.sh
-roslaunch tablet_pkg tablet.launch
-```
-
-In un altro terminale: 
-
-```bash
-source setup.sh
-roslaunch pepper_nodes pepper_bringup.launch
-```
-
-Se si vuole visualizzare quello che viene identificato dallo Speeker Recognition, eseguire i seguenti comandi in un altro terminale: 
-
-```bash
-source setup.sh
-roslaunch ros_audio_pkg speech2text.launch
-```
+**Se non si dispone di Pepper** è possibile eseguire il progetto in *debug mode*, impostando la variabile `PEPPER` a `False` in `config.py` ed evitando di lanciare `pepper_bringup.launch` e `tablet.launch`.
 
 
 
