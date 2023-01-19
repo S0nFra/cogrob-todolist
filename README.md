@@ -86,8 +86,9 @@ pip install flask
 
 Rosbridge fornisce un'API JSON alla funzionalità ROS per i programmi non ROS. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](http://wiki.ros.org/rosbridge_suite).
 
-```
+```bash
 sudo apt-get install ros-noetic-rosbridge-server
+pip install roslibpy
 ```
 
 
