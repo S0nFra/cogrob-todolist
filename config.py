@@ -3,7 +3,7 @@ import pathlib
 
 print(os.getcwd())
 
-PEPPER = True #False
+PEPPER = False
 
 DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/src/rasa_ros/database.db"
 
@@ -13,7 +13,7 @@ CHAR_SPEED = 0.01
 LANGUAGE = 'en-US'
 
 ## Microphone
-MIC_INDEX = 5 #None
+MIC_INDEX = None
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 1024
 NOISE_DURATION = 3
