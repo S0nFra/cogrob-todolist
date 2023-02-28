@@ -1,90 +1,81 @@
 # Cognitive Robotics
 
-## ROS Setup
+## Demo video
 
-Installazione di ROS
+[![Demo](https://img.youtube.com/vi/P9f-FqLJUjo/0.jpg)](https://www.youtube.com/watch?P9f-FqLJUjo)
 
-```bash
-# Setup sources.list and keys
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt install curl -y # if you haven't already installed curl
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+# Run project
 
-# Installation and environment setup
-sudo apt update
-sudo apt install ros-noetic-desktop-full
-sudo source /opt/ros/noetic/setup.bash
-sudo echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-# To use with python3
-sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
-sudo apt install python3-rosdep -y
-sudo apt-get install python3-catkin-tools -y
-sudo rosdep init
-rosdep update
-```
-
-
-
-## RASA Setup
-
-Installazione di RASA
+Before running the project download the necessary dependencies. Make the launch scripts executable if they are not and mount the ROS workspace.
 
 ```bash
-sudo apt update
-sudo apt install python3-pip
-python3 -m pip install pip==22.0.0
-python3 -m pip install pyOpenSSL
-python3 –m pip install rasa==2.7.2
-python3 –m pip install rasa[spacy]
-python3 –m pip install rasa[transformers]
+chmod u+x cogrob-todolist/src/*
+catkin build
 ```
 
-Installazione del modello utilizzato
-
-```
-python3 -m spacy download en_core_web_md
-```
-
-
-
-### Duckling
-
-Duckling è un extractor per RASA da noi utilizzato per estrarre entità temporali come la deadline. Per maggiori informazioni rimandiamo alla documentazione ufficiale [qui](https://rasa.com/docs/rasa/2.x/components#ducklingentityextractor).
-
-Seguire i seguenti comandi per la configurazione. Attenersi ai path riportati.
+Launch the Flask server, making sure it is visible on the local network.
 
 ```bash
-# Dependecies for Duckling
-wget -qO- https://get.haskellstack.org/ | sh 
-sudo apt install libicu-dev
-sudo apt install libpcre3-dev
-
-# Clone repository
-cd cogrob-todolist/src/rasa_ros/chatbot 
-git clone https://github.com/facebook/duckling
-cd cogrob-todolist/src/rasa_ros/chatbot/duckling
-stack build
+python3 cogrob-todolist/src/tablet_pkg/flask_server/app.py
 ```
 
+Before executing check the `config.py` file, setting the correct microphone index with `MIC_INDEX` (`None` to use the default microphone). If running with Pepper, make sure the `PEPPER` variable is set to `True`.
 
-
-## Run project
-
-Rendere gli script di lancio eseguibili se non dovessero esserlo
-
-```bash
-chmod u+x cogrob-todolist/src/rasa_ros/scripts/*
-```
-
-A questo punto il setup è completo. Per lanciare il progetto dalla workspace ROS eseguire i seguenti comandi:
+At this point the setup is complete. To launch the project, from the ROS workspace run the following commands:
 
 ```bash
 cd cogrob-todolist # workspace ROS
-source devel/setup.bash
+source setup.sh
+roslaunch rasa_ros pepper.launch flask_ip:= #your ip
+```
+
+
+
+## Run in debug mode
+
+If you have problems you can track the launch files separately via the `source debug.sh` command or as follows. In a new terminal run the following commands:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+roslaunch pepper_nodes pepper_bringup.launch
+```
+
+With the Flask server running, In another terminal run:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+roslaunch tablet_pkg tablet.launch flask_ip:= #your ip
+```
+
+In another terminal:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
 roslaunch rasa_ros chatbot.launch
 ```
+
+At this point all the necessary services are running.
+
+In a new terminal, run the following code to start integrating services:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+rosrun rasa_ros dialog_interface.py
+```
+
+Finally, in a new terminal, the following code to start microphone and audio services:
+
+```bash
+cd cogrob-todolist # workspace ROS
+source setup.sh
+roslaunch ros_audio_pkg audio.launch
+```
+
+**If you don't have Pepper** you can run the project in *debug mode*, setting the `PEPPER` variable to `False` in `config.py` and avoiding `pepper_bringup.launch` and `tablet. launch`.
 
 
 

@@ -4,17 +4,22 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 
-
-# This is a simple example for a custom action which utters "Hello World!"
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, ReminderScheduled
 import pathlib
 import sqlite3 as sql
 
-DB_PATH=str(pathlib.Path(__file__).parent.absolute()) + "/../../database.db"
+import roslibpy
+import time
+
+from config import *
+
+if PEPPER:
+    client = roslibpy.Ros(host='localhost', port=9090)
+    client.run()
 
 CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 	tag INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,6 +31,7 @@ CREATE_TABLE_QUERY = """CREATE TABLE todolist(
 	unique(user,activity,category)
 );
 """
+
 def get_connetion(path = DB_PATH):
     con = sql.connect(path)
     cur = con.cursor()
@@ -61,13 +67,14 @@ class ActionInsert(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # take current user
+        # take current user        
         username = tracker.get_slot('username').lower()
         print("\n> Username:", username)
         
         # load needed slots
         category = tracker.get_slot("category").lower()
         activity = tracker.get_slot("activity").lower()
+        
         deadline = tracker.get_slot("deadline")
         logical = tracker.get_slot("logical")
         reminder = tracker.get_slot("reminder")
@@ -106,7 +113,9 @@ class ActionInsert(Action):
             con.commit()
             con.close()
             
-            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" +str(deadline) + "\" and reminder setted to \"" +str(reminder) + "\"")
+            data = str(deadline).split('T')[0]
+            hours = str(deadline).split('T')[1].split('.')[0]
+            dispatcher.utter_message(text = "Perfect! I have added \"" + activity + "\" in \"" + category + "\" with deadline \"" + data + ' at ' + hours + "\" and reminder setted to \"" +str(reminder) + "\"")
             
             return reset_slots()
 
@@ -146,13 +155,14 @@ class ActionRemove(Action):
             dispatcher.utter_message(text = "Perfect "+ username + "! I have deleted the category \"" + category + "\"")
             return [SlotSet("category", None)]
         elif category is None and activity is not None:
-            dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please rewrite the phrase specifying the category.")
+            dispatcher.utter_message(text = "Sorry, you have insert the activity but you haven't specify the category. Please specify the category.")
             return reset_slots()
+        
         # Remove an activity
         query = f"delete from todolist where user= ? and category = ? and activity = ?"
         print(query)
 
-        res = cur.execute(query,(username,category,activity))
+        res = cur.execute(query,(username,category.lower(),activity.lower()))
 
         if cur.rowcount == 0:
             dispatcher.utter_message(text = "Something wrong, maybe no activity")
@@ -181,38 +191,60 @@ class ActionShow(Action):
         con, cur = get_connetion()
 
         # given the category show me all the activities contained in it
-        if category is not None:
-            category = category.lower()
-            query = f"select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
-            print(query)
+        if not PEPPER:
+            if category is not None:
+                category = category.lower()
+                query = f"select tag, activity, deadline, reminder from todolist where user= ? and category = ? "
+                print(query)
 
-            res = cur.execute(query,(username,category))
-            tmp = res.fetchall()
-            if len(tmp) == 0:
-                dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
-                return reset_slots()
-            
-            dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
-            for col in tmp:
-                dispatcher.utter_message(text = "Tag: " + str(col[0]) + "\tactivity: " + str(col[1]) + "\tdeadline: " + str(col[2]) + "\treminder: " + str(col[3]))
+                res = cur.execute(query,(username,category))
+                tmp = res.fetchall()
+                if len(tmp) == 0:
+                    dispatcher.utter_message(text = f"Something wrong, maybe no activities in {category}")
+                    return reset_slots()
 
+                dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
+                for col in tmp:
+                    if col[2] is not None:
+                        data = str(col[2]).split('T')[0]
+                        hours = str(col[2]).split('T')[1].split('.')[0]
+                        dispatcher.utter_message(text = "Activity: " + str(col[1]) + "\tdeadline: " + data + ' at ' + hours + "\treminder: " + str(col[3])+'\n')
+                    else:
+                        dispatcher.utter_message(text = "Activity: " + str(col[1]) + "\t no deadline\n")
+                    
+
+            else:
+                # show me all categories for the current user
+                query = f"select category from todolist where user= ?"
+                print(query)
+                res = cur.execute(query,(username,))
+                tmp = set(res.fetchall())
+                if len(tmp) == 0:
+                    dispatcher.utter_message(text = "Something wrong, maybe no categories")
+                    return reset_slots()
+
+                dispatcher.utter_message(text = f"Ok {username}, showing your categories")
+                for i,col in enumerate(tmp):
+                      dispatcher.utter_message(text = str(i+1) + " " + str(col[0])+'\n')
+                      
             con.close()
-            return reset_slots()           
+            
+        else:
+            if category is not None:
+                rest_req = {'data': f'{username}#{category}'}
+                dispatcher.utter_message(text = f"Ok {username}, showing activities in \"{category}\"")
+            else:
+                rest_req = {'data': f'{username}#all'}
+                
+            # Istance talker (publisher) with the web server
+            talker = roslibpy.Topic(client, '/show_data', 'std_msgs/String')
 
-        # show me all categories for the current user
-        query = f"select category from todolist where user= ?"
-        print(query)
-        res = cur.execute(query,(username,))
-        tmp = set(res.fetchall())
-        if len(tmp) == 0:
-            dispatcher.utter_message(text = "Something wrong, maybe no categories")
-            return reset_slots()
-        
-        dispatcher.utter_message(text = f"Ok {username}, showing your category")
-        for i,col in enumerate(tmp):
-              dispatcher.utter_message(text = str(i+1) + " " + str(col[0]))
-        
-        con.close()
+            if client.is_connected:
+                talker.publish(roslibpy.Message(rest_req))
+                print('Sending message...')
+                time.sleep(1)
+                dispatcher.utter_message("Displaying on tablet!")
+            
         return reset_slots()
 
 class ActionUpdate(Action):
@@ -229,8 +261,8 @@ class ActionUpdate(Action):
         print("\n> Username:", username)
         
         # load needed slots
-        category = tracker.get_slot("category")
-        activities = list(tracker.get_latest_entity_values("activity"))
+        category = tracker.get_slot("category").lower()
+        activities = [tracker.get_slot("tmp"), tracker.get_slot("activity")]
         deadline = tracker.get_slot("time")
         con, cur = get_connetion()
 
@@ -257,46 +289,35 @@ class ActionUpdate(Action):
             msg = f"The \"{old_activity}\" activity has been replaced successfully with \"{new_activity}\" activity"
             res = cur.execute(query, (new_activity,username,category,old_activity))
         
-        elif deadline is not None:
-            # update deadline
-            activity = tracker.get_slot("activity").lower()
-            if not check_exists_activity(cur, username, category, activity):
-                dispatcher.utter_message(text = "No activity with this deadline")
-                return reset_slots()
-            query = f"update todolist set deadline= ? where user= ? and category = ? and activity = ?"
-            msg = f"Previus deadline has been replaced with {deadline}"
-            res = cur.execute(query, (deadline, username, category, activity))
-        
-        else:
-            # update reminder
-            activity = tracker.get_slot("activity")
-            if not check_exists_activity(cur, username, category, activity):
-                dispatcher.utter_message(text = "Ops, activity does not exists")
-                return reset_slots()
-            query = f"select reminder from todolist where user= ? and category = ? and activity = ? and deadline != \'NULL\'"
-            res = cur.execute(query, (username, category, activity))
-            tmp = res.fetchall()
-            if len(tmp) == 0:
-                dispatcher.utter_message(text = "Something wrong, maybe no deadline to remind")
-                return reset_slots()
-            
-            # tmp is something like this [(0,)]
-            # print(tmp)
-            query = f"update todolist set reminder= ? where user= ? and category = ? and activity = ?"
-            if tmp[0][0]:      
-                tmp = False
-                msg = f"Reminder disabled"
-            else:
-                tmp = True
-                msg = f"Reminder enabled"
-                
-            res = cur.execute(query, (tmp, username, category, activity))
-        
         print(query)
         if query is None:
-            dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations\nTry:\nTag + new activity OR category + old activity + new activity")
+            dispatcher.utter_message(text = "Somesthing wrong, maybe need more informations")
 
         con.commit()
         con.close()
         dispatcher.utter_message(text = msg)
         return reset_slots()
+    
+class ActionCustomReset(Action):
+    
+    def name(self) -> Text:
+        return "action_creset"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return reset_slots()
+    
+class ActionStoreActivity(Action):
+    
+    def name(self) -> Text:
+        return "action_store_activity"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        activity_to_store = tracker.get_slot("activity").lower()
+        return [SlotSet("tmp", activity_to_store), SlotSet("activity", None)]
+    
+
+    
