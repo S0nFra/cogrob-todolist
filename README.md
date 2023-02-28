@@ -2,7 +2,7 @@
 
 ## Demo video
 
-[![Demo](https://img.youtube.com/vi/P9f-FqLJUjo/0.jpg)](https://www.youtube.com/watch?P9f-FqLJUjo)
+[![Demo](https://img.youtube.com/vi/P9f-FqLJUjo/0.jpg)](https://www.youtube.com/watch?v=P9f-FqLJUjo)
 
 # Run project
 
